@@ -1,6 +1,6 @@
 # Dokumentasi POS Jawa
 
-[CATATAN APLIKASI](https://docs.google.com/document/d/163Xaw4dyt2KEffbyFco3wXHCG550_AlHfQ6lX7ueeKw/edit?usp=sharing){:target="_blank"}
+[CATATAN APLIKASI](https://docs.google.com/document/d/163Xaw4dyt2KEffbyFco3wXHCG550_AlHfQ6lX7ueeKw/edit?usp=sharing)
 
 ## Diagram Alur Aplikasi
 
