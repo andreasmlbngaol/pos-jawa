@@ -74,7 +74,7 @@ Menyimpan data pengguna seperti admin dan kasir.
 | Nama Kolom   | Tipe Data                 | Keterangan                  |
 |--------------|---------------------------|-----------------------------|
 | id           | BIGSERIAL (Primary Key)   | ID unik pengguna            |
-| email        | VARCHAR(255) **(Unique)** | Email pengguna (unik)       |
+| username     | VARCHAR(255) **(Unique)** | Username pengguna (unik)    |
 | passwordHash | VARCHAR(255)              | Password yang sudah di-hash |
 | role         | ENUM('ADMIN', 'CASHIER')  | Peran pengguna              |
 
@@ -82,7 +82,7 @@ Menyimpan data pengguna seperti admin dan kasir.
 
 ```kotlin
 object Users : LongIdTable() {
-    val email = varchar("email", 255).uniqueIndex()
+    val username = varchar("username", 255).uniqueIndex()
     val passwordHash = varchar("password_hash", 255)
     val role = enumerationByName("role", 10, Role::class)
 }
