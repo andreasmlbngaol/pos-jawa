@@ -1,5 +1,6 @@
-import org.gradle.internal.os.OperatingSystem
-import org.beryx.jlink.JlinkZipTask
+//import org.beryx.jlink.JPackageTask
+//import org.gradle.internal.os.OperatingSystem
+//import org.beryx.jlink.JlinkZipTask
 
 plugins {
   java
@@ -10,7 +11,7 @@ plugins {
 }
 
 group = "com.jawa"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
   mavenCentral()
@@ -48,14 +49,31 @@ tasks.test {
   useJUnitPlatform()
 }
 
-jlink {
-  imageZip.set(layout.buildDirectory.file("distributions/jawa-pos-client-${OperatingSystem.current().familyName}.zip"))
-  options.set(listOf("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages"))
-  launcher {
-    name = "app"
-  }
-}
-
-tasks.named<JlinkZipTask>("jlinkZip") {
-  group = "distribution"
-}
+//jlink {
+//  imageZip.set(layout.buildDirectory.file("distributions/jawa-pos-client-${OperatingSystem.current().familyName}.zip"))
+//  options.set(listOf("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages"))
+//  launcher {
+//    name = "app"
+//  }
+//
+//  jpackage {
+//    imageName = "JawaPos"
+//    installerName = "JawaPOS-Installer"
+//    installerType = OperatingSystem.current().executableSuffix.replace(".", "")
+//    appVersion = project.version.toString()
+//    icon = "src/main/resources/cat.ico"
+//  }
+//}
+//
+//tasks.named<JlinkZipTask>("jlinkZip") {
+//  group = "distribution"
+//}
+//
+//tasks.named<JPackageTask>("jpackage") {
+//  doFirst {
+//    val outputFile = file("build/jpackage/JawaPos/JawaPOS-Installer.exe")
+//    if (outputFile.exists()) {
+//      outputFile.delete()
+//    }
+//  }
+//}
