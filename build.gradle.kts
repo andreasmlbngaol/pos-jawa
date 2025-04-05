@@ -49,16 +49,7 @@ tasks.test {
 }
 
 jlink {
-  val platform = OperatingSystem.current().let {
-    when {
-      it.isWindows -> "win"
-      it.isMacOsX -> "mac"
-      it.isLinux -> "linux"
-      else -> throw GradleException("Unsupported OS: ${it.name}")
-    }
-  }
-
-  imageZip.set(layout.buildDirectory.file("distributions/app-$platform.zip"))
+  imageZip.set(layout.buildDirectory.file("distributions/jawa-pos-client-${OperatingSystem.current().familyName}.zip"))
   options.set(listOf("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages"))
   launcher {
     name = "app"
