@@ -14,6 +14,7 @@ group = "com.jawa"
 version = "1.0"
 
 repositories {
+  google()
   mavenCentral()
 }
 
@@ -27,7 +28,7 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 application {
-  mainModule.set("com.jawa.utsposclient")
+//  mainModule.set("com.jawa.utsposclient")
   mainClass.set("com.jawa.utsposclient.HelloApplication")
 }
 
@@ -40,6 +41,9 @@ dependencies {
   implementation(libs.bootstrapfx.core)
   implementation(libs.javafx.controls)
   implementation(libs.javafx.fxml)
+  implementation(libs.okhttp)
+  implementation(libs.okhttp.urlconnection)
+  implementation(libs.gson)
 
   testImplementation(libs.junit.jupiter.api)
   testRuntimeOnly(libs.junit.jupiter.engine)
