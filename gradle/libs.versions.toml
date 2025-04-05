@@ -1,0 +1,21 @@
+[versions]
+modularity-module = "1.8.15"
+openjfx-javafx = "0.0.13"
+jlink = "3.1.1"
+junit = "5.10.2"
+javafx = "21.0.6"
+bootstrapfx = "0.4.0"
+
+[libraries]
+bootstrapfx-core = { module = "org.kordamp.bootstrapfx:bootstrapfx-core", version.ref = "bootstrapfx"}
+javafx-controls = { module = "org.openjfx:javafx-controls", version.ref = "javafx"}
+javafx-fxml = { module = "org.openjfx:javafx-fxml", version.ref = "javafx"}
+
+# Test
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit"}
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit"}
+
+[plugins]
+modularity-module = { id = "org.javamodularity.moduleplugin", version.ref = "modularity-module" }
+openjfx-javafx = { id = "org.openjfx.javafxplugin", version.ref = "openjfx-javafx" }
+beryx-jlink = { id = "org.beryx.jlink", version.ref = "jlink" }
