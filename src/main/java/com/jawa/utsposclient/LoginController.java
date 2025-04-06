@@ -24,14 +24,14 @@ public class LoginController {
                 if(result.code() == 200) {
                     usernameTextField.setText("");
                     passwordTextField.setText("");
-                    SessionManager.saveSession(ApiClient.getInstance().getCookieManager());
+                    SessionManager.saveLocalSession(ApiClient.getInstance().getCookieManager());
                 }
                 if(result.body() != null) {
                     statusTextArea.setText(result.body().string());
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException("Ini errornya: " + e + " " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
@@ -45,10 +45,12 @@ public class LoginController {
                     statusTextArea.setText(result.body().string());
                 } else {
                     var code = result.code();
-                    statusTextArea.setText(code + ": " + result.body().string());
+                    if(result.body() != null) {
+                        statusTextArea.setText(code + ": " + result.body().string());
+                    }
+                    SessionManager.clearLocalSession(ApiClient.getInstance().getCookieManager());
                 }
             }
-
         } catch (IOException e) {
             System.out.println("[SessionManager] Failed to load session: " + e.getMessage());
         }
@@ -56,6 +58,6 @@ public class LoginController {
 
     @FXML
     protected void onClearSession() {
-        SessionManager.clearSession();
+        SessionManager.clearLocalSession(ApiClient.getInstance().getCookieManager());
     }
 }
