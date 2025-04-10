@@ -1,6 +1,6 @@
-# Dokumentasi POS Jawa
+# Client POS Jawa
 
-[CATATAN APLIKASI](docs/NOTES.md)
+[CATATAN APLIKASI UNTUK PENGEMBANG](docs/NOTES.md)
 
 ## Table of Content
 
