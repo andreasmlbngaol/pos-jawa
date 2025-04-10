@@ -2,6 +2,11 @@
 
 [CATATAN APLIKASI](docs/NOTES.md)
 
+## Table of Content
+
+- [Requirements](#requirements)
+- [How to use](#how-to-use)
+
 ## Requirements
 
 - **Java Development Kit (JDK) 20 atau or later**
