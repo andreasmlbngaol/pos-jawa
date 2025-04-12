@@ -1,5 +1,9 @@
 package com.jawa.utsposclient;
 
+import com.jawa.utsposclient.api.ApiClient;
+import com.jawa.utsposclient.api.SessionManager;
+import com.jawa.utsposclient.controller.Controller;
+import com.jawa.utsposclient.enums.Role;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,24 +20,39 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        loadSession();
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 400, 500);
-        stage.setTitle("Login!");
+        String loaderPath;
+        String title;
+
+        if(!isSessionValid()) {
+            loaderPath = "login-view.fxml";
+            title = "Login";
+        } else {
+            var role = SessionManager.getSessionRole();
+            if(role == Role.ADMIN) {
+                loaderPath = "admin-view.fxml";
+                title = "Admin View";
+            } else {
+                loaderPath = "cashier-view.fxml";
+                title = "Cashier View";
+            }
+        }
+
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(loaderPath));
+        Scene scene = new Scene(loader.load(), 1280, 720);
+
+        Object controller = loader.getController();
+        if (controller instanceof Controller baseController) {
+            baseController.setStage(stage);
+        }
+
+        stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
     }
 
-    private void loadSession() {
-        ApiClient.getInstance()
-                .getCookieManager()
-                .getCookieStore()
-                .get(SessionManager.SESSION_URI);
-    }
-
-    @SuppressWarnings("unused")
     private boolean isSessionValid() {
-        List<HttpCookie> cookies = ApiClient.getInstance()
+        ApiClient client = ApiClient.getInstance();
+        List<HttpCookie> cookies = client
                 .getCookieManager()
                 .getCookieStore()
                 .get(SessionManager.SESSION_URI);
@@ -43,7 +62,7 @@ public class MainApp extends Application {
                 return true;
             }
         }
-
+        SessionManager.clearLocalSession(client.getCookieManager());
         return false;
     }
 }
