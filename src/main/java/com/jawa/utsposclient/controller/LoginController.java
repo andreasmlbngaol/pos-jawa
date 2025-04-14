@@ -1,8 +1,6 @@
 package com.jawa.utsposclient.controller;
 
-import com.jawa.utsposclient.api.ApiClient;
-import com.jawa.utsposclient.api.SessionManager;
-import com.jawa.utsposclient.enums.Role;
+import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.repo.AuthRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -32,24 +30,44 @@ public class LoginController extends Controller {
     @FXML
     protected void onLogin() {
         try {
-            var result = AuthRepository.login(usernameTextField.getText(), passwordField.getText());
+            var user = AuthRepository.login(usernameTextField.getText(), passwordField.getText());
 
-            if(result.isSuccess()) {
-                SessionManager.saveLocalSession(ApiClient.getInstance().getCookieManager());
-
-                var user = result.getData();
-                if(user.getRole() == Role.ADMIN) {
-                    // Go to Admin Menu
+            if (user != null) {
+                if(user instanceof Admin) {
                     switchScene("/admin-view.fxml", "Admin View");
                 } else {
-                    // Go to Cashier Menu
-                    switchScene("/cashier-view.fxml", "Cashier View");
+                    switchScene("/cashier-view.fxml", "Admin View");
                 }
+
             } else {
-                statusTextArea.setText(result.getMessage());
+                statusTextArea.setText("Invalid username or password");
             }
         } catch (IOException | RuntimeException e) {
             throw new RuntimeException(e);
         }
     }
+
+//    @FXML
+//    protected void onLogin() {
+//        try {
+//            var result = AuthRepository.login(usernameTextField.getText(), passwordField.getText());
+//
+//            if(result.isSuccess()) {
+//                SessionManager.saveLocalSession(ApiClient.getInstance().getCookieManager());
+//
+//                var user = result.getData();
+//                if(user.getRole() == Role.Admin) {
+//                    // Go to Admin Menu
+//                    switchScene("/admin-view.fxml", "Admin View");
+//                } else {
+//                    // Go to Cashier Menu
+//                    switchScene("/cashier-view.fxml", "Cashier View");
+//                }
+//            } else {
+//                statusTextArea.setText(result.getMessage());
+//            }
+//        } catch (IOException | RuntimeException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }

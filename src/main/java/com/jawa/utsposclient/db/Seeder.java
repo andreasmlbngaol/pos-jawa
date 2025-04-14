@@ -23,7 +23,7 @@ public class Seeder {
                 admin.setUsername(username);
                 admin.setName(name);
                 admin.setPassword(hashedPassword);
-                admin.setRole(Role.ADMIN);
+                admin.setRole(Role.Admin);
 
                 session.persist(admin);
                 System.out.println("Admin created");

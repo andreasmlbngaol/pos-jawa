@@ -46,4 +46,24 @@ public class Users {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
 }

@@ -1,8 +1,11 @@
 package com.jawa.utsposclient;
 
+import com.jawa.utsposclient.controller.Controller;
 import com.jawa.utsposclient.db.Database;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
@@ -15,6 +18,24 @@ public class MainApp extends Application {
     public void start(Stage stage) {
         try {
             Database.init();
+
+            String loaderPath;
+            String title;
+
+            loaderPath = "views/login-view.fxml";
+            title = "Login";
+
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(loaderPath));
+            Scene scene = new Scene(loader.load(), 1280, 720);
+
+            Object controller = loader.getController();
+            if (controller instanceof Controller baseController) {
+                baseController.setStage(stage);
+            }
+
+            stage.setTitle(title);
+            stage.setScene(scene);
+            stage.show();
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

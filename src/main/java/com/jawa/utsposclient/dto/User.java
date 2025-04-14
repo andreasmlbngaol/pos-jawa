@@ -3,10 +3,22 @@ package com.jawa.utsposclient.dto;
 import com.jawa.utsposclient.enums.Role;
 
 public abstract class User {
-    private Long id;
-    private String username;
-    private String name;
-    private Role role;
+    private final Long id;
+    private final String username;
+    private final String name;
+    private final Role role;
+
+    public User(
+        Long id,
+        String username,
+        String name,
+        Role role
+    ) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
