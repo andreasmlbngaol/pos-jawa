@@ -1,6 +1,6 @@
 # Client POS Jawa
 
-[CATATAN APLIKASI UNTUK PENGEMBANG](docs/NOTES.md)
+[//]: # ([CATATAN APLIKASI UNTUK PENGEMBANG]&#40;docs/NOTES.md&#41;)
 
 ## Table of Content
 
@@ -15,7 +15,7 @@
 
 - **JavaFX SDK 21.0.6 or later**
   
-  [Download here](https://gluonhq.com/products/javafx/)
+  [Download here](https://gluonhq.com/products/javafx/) ***<span style="color:red">!important</span>***
 
 - **Gradle 8.8 or later**
 
@@ -25,7 +25,7 @@
 
 ### 1. IntelliJ IDEA
 
-1. **Modify Run Configuration:**
+1. **Modify JavaFX Runtime Configuration:**
    - Right click on `MainApp.java`
    - Choose **`More Run/Debug` > `Modify Run Configuration`**
     ![Modify Run Configuration](docs/modify_conf_1.png)
@@ -41,5 +41,15 @@
       ```
    - Apply and OK
 
-2. **Run server ([uts-pos-server](https://github.com/andreasmlbngaol/uts-pos-server))**
+2. **Modify Database and Default Admin Configuration:**
+    - Create a new empty database in PostgreSQL
+        ```postgresql
+        CREATE DATABASE db_name;
+        ```
+    - Open [**config.example.properties**](src/main/resources/com/jawa/utsposclient/config.example.properties) in `/src/main/resources/com/jawa/utsposclient/`
+    - Change `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD` with your own database configuration
+        ![Modify Database Configuration](docs/modify_database.png)
+    - Change `ADMIN_USERNAME`, `ADMIN_NAME`, `ADMIN_PASSWORD` as you like
+        ![Modify Default Admin Configuration](docs/modify_admin.png)
+    - Rename the file name `config.example.properties` to `config.properties`
 3. **Run application**
