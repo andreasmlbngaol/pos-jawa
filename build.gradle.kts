@@ -45,6 +45,10 @@ dependencies {
   implementation(libs.okhttp.urlconnection)
   implementation(libs.gson)
 
+  implementation(libs.postgresql)
+  implementation(libs.jbcrypt)
+  implementation(libs.hibernate.core)
+
   testImplementation(libs.junit.jupiter.api)
   testRuntimeOnly(libs.junit.jupiter.engine)
 }
