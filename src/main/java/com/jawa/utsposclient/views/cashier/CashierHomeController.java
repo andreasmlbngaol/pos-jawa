@@ -1,25 +1,22 @@
-package com.jawa.utsposclient.controller;
+package com.jawa.utsposclient.views.cashier;
 
-import com.jawa.utsposclient.dto.User;
+import com.jawa.utsposclient.dto.Cashier;
 import com.jawa.utsposclient.utils.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
-import com.jawa.utsposclient.utils.Strings;
+import com.jawa.utsposclient.views.Controller;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
-import java.util.Optional;
 
-public class HomeController extends Controller {
-    private User user;
+public class CashierHomeController extends Controller {
+    private Cashier user;
 
     @FXML private TextArea textArea;
 
     @FXML
     private void initialize() throws IOException {
-        this.user = JawaAuth.getInstance().getCurrent();
+        this.user = (Cashier) JawaAuth.getInstance().getCurrent();
 
         if(user == null) {
             System.err.println("You are not logged in. Redirect to login page.");
@@ -36,24 +33,6 @@ public class HomeController extends Controller {
             user.getRole()
         );
         textArea.setText(info);
-    }
-
-    @FXML
-    protected void onLogout() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(Strings.get("signout_alert_title"));
-        alert.setHeaderText("Yakin ingin sign out?");
-        alert.setContentText("Aksi ini akan mengeluarkan kamu dari sesi saat ini.");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            // Lanjutkan sign out
-            try {
-                switchScene(AppScene.LOGIN);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
     }
 
 //    @FXML

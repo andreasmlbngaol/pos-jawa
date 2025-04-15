@@ -7,8 +7,9 @@ public class Cashier extends User {
     public Cashier(
         Long id,
         String username,
-        String name
+        String name,
+        boolean mustChangePassword
     ) {
-        super(id, username, name, Role.Cashier);
+        super(id, username, name, Role.Cashier, mustChangePassword);
     }
 }

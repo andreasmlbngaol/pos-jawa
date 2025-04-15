@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="com.jawa.utsposclient.views.fragment.AddCashierDialogController">
+    <header>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="43.0" prefWidth="480.0">
+            <Label layoutX="208.0" layoutY="13.0" text="%add_cashier_dialog_title"/>
+        </AnchorPane>
+    </header>
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
+            <VBox layoutY="-1.0" prefHeight="207.0" prefWidth="480.0">
+                <Label text="%username_label"/>
+                <TextField fx:id="usernameTextField"/>
+                <Label text="%name_label"/>
+                <TextField fx:id="nameTextField"/>
+                <Button mnemonicParsing="false" text="%save_button" onAction="#onAddCashier"/>
+                <Button mnemonicParsing="false" text="%cancel_button"/>
+            </VBox>
+        </AnchorPane>
+    </content>
+    <expandableContent>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+    </expandableContent>
+</DialogPane>

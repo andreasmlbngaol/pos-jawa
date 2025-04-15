@@ -1,4 +1,4 @@
-package com.jawa.utsposclient.controller;
+package com.jawa.utsposclient.views;
 
 import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.repo.AuthRepository;
@@ -36,8 +36,11 @@ public class LoginController extends Controller {
 
             if (user != null) {
                 JawaAuth.getInstance().login(user);
+                // Tambah session belakangan
 
-                if(user instanceof Admin) {
+                if(user.isMustChangePassword()) {
+                  switchScene(AppScene.SET_PASSWORD);
+                } else if(user instanceof Admin) {
                     switchScene(AppScene.ADMIN_HOME);
                 } else {
                     switchScene(AppScene.CASHIER_HOME);
@@ -62,10 +65,10 @@ public class LoginController extends Controller {
 //                var user = result.getData();
 //                if(user.getRole() == Role.Admin) {
 //                    // Go to Admin Menu
-//                    switchScene("/admin-view.fxml", "Admin View");
+//                    switchScene("/admin-home-view.fxml", "Admin View");
 //                } else {
 //                    // Go to Cashier Menu
-//                    switchScene("/cashier-view.fxml", "Cashier View");
+//                    switchScene("/cashier-home-view.fxml", "Cashier View");
 //                }
 //            } else {
 //                statusTextArea.setText(result.getMessage());

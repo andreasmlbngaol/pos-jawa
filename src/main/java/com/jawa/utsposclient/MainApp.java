@@ -1,6 +1,6 @@
 package com.jawa.utsposclient;
 
-import com.jawa.utsposclient.controller.Controller;
+import com.jawa.utsposclient.views.Controller;
 import com.jawa.utsposclient.db.Database;
 import com.jawa.utsposclient.utils.AppScene;
 import javafx.application.Application;
@@ -53,10 +53,10 @@ public class MainApp extends Application {
 //        } else {
 //            var role = SessionManager.getSessionRole();
 //            if(role == Role.ADMIN) {
-//                loaderPath = "admin-view.fxml";
+//                loaderPath = "admin-home-view.fxml";
 //                title = "Admin View";
 //            } else {
-//                loaderPath = "cashier-view.fxml";
+//                loaderPath = "cashier-home-view.fxml";
 //                title = "Cashier View";
 //            }
 //        }

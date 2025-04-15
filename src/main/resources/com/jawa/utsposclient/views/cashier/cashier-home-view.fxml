@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.controller.HomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.CashierHomeController">
       <VBox layoutX="-2.0" prefHeight="401.0" prefWidth="600.0">
             <Button onAction="#onLogout" mnemonicParsing="false" text="%logout_button" />
             <TextArea fx:id="textArea" prefHeight="259.0" prefWidth="332.0" text="CASHIER" />

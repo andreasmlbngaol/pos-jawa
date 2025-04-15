@@ -1,6 +1,5 @@
 package com.jawa.utsposclient.repo;
 
-import com.jawa.utsposclient.api.ApiResponse;
 import com.jawa.utsposclient.dao.UsersDao;
 import com.jawa.utsposclient.db.Database;
 import com.jawa.utsposclient.dto.Admin;
@@ -24,16 +23,17 @@ public class AuthRepository extends Repository {
                 var entityUsername = user.getUsername();
                 var entityName = user.getName();
                 var entityRole = user.getRole();
+                var entityChangePassword = user.isMustChangePassword();
 
                 return (entityRole == Role.Admin)
-                    ? new Admin(entityId, entityUsername, entityName)
-                    : new Cashier(entityId, entityUsername, entityName);
+                    ? new Admin(entityId, entityUsername, entityName, entityChangePassword)
+                    : new Cashier(entityId, entityUsername, entityName, entityChangePassword);
             }
             return null;
         });
     }
 
-    public static ApiResponse<Void> logout() throws IOException {
-        return apiClient.postParsed("/logout");
-    }
+//    public static ApiResponse<Void> logout() throws IOException {
+//        return apiClient.postParsed("/logout");
+//    }
 }

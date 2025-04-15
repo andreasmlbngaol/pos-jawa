@@ -6,8 +6,15 @@ package com.jawa.utsposclient.utils;
  */
 public enum AppScene {
     LOGIN("login-view", "Login"),
-    ADMIN_HOME("admin-view", "Admin Home"),
-    CASHIER_HOME("cashier-view", "Cashier Home"),;
+    SET_PASSWORD("set-password-view", "Set Password"),
+
+    ADMIN_HOME("admin/admin-home-view", "Admin Home"),
+    MANAGE_PRODUCT("admin/manage-product-view", "Manage Product"),
+    MANAGE_USER("admin/manage-user-view", "Manage User"),
+
+    CASHIER_HOME("cashier/cashier-home-view", "Cashier Home"),
+
+    ;
 
     private final String fxml;
     private final String title;
