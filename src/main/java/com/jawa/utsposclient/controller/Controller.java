@@ -1,5 +1,8 @@
 package com.jawa.utsposclient.controller;
 
+import com.jawa.utsposclient.MainApp;
+import com.jawa.utsposclient.utils.AppScene;
+import com.jawa.utsposclient.utils.Strings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -7,16 +10,20 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Controller {
-//    protected final ApiClient apiClient = ApiClient.getInstance();
     private Stage stage;
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
-    protected void switchScene(String fxmlPath, String title) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/jawa/utsposclient/views" + fxmlPath));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+    /**
+     * Switch to a new scene using the given AppScene.
+     * Used by MainApp and other controllers.
+     */
+    public void switchScene(AppScene scenePair) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(scenePair.getFxml()));
+        fxmlLoader.setResources(Strings.getBundle());
+        Scene scene = new Scene(fxmlLoader.load(), AppScene.width, AppScene.height);
 
         Object controller = fxmlLoader.getController();
         if (controller instanceof Controller) {
@@ -24,6 +31,6 @@ public class Controller {
         }
 
         stage.setScene(scene);
-        stage.setTitle(title);
+        stage.setTitle(scenePair.getTitle());
     }
 }

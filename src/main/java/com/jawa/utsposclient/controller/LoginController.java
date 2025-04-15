@@ -2,6 +2,8 @@ package com.jawa.utsposclient.controller;
 
 import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.repo.AuthRepository;
+import com.jawa.utsposclient.utils.AppScene;
+import com.jawa.utsposclient.utils.JawaAuth;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -33,10 +35,12 @@ public class LoginController extends Controller {
             var user = AuthRepository.login(usernameTextField.getText(), passwordField.getText());
 
             if (user != null) {
+                JawaAuth.getInstance().login(user);
+
                 if(user instanceof Admin) {
-                    switchScene("/admin-view.fxml", "Admin View");
+                    switchScene(AppScene.ADMIN_HOME);
                 } else {
-                    switchScene("/cashier-view.fxml", "Admin View");
+                    switchScene(AppScene.CASHIER_HOME);
                 }
 
             } else {

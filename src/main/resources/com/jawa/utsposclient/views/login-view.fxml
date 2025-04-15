@@ -10,10 +10,9 @@
   </padding>
    <TextArea fx:id="statusTextArea" disable="true" prefHeight="100.0" prefWidth="100.0" />
 
-  <Label text="Name:" />
+  <Label text="%name_label" />
    <TextField fx:id="usernameTextField" />
-   <Label text="Password:" />
+   <Label text="%password_label" />
    <PasswordField fx:id="passwordField"/>
-  <Button onAction="#onLogin" prefHeight="19.0" prefWidth="66.0" text="Login" />
-<!--   <Button onAction="#onHelloButtonClick" prefHeight="19.0" prefWidth="66.0" text="Hello" />-->
+  <Button onAction="#onLogin" prefHeight="19.0" prefWidth="66.0" text="%login_button" />
 </VBox>

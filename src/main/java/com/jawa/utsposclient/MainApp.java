@@ -2,12 +2,13 @@ package com.jawa.utsposclient;
 
 import com.jawa.utsposclient.controller.Controller;
 import com.jawa.utsposclient.db.Database;
+import com.jawa.utsposclient.utils.AppScene;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+
+import java.util.Locale;
 
 public class MainApp extends Application {
     public static void main(String[] args) {
@@ -17,29 +18,23 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) {
         try {
+            Locale locale = Locale.getDefault();
+            System.out.println(locale.getDisplayLanguage());
             Database.init();
+            var firstScene = AppScene.LOGIN;
+            // Nanti ini check udah login atau belum. Kalau udah gak perlu ke login lagi. Tapi belakangan
 
-            String loaderPath;
-            String title;
+            var controller = new Controller();
 
-            loaderPath = "views/login-view.fxml";
-            title = "Login";
+            controller.setStage(stage);
+            controller.switchScene(firstScene);
 
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(loaderPath));
-            Scene scene = new Scene(loader.load(), 1280, 720);
-
-            Object controller = loader.getController();
-            if (controller instanceof Controller baseController) {
-                baseController.setStage(stage);
-            }
-
-            stage.setTitle(title);
-            stage.setScene(scene);
             stage.show();
+
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Database initialization failed");
+//            alert.setHeaderText("Database initialization failed");
             alert.setContentText(e.getMessage());
             System.out.println(e.getMessage());
 
