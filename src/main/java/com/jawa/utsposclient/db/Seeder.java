@@ -24,6 +24,8 @@ public class Seeder {
                 admin.setName(name);
                 admin.setPassword(hashedPassword);
                 admin.setRole(Role.Admin);
+                admin.setMustChangePassword(false);
+                admin.setActive(true);
 
                 session.persist(admin);
                 System.out.println("Admin created");

@@ -32,6 +32,9 @@ public class Users {
     @Column(nullable = false, name="must_change_password")
     private boolean mustChangePassword;
 
+    @Column(nullable = false, name="is_active")
+    private boolean isActive;
+
     public Users() {}
 
     public void setUsername(String username) {
@@ -52,6 +55,10 @@ public class Users {
 
     public void setMustChangePassword(boolean mustChangePassword) {
         this.mustChangePassword = mustChangePassword;
+    }
+
+    public void setActive(boolean active) {
+        this.isActive = active;
     }
 
     public long getId() {
@@ -76,5 +83,10 @@ public class Users {
 
     public boolean isMustChangePassword() {
         return mustChangePassword;
+    }
+
+    @SuppressWarnings("unused")
+    public boolean isActive() {
+        return isActive;
     }
 }

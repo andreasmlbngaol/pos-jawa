@@ -2,7 +2,7 @@ package com.jawa.utsposclient.utils;
 
 import java.util.ResourceBundle;
 
-public class Strings {
+public class StringRes {
     private static final ResourceBundle res = ResourceBundle.getBundle("com.jawa.utsposclient.strings");
 
     public static String get(String key) {

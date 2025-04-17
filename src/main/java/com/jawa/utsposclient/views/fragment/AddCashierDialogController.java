@@ -10,16 +10,16 @@ public class AddCashierDialogController extends Controller {
     @FXML private TextField nameTextField;
 
     @FXML
-    private void onAddCashier() {
+    public String onAddCashierAndGetOtp() {
         String username = usernameTextField.getText();
         String name = nameTextField.getText();
 
         if(!username.isEmpty() && !name.isEmpty()) {
             if(!UserRepository.isUsernameTaken(username)) {
-                String otp = UserRepository.addCashierAndGetOtp(username, name);
-                System.out.println(otp);
+                return UserRepository.addCashierAndGetOtp(username, name);
             }
         }
 
+        return null;
     }
 }

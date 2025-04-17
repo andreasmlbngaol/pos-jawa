@@ -11,6 +11,7 @@ public enum AppScene {
     ADMIN_HOME("admin/admin-home-view", "Admin Home"),
     MANAGE_PRODUCT("admin/manage-product-view", "Manage Product"),
     MANAGE_USER("admin/manage-user-view", "Manage User"),
+    ADD_CASHIER_DIALOG("fragment/add-cashier-dialog-fragment", "Add Cashier"),
 
     CASHIER_HOME("cashier/cashier-home-view", "Cashier Home"),
 
@@ -19,8 +20,8 @@ public enum AppScene {
     private final String fxml;
     private final String title;
 
-    public static final int width = 1280;
-    public static final int height = 720;
+    public static final int width = 1500;
+    public static final int height = 750;
 
 
     AppScene(String fxml, String title) {

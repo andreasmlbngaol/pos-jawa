@@ -2,7 +2,7 @@ package com.jawa.utsposclient.views;
 
 import com.jawa.utsposclient.MainApp;
 import com.jawa.utsposclient.utils.AppScene;
-import com.jawa.utsposclient.utils.Strings;
+import com.jawa.utsposclient.utils.StringRes;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,7 +26,7 @@ public class Controller {
      */
     public void switchScene(AppScene appScene) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(appScene.getFxml()));
-        fxmlLoader.setResources(Strings.getBundle());
+        fxmlLoader.setResources(StringRes.getBundle());
         Scene scene = new Scene(fxmlLoader.load(), AppScene.width, AppScene.height);
 
         Object controller = fxmlLoader.getController();
@@ -41,7 +41,7 @@ public class Controller {
     @FXML
     protected void onLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(Strings.get("signout_alert_title"));
+        alert.setTitle(StringRes.get("signout_alert_title"));
         alert.setHeaderText("Yakin ingin sign out?");
         alert.setContentText("Aksi ini akan mengeluarkan kamu dari sesi saat ini.");
 
