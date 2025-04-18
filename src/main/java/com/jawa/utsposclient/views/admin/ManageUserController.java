@@ -5,7 +5,7 @@ import com.jawa.utsposclient.MainApp;
 import com.jawa.utsposclient.dto.User;
 import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.repo.UserRepository;
-import com.jawa.utsposclient.utils.AppScene;
+import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.StringRes;
 import com.jawa.utsposclient.views.fragment.AddCashierDialogController;
 import javafx.collections.FXCollections;

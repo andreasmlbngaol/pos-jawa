@@ -22,9 +22,9 @@ public abstract class Products {
     @Column(nullable = false)
     private double price;
 
-    @Column(nullable = false)
-    private int stock;
-
+//    @Column(nullable = false)
+//    private int stock;
+//
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private ProductType type;

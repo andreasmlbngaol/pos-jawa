@@ -2,13 +2,11 @@ package com.jawa.utsposclient;
 
 import com.jawa.utsposclient.views.Controller;
 import com.jawa.utsposclient.db.Database;
-import com.jawa.utsposclient.utils.AppScene;
+import com.jawa.utsposclient.enums.AppScene;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
-import java.util.Locale;
 
 public class MainApp extends Application {
     public static void main(String[] args) {
@@ -18,8 +16,6 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            Locale locale = Locale.getDefault();
-            System.out.println(locale.getDisplayLanguage());
             Database.init();
             var firstScene = AppScene.LOGIN;
             // Nanti ini check udah login atau belum. Kalau udah gak perlu ke login lagi. Tapi belakangan

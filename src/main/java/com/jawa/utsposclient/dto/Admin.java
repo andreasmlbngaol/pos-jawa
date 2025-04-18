@@ -13,7 +13,6 @@ public class Admin extends User {
     ) {
         super(id, username, name, Role.Admin, mustChangePassword);
     }
-
 //    public String resetPassword(long id) throws IOException {
 //        var result = UserRepository.resetPassword(id);
 //        if(result.isSuccess()) {

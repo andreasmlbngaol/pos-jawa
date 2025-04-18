@@ -2,7 +2,7 @@ package com.jawa.utsposclient.views;
 
 import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.repo.UserRepository;
-import com.jawa.utsposclient.utils.AppScene;
+import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;

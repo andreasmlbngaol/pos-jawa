@@ -1,7 +1,7 @@
 package com.jawa.utsposclient.views.cashier;
 
 import com.jawa.utsposclient.dto.Cashier;
-import com.jawa.utsposclient.utils.AppScene;
+import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
 import com.jawa.utsposclient.views.Controller;
 import javafx.fxml.FXML;

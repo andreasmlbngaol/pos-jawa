@@ -2,7 +2,7 @@ package com.jawa.utsposclient.views;
 
 import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.repo.AuthRepository;
-import com.jawa.utsposclient.utils.AppScene;
+import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -41,11 +41,10 @@ public class LoginController extends Controller {
                 if(user.isMustChangePassword()) {
                   switchScene(AppScene.SET_PASSWORD);
                 } else if(user instanceof Admin) {
-                    switchScene(AppScene.ADMIN_HOME);
+                switchScene(AppScene.ADMIN_HOME);
                 } else {
                     switchScene(AppScene.CASHIER_HOME);
                 }
-
             } else {
                 statusTextArea.setText("Invalid username or password");
             }

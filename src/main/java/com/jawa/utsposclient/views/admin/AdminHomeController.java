@@ -1,7 +1,7 @@
 package com.jawa.utsposclient.views.admin;
 
 import com.jawa.utsposclient.dto.Admin;
-import com.jawa.utsposclient.utils.AppScene;
+import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;

@@ -1,6 +1,3 @@
-//import org.beryx.jlink.JPackageTask
-//import org.gradle.internal.os.OperatingSystem
-//import org.beryx.jlink.JlinkZipTask
 
 plugins {
   java
@@ -29,7 +26,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 application {
 //  mainModule.set("com.jawa.utsposclient")
-  mainClass.set("com.jawa.utsposclient.HelloApplication")
+  mainClass.set("com.jawa.utsposclient.MainApp")
 }
 
 javafx {

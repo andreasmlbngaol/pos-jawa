@@ -10,7 +10,7 @@ import com.jawa.utsposclient.utils.PasswordManager;
 
 import java.io.IOException;
 
-public class AuthRepository extends Repository {
+public class AuthRepository {
     public static User login(String username, String password) throws IOException {
         return Database.executeTransaction(session -> {
             var user = UsersDao.getUserByUsername(username);
