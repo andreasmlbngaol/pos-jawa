@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="645.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.LoginController">
     <children>
-        <ImageView fitHeight="300.0" fitWidth="327.0" layoutX="27.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="352.0" fitWidth="492.0" layoutX="25.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/apalah.jpg" />
             </image>
         </ImageView>
-        <Label layoutX="406.0" layoutY="32.0" prefHeight="35.0" prefWidth="162.0" text="Welcome back " textAlignment="CENTER" textFill="WHITE">
+        <Label layoutX="463.0" layoutY="24.0" prefHeight="59.0" prefWidth="299.0" text="Welcome back " textAlignment="CENTER" textFill="WHITE">
             <font>
-                <Font size="24.0" />
+                <Font size="41.0" />
             </font>
         </Label>
-        <Label layoutX="416.0" layoutY="67.0" prefHeight="18.0" prefWidth="141.0" text="Please enter your details !" textFill="WHITE" />
-        <TextField layoutX="373.0" layoutY="153.0" prefHeight="26.0" prefWidth="201.0" promptText="Username" />
-        <Label layoutX="373.0" layoutY="127.0" prefHeight="18.0" prefWidth="62.0" text="Username" textFill="WHITE" />
-        <Label layoutX="375.0" layoutY="191.0" prefHeight="18.0" prefWidth="62.0" text="Password" textFill="WHITE" />
-        <TextField layoutX="372.0" layoutY="216.0" prefHeight="26.0" prefWidth="201.0" promptText="Password" />
-        <Button layoutX="372.0" layoutY="270.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #e8b323;" text="Login" />
-        <Label layoutX="334.0" layoutY="379.0" prefHeight="15.0" prefWidth="202.0" text="Copyright 2024 - Universitas Sumatera Utara" textFill="WHITE">
+        <Label layoutX="518.0" layoutY="83.0" prefHeight="20.0" prefWidth="158.0" text="Please enter your details !" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+        <Label layoutX="546.0" layoutY="219.0" prefHeight="27.0" prefWidth="87.0" text="Username" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+        <Label layoutX="545.0" layoutY="325.0" prefHeight="27.0" prefWidth="79.0" text="Password" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+        <PasswordField fx:id="passwordField" layoutX="545.0" layoutY="362.0" prefHeight="36.0" prefWidth="324.0" promptText="Password" />
+        <Button layoutX="606.0" layoutY="440.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #e8b323;" text="Login">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+        <Label layoutX="25.0" layoutY="590.0" prefHeight="15.0" prefWidth="202.0" text="Copyright 2025 - Universitas Sumatera Utara" textFill="WHITE">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <ImageView fitHeight="44.0" fitWidth="83.0" layoutX="452.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="68.0" fitWidth="57.0" layoutX="1017.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/insurance.png" />
             </image>
         </ImageView>
+      <TextField fx:id="usernameTextField" layoutX="545.0" layoutY="258.0" prefHeight="36.0" prefWidth="324.0" promptText="Username" />
     </children>
 </AnchorPane>
-
