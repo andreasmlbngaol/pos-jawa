@@ -5,14 +5,11 @@ import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
 import com.jawa.utsposclient.views.Controller;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
 
 import java.io.IOException;
 
 public class CashierHomeController extends Controller {
     private Cashier user;
-
-    @FXML private TextArea textArea;
 
     @FXML
     private void initialize() throws IOException {
@@ -22,17 +19,6 @@ public class CashierHomeController extends Controller {
             System.err.println("You are not logged in. Redirect to login page.");
             switchScene(AppScene.LOGIN);
         }
-
-        var info = String.format("""
-            Username: %s
-            Name: %s
-            Role: %s
-            """,
-            user.getUsername(),
-            user.getName(),
-            user.getRole()
-        );
-        textArea.setText(info);
     }
 
 //    @FXML

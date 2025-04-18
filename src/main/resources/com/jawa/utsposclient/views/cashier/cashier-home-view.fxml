@@ -2,10 +2,24 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.CashierHomeController">
-      <VBox layoutX="-2.0" prefHeight="401.0" prefWidth="600.0">
-            <Button onAction="#onLogout" mnemonicParsing="false" text="%logout_button" />
-            <TextArea fx:id="textArea" prefHeight="259.0" prefWidth="332.0" text="CASHIER" />
-      </VBox>
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.CashierHomeController">
+      <Button layoutX="893.0" layoutY="33.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #e8b323;" text="%logout_button" textFill="WHITE">
+            <font>
+                  <Font name="System Bold" size="14.0" />
+            </font></Button>
+      <Button layoutX="597.0" layoutY="246.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="200.0" style="-fx-background-color: #e8b323;" text="%purchase_transaction_menu" textFill="WHITE">
+            <font>
+                  <Font name="System Bold" size="14.0" />
+            </font></Button>
+      <Button layoutX="284.0" layoutY="246.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="200.0" style="-fx-background-color: #e8b323;" text="%refund_transaction_menu" textFill="WHITE">
+            <font>
+                  <Font name="System Bold" size="14.0" />
+            </font></Button>
+      <Label layoutX="490.0" layoutY="166.0" prefHeight="46.0" prefWidth="120.0" text="Choose !" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                  <Font size="30.0" />
+            </font>
+      </Label>
 </AnchorPane>
