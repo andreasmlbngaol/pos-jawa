@@ -5,14 +5,13 @@ import com.jawa.utsposclient.repo.AuthRepository;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 
 import java.io.IOException;
 
 public class LoginController extends Controller {
-    @FXML private TextArea statusTextArea;
     @FXML private TextField usernameTextField;
     @FXML private TextField passwordField;
 
@@ -46,7 +45,8 @@ public class LoginController extends Controller {
                     switchScene(AppScene.CASHIER_HOME);
                 }
             } else {
-                statusTextArea.setText("Invalid username or password");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Username atau password salah!");
+                alert.showAndWait();
             }
         } catch (IOException | RuntimeException e) {
             throw new RuntimeException(e);

@@ -4,14 +4,11 @@ import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
 
 import java.io.IOException;
 
 public class AdminHomeController extends AdminController {
     private Admin user;
-
-    @FXML private TextArea textArea;
 
     @FXML
     private void initialize() throws IOException {
@@ -21,17 +18,6 @@ public class AdminHomeController extends AdminController {
             System.err.println("You are not logged in. Redirect to login page.");
             switchScene(AppScene.LOGIN);
         }
-
-        var info = String.format("""
-            Username: %s
-            Name: %s
-            Role: %s
-            """,
-            user.getUsername(),
-            user.getName(),
-            user.getRole()
-        );
-        textArea.setText(info);
     }
 
     @FXML
