@@ -2,19 +2,32 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageUserController">
-    <VBox prefHeight="400.0" prefWidth="600.0">
-        <Button mnemonicParsing="false" onAction="#onBackToHome" text="%back_button" />
-        <TableView fx:id="userTable" prefHeight="200.0" prefWidth="200.0">
-            <columns>
-                <TableColumn fx:id="userIdColumn" prefWidth="61.19998013973236" text="%user_id_header" />
-                <TableColumn fx:id="usernameColumn" prefWidth="122.00000762939453" text="%username_header" />
-                <TableColumn fx:id="nameColumn" prefWidth="153.40003967285156" text="%name_header" />
-                <TableColumn fx:id="roleColumn" prefWidth="98.5999755859375" text="%role_header" />
-                <TableColumn fx:id="actionColumn" prefWidth="164.0" text="%action_header" />
-            </columns>
-        </TableView>
-        <Button mnemonicParsing="false" onAction="#onShowAddCashierDialog" text="%show_add_cashier_dialog_button" />
-    </VBox>
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageUserController">
+     <Button layoutX="900.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="38.0" prefWidth="162.0" style="-fx-background-color: #e8b323;" text="%back_button" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Button>
+     <TableView fx:id="userTable" layoutX="99.0" layoutY="136.0" prefHeight="200.0" prefWidth="915.0" style="-fx-background-color: #353147;">
+         <columns>
+             <TableColumn fx:id="userIdColumn" prefWidth="89.4000244140625" text="%user_id_header" />
+             <TableColumn fx:id="usernameColumn" minWidth="0.0" prefWidth="237.79998779296875" text="%username_header" />
+             <TableColumn fx:id="nameColumn" prefWidth="197.0" text="%name_header" />
+             <TableColumn fx:id="roleColumn" prefWidth="160.0" text="%role_header" />
+             <TableColumn fx:id="actionColumn" prefWidth="227.199951171875" text="%action_header" />
+         </columns>
+     </TableView>
+     <Button layoutX="99.0" layoutY="377.0" mnemonicParsing="false" onAction="#onShowAddCashierDialog" prefHeight="38.0" prefWidth="242.0" style="-fx-background-color: #e8b323;" text="%show_add_cashier_dialog_button" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Button>
+   <Label layoutX="99.0" layoutY="61.0" prefHeight="35.0" prefWidth="252.0" text="Welcome Back BOSS!" textFill="WHITE">
+      <font>
+         <Font size="24.0" />
+      </font></Label>
+   <Label layoutX="99.0" layoutY="95.0" prefHeight="20.0" prefWidth="204.0" text="Let's Manage your Employes" textFill="WHITE">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
 </AnchorPane>
