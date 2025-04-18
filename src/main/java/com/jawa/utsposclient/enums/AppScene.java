@@ -21,8 +21,8 @@ public enum AppScene {
     private final String fxml;
     private final String title;
 
-    public static final int width = 1500;
-    public static final int height = 750;
+    public static final int width = 1100;
+    public static final int height = 620;
 
 
     AppScene(String fxml, String title) {
