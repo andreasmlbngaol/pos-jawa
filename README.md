@@ -52,4 +52,4 @@
     - Change `ADMIN_USERNAME`, `ADMIN_NAME`, `ADMIN_PASSWORD` as you like
         ![Modify Default Admin Configuration](docs/modify_admin.png)
     - Rename the file name `config.example.properties` to `config.properties`
-3. **Run application**
+3. **Run application** /
