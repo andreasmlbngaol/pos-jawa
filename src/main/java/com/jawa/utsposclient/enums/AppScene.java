@@ -12,7 +12,7 @@ public enum AppScene {
     MANAGE_PRODUCT("admin/manage-product-view", "Manage Product"),
     MANAGE_USER("admin/manage-user-view", "Manage User"),
     ADD_CASHIER_DIALOG("fragment/add-cashier-dialog-fragment", "Add Cashier"),
-    ADD_PRODUCT("admin/add-product-view", "Add Product"),
+    ADD_PRODUCT_DIALOG("fragment/add-product-dialog-fragment", "Add Product"),
 
     CASHIER_HOME("cashier/cashier-home-view", "Cashier Home"),
 

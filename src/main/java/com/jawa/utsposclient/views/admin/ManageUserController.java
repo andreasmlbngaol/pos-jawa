@@ -112,7 +112,7 @@ public class ManageUserController extends AdminController {
 
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setDialogPane(dialogPane);
-            dialog.setTitle(AppScene.ADD_CASHIER_DIALOG.getTitle());
+            dialog.setTitle(appScene.getTitle());
 
             // Show the dialog and wait for the user to click Save or Cancel
             dialog.showAndWait().ifPresent(result -> {

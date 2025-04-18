@@ -1,7 +1,19 @@
 package com.jawa.utsposclient.dto;
 
-import java.util.Date;
+import com.jawa.utsposclient.enums.ProductType;
+
+import java.time.LocalDate;
 
 public class PerishableProduct extends Product {
-    private Date expiryDate;
+    private LocalDate expiryDate;
+
+    public PerishableProduct(
+        Long id,
+        String name,
+        String sku,
+        double price
+//        LocalDate expiryDate
+    ) {
+        super(id, name, sku, price, ProductType.Perishable);
+    }
 }

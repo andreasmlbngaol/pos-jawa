@@ -45,7 +45,7 @@ public class Database {
                 NonPerishableProducts.class,
                 BundleProducts.class,
                 BundleItems.class,
-//            DigitalProducts.class,
+                DigitalProducts.class,
                 Transactions.class,
                 TransactionItems.class
             );

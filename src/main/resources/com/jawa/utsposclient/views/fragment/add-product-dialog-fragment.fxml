@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.AddProductDialogController">
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="194.0" prefWidth="600.0">
+            <VBox prefHeight="316.0" prefWidth="600.0">
+                <Label layoutX="10.0" layoutY="36.0" text="Type" />
+                <ComboBox fx:id="typeComboBox" prefWidth="150.0" />
+                <Label text="Name" />
+                <TextField fx:id="nameTextField" />
+                <Label layoutX="10.0" layoutY="10.0" text="Sku" />
+                <TextField fx:id="skuTextField" layoutX="10.0" layoutY="28.0" />
+                <Label layoutX="10.0" layoutY="53.0" text="Price" />
+                <TextField fx:id="priceTextField" layoutX="10.0" layoutY="71.0" />
+                <Label layoutX="10.0" layoutY="196.0" text="Expiry Date" />
+                <DatePicker fx:id="expiryDatePicker" prefHeight="26.0" prefWidth="212.0" />
+                <Label layoutX="10.0" layoutY="196.0" text="URL" />
+                <TextField fx:id="urlTextField" layoutX="10.0" layoutY="214.0" />
+                <Label layoutX="10.0" layoutY="284.0" text="Vendor Name" />
+                <TextField fx:id="vendorTextField" layoutX="10.0" layoutY="301.0" />
+            </VBox>
+        </AnchorPane>
+    </content>
+    <ButtonType buttonData="OK_DONE" text="Save" />
+    <ButtonType buttonData="CANCEL_CLOSE" text="Cancel" />
+</DialogPane>

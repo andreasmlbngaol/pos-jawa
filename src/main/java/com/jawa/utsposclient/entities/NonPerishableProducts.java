@@ -9,4 +9,5 @@ import jakarta.persistence.Table;
 @PrimaryKeyJoinColumn(name = "product_id")
 public class NonPerishableProducts extends Products {
     public NonPerishableProducts() {}
+
 }

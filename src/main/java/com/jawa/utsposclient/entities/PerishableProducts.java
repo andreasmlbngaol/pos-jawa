@@ -14,4 +14,13 @@ public class PerishableProducts extends Products {
     private Date expiryDate;
 
     public PerishableProducts() {}
+
+    @SuppressWarnings("unused")
+    public Date getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(Date expiryDate) {
+        this.expiryDate = expiryDate;
+    }
 }
