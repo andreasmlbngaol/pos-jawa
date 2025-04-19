@@ -1,5 +1,6 @@
 package com.jawa.utsposclient.dto;
 
+import com.jawa.utsposclient.entities.Products;
 import com.jawa.utsposclient.enums.ProductType;
 
 @SuppressWarnings("unused")
@@ -22,6 +23,10 @@ public class Product {
         this.sku = sku;
         this.price = price;
         this.type = type;
+    }
+
+    public Product(Products product) {
+        this(product.getId(), product.getName(), product.getSku(), product.getPrice(), product.getType());
     }
 
     public Long getId() {

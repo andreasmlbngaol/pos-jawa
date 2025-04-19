@@ -1,5 +1,6 @@
 package com.jawa.utsposclient.dto;
 
+import com.jawa.utsposclient.entities.Users;
 import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.repo.UserRepository;
 import com.jawa.utsposclient.utils.JawaAuth;
@@ -24,6 +25,10 @@ public class User {
         this.name = name;
         this.role = role;
         this.mustChangePassword = mustChangePassword;
+    }
+
+    public User(Users user) {
+        this(user.getId(), user.getUsername(), user.getName(), user.getRole(), user.isMustChangePassword());
     }
 
     public Long getId() {

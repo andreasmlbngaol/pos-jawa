@@ -2,15 +2,12 @@ package com.jawa.utsposclient.views.cashier;
 
 import com.jawa.utsposclient.dto.PurchaseTransaction;
 import com.jawa.utsposclient.dto.TransactionItem;
-import com.jawa.utsposclient.entities.PurchaseTransactions;
 import com.jawa.utsposclient.repo.ProductRepository;
-import com.jawa.utsposclient.repo.TransactionRepository;
 import com.jawa.utsposclient.utils.DateUtils;
 import com.jawa.utsposclient.utils.StringUtils;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -29,7 +26,6 @@ public class PurchaseTransactionController extends CashierController {
     @FXML private TableColumn<TransactionItem, String> nameColumn;
     @FXML private TableColumn<TransactionItem, Double> totalItemPriceColumn;
     @FXML private TableColumn<TransactionItem, Integer> quantityColumn;
-    @FXML private TableColumn<TransactionItem, Void> actionColumn;
 
 
     private double getGrandTotal() {
@@ -147,11 +143,10 @@ public class PurchaseTransactionController extends CashierController {
                 transaction.setCreatedAt(DateUtils.localDateToDate(LocalDate.now()));
                 transaction.setItems(productTable.getItems());
 
-                TransactionRepository.executePurchaseTransaction(transaction);
+                transaction.processTransaction();
 
                 alert = new Alert(Alert.AlertType.INFORMATION, "Change: " + StringUtils.moneyFormat(change));
                 resetPurchase(); // ← Panggil setelah berhasil
-
 
             }
         } catch (Exception e) {

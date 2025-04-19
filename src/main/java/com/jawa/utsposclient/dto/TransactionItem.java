@@ -2,7 +2,7 @@ package com.jawa.utsposclient.dto;
 
 public class TransactionItem {
     private Long id;
-    private final Product product;
+    private Product product;
     private int quantity;
     private Double pricePerItem;
     private Double totalPrice;
@@ -13,8 +13,10 @@ public class TransactionItem {
         setQuantity(1);
     }
 
+    public TransactionItem() {}
+
     public void incrementQuantity() {
-        this.quantity++;
+        setQuantity(getQuantity() + 1);
     }
 
     public void calculateTotalPrice() {
@@ -27,6 +29,11 @@ public class TransactionItem {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+        this.pricePerItem = product.getPrice();
     }
 
     public Product getProduct() {

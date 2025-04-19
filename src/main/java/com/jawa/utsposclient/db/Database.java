@@ -48,6 +48,7 @@ public class Database {
                 Transactions.class,
                 TransactionItems.class,
                 PurchaseTransactions.class,
+                RefundTransactions.class,
                 UserSessions.class
             );
 

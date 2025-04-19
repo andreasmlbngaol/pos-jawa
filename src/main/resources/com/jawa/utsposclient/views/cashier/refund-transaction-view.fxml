@@ -3,9 +3,48 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.jawa.utsposclient.views.cashier.RefundTransactionController">
-   <VBox prefHeight="400.0" prefWidth="600.0"/>
-   <Button mnemonicParsing="false" onAction="#onBackToHome" text="Back"/>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.RefundTransactionController">
+   <VBox prefHeight="620.0" prefWidth="1100.0">
+      <Button mnemonicParsing="false" onAction="#onBackToHome" text="Back" />
+      <VBox>
+         <Label text="Transaction ID" />
+         <TextField fx:id="transactionIdTextField" />
+      </VBox>
+      <VBox layoutX="10.0" layoutY="36.0">
+         <Label text="Cashier" />
+         <TextField fx:id="cashierNameTextField" editable="false" />
+      </VBox>
+      <VBox layoutX="10.0" layoutY="79.0">
+         <Label text="Created At" />
+         <TextField fx:id="createdAtTextField" editable="false" />
+      </VBox>
+      <HBox prefHeight="300.0" prefWidth="1100.0">
+         <VBox>
+            <Label text="Original" />
+            <TableView fx:id="originalTable" prefHeight="300.0" prefWidth="550.0">
+               <columns>
+                  <TableColumn fx:id="skuOriginalColumn" prefWidth="67.0" text="sku" />
+                  <TableColumn fx:id="originalNameColumn" prefWidth="164.0" text="name" />
+                  <TableColumn fx:id="originalPriceColumn" prefWidth="85.0" text="price per item" />
+                  <TableColumn fx:id="originalQuantityColumn" prefWidth="54.0" text="quantity" />
+                  <TableColumn fx:id="originalTotalColumn" prefWidth="101.0" text="total" />
+                  <TableColumn fx:id="originalActionColumn" prefWidth="85.19998168945312" text="action" />
+               </columns>
+            </TableView>
+         </VBox>
+         <VBox>
+            <Label text="Refund" />
+            <TableView fx:id="refundTable" prefHeight="300.0" prefWidth="550.0">
+               <columns>
+                  <TableColumn fx:id="refundSkuColumn" prefWidth="60.19999539852142" text="sku" />
+                  <TableColumn fx:id="refundNameColumn" prefWidth="170.0" text="name" />
+                  <TableColumn fx:id="refundPriceColumn" prefWidth="102.0" text="price per item" />
+                  <TableColumn fx:id="refundQuantityColumn" prefWidth="89.0" text="quantity" />
+                  <TableColumn fx:id="refundTotalColumn" prefWidth="127.0" text="total" />
+               </columns>
+            </TableView>
+         </VBox>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#onExecuteRefund" text="Execute" />
+   </VBox>
 </AnchorPane>

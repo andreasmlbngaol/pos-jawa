@@ -27,7 +27,7 @@ public abstract class Transactions {
     @CreationTimestamp
     private Date createdAt;
 
-    @OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<TransactionItems> items = new ArrayList<>();
 
     public long getId() {
