@@ -3,46 +3,85 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.jawa.utsposclient.views.cashier.PurchaseTransactionController">
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.PurchaseTransactionController">
    <VBox prefHeight="620.0" prefWidth="1101.0">
       <padding>
-         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
+         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
       </padding>
-      <Button mnemonicParsing="false" onAction="#onBackToHome" text="Back"/>
-      <VBox>
-         <Label text="SKU"/>
-         <TextField fx:id="skuTextField"/>
+      <Button mnemonicParsing="false" onAction="#onBackToHome" style="-fx-background-color: #e8b323;" text="Back" textFill="WHITE">
+         <VBox.margin>
+            <Insets bottom="20.0" top="10.0" />
+         </VBox.margin></Button>
+      <Label prefHeight="27.0" prefWidth="136.0" text="Checkout Page" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </Label>
+      <VBox prefHeight="10.0" prefWidth="683.0">
+         <Label text="SKU" textFill="WHITE">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></Label>
+         <TextField fx:id="skuTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="526.0">
+            <VBox.margin>
+               <Insets bottom="20.0" />
+            </VBox.margin></TextField>
       </VBox>
       <HBox prefHeight="51.0" prefWidth="1102.0">
          <VBox prefWidth="550.0">
-            <Label text="Name"/>
-            <TextField fx:id="nameTextField" disable="true" editable="false"/>
+            <Label text="Name" textFill="WHITE">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="nameTextField" disable="true" editable="false">
+               <VBox.margin>
+                  <Insets bottom="20.0" right="10.0" />
+               </VBox.margin></TextField>
          </VBox>
          <VBox prefWidth="550.0">
-            <Label text="Harga"/>
-            <TextField fx:id="priceTextField" disable="true" editable="false"/>
+            <Label text="Harga" textFill="WHITE">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="priceTextField" disable="true" editable="false">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></TextField>
          </VBox>
       </HBox>
-      <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7E7997;">
          <columns>
-            <TableColumn fx:id="skuColumn" prefWidth="155.1999969482422" text="sku"/>
-            <TableColumn fx:id="nameColumn" prefWidth="503.79998779296875" text="name"/>
-            <TableColumn fx:id="quantityColumn" minWidth="0.0" prefWidth="201.79998779296875" text="quantity"/>
-            <TableColumn fx:id="totalItemPriceColumn" prefWidth="207.1999755859374" text="total"/>
+            <TableColumn fx:id="skuColumn" prefWidth="155.1999969482422" text="sku" />
+            <TableColumn fx:id="nameColumn" prefWidth="503.79998779296875" text="name" />
+            <TableColumn fx:id="quantityColumn" minWidth="0.0" prefWidth="201.79998779296875" text="quantity" />
+            <TableColumn fx:id="totalItemPriceColumn" prefWidth="207.1999755859374" text="total" />
          </columns>
       </TableView>
       <HBox alignment="CENTER_RIGHT">
-         <Label text="Total"/>
-         <TextField fx:id="totalPriceTextField" prefHeight="26.0" prefWidth="219.0"/>
+         <Label text="Total" textFill="WHITE">
+            <HBox.margin>
+               <Insets right="10.0" top="20.0" />
+            </HBox.margin></Label>
+         <TextField fx:id="totalPriceTextField" prefHeight="26.0" prefWidth="219.0">
+            <HBox.margin>
+               <Insets top="20.0" />
+            </HBox.margin></TextField>
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="26.0" layoutY="320.0">
-         <Label text="Yang dibayar"/>
-         <TextField fx:id="paidTextField" prefHeight="26.0" prefWidth="219.0"/>
+         <Label text="Yang dibayar" textFill="WHITE">
+            <HBox.margin>
+               <Insets right="10.0" top="20.0" />
+            </HBox.margin></Label>
+         <TextField fx:id="paidTextField" prefHeight="26.0" prefWidth="219.0">
+            <HBox.margin>
+               <Insets top="20.0" />
+            </HBox.margin></TextField>
       </HBox>
-      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onExecuteTransaction"
-              text="Shadow Power! Execute!"/>
+      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onExecuteTransaction" style="-fx-background-color: #e8b323;" text="Shadow Power! Execute!" textFill="WHITE" />
    </VBox>
 </AnchorPane>

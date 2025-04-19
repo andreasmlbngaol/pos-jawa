@@ -1,39 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.AddProductDialogController">
+<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="600.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.AddProductDialogController">
     <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="194.0" prefWidth="600.0">
             <VBox prefHeight="316.0" prefWidth="600.0">
                 <VBox>
-                    <Label text="Type"/>
-                    <ComboBox fx:id="typeComboBox" prefWidth="150.0"/>
+                    <Label text="Type" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets left="20.0" top="20.0" />
+                  </VBox.margin></Label>
+                    <ComboBox fx:id="typeComboBox" prefWidth="150.0" style="-fx-background-color: #e8b323;">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="10.0" />
+                  </VBox.margin></ComboBox>
                 </VBox>
                 <VBox>
-                    <Label text="Sku"/>
-                    <TextField fx:id="skuTextField"/>
+                    <Label text="Sku" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets left="20.0" top="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="13.0" />
+                  </font></Label>
+                    <TextField fx:id="skuTextField">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="10.0" />
+                  </VBox.margin></TextField>
                 </VBox>
                 <VBox>
-                    <Label text="Name"/>
-                    <TextField fx:id="nameTextField"/>
+                    <Label text="Name" textFill="#fff8f8">
+                  <VBox.margin>
+                     <Insets left="20.0" top="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="13.0" />
+                  </font></Label>
+                    <TextField fx:id="nameTextField">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="10.0" />
+                  </VBox.margin></TextField>
                 </VBox>
                 <VBox>
-                    <Label text="Price"/>
-                    <TextField fx:id="priceTextField"/>
+                    <Label text="Price" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets left="20.0" top="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="13.0" />
+                  </font></Label>
+                    <TextField fx:id="priceTextField">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="10.0" />
+                  </VBox.margin></TextField>
                 </VBox>
                 <VBox fx:id="expiryDateGroup">
-                    <Label text="Expiry Date"/>
-                    <DatePicker fx:id="expiryDatePicker" prefHeight="26.0" prefWidth="212.0"/>
+                    <Label text="Expiry Date" textFill="#fffdfd">
+                  <VBox.margin>
+                     <Insets left="20.0" top="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="13.0" />
+                  </font></Label>
+                    <DatePicker fx:id="expiryDatePicker" prefHeight="26.0" prefWidth="212.0">
+                  <VBox.margin>
+                     <Insets left="20.0" top="10.0" />
+                  </VBox.margin></DatePicker>
                 </VBox>
                 <VBox fx:id="urlGroup">
-                    <Label text="URL"/>
-                    <TextField fx:id="urlTextField"/>
+                    <Label text="URL" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets left="20.0" top="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="13.0" />
+                  </font></Label>
+                    <TextField fx:id="urlTextField">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="10.0" />
+                  </VBox.margin></TextField>
                 </VBox>
-                <VBox fx:id="vendorGroup">
-                    <Label text="Vendor Name"/>
-                    <TextField fx:id="vendorTextField"/>
+                <VBox fx:id="vendorGroup" prefHeight="139.0" prefWidth="600.0">
+                    <Label text="Vendor Name" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets left="20.0" top="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="13.0" />
+                  </font></Label>
+                    <TextField fx:id="vendorTextField">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="10.0" />
+                  </VBox.margin></TextField>
                 </VBox>
             </VBox>
         </AnchorPane>

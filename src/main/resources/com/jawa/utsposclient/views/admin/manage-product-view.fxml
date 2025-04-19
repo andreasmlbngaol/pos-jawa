@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
     <VBox layoutY="4.0" prefHeight="620.0" prefWidth="1100.0">
-        <Button mnemonicParsing="false" onAction="#onBackToHome" text="%back_button"/>
+        <Button mnemonicParsing="false" onAction="#onBackToHome" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #e8b323;" text="%back_button" textFill="WHITE">
+         <VBox.margin>
+            <Insets bottom="30.0" left="30.0" top="30.0" />
+         </VBox.margin></Button>
         <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0">
             <columns>
-                <TableColumn fx:id="productIdColumn" prefWidth="75.0" text="id"/>
-                <TableColumn fx:id="skuColumn" prefWidth="75.0" text="sku"/>
-                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="name"/>
-                <TableColumn fx:id="priceColumn" prefWidth="75.0" text="price"/>
-                <TableColumn fx:id="typeColumn" prefWidth="75.0" text="type"/>
-                <TableColumn fx:id="actionColumn" prefWidth="75.0" text="action"/>
+                <TableColumn fx:id="productIdColumn" prefWidth="75.0" text="id" />
+                <TableColumn fx:id="skuColumn" prefWidth="151.1999969482422" text="sku" />
+                <TableColumn fx:id="nameColumn" prefWidth="282.3999786376953" text="name" />
+                <TableColumn fx:id="priceColumn" prefWidth="143.5999755859375" text="price" />
+                <TableColumn fx:id="typeColumn" prefWidth="195.0" text="type" />
+                <TableColumn fx:id="actionColumn" prefWidth="258.60003662109375" text="action" />
             </columns>
+         <VBox.margin>
+            <Insets left="30.0" right="30.0" />
+         </VBox.margin>
         </TableView>
-        <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" text="Add Product"/>
+        <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" prefHeight="42.0" prefWidth="108.0" style="-fx-background-color: #e8b323;" text="Add Product" textFill="WHITE">
+         <VBox.margin>
+            <Insets left="30.0" top="30.0" />
+         </VBox.margin></Button>
     </VBox>
 </AnchorPane>
