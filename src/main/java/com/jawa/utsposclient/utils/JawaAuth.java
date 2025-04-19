@@ -22,6 +22,7 @@ public class JawaAuth {
 
     public void login(User user, String token) {
         current = user;
+        this.token = token;
     }
 
     public void logout() {

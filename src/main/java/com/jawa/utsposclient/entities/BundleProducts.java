@@ -24,4 +24,8 @@ public class BundleProducts extends Products {
     }
 
     public BundleProducts() {}
+
+    public void setBundleItems(List<BundleItems> bundleItems) {
+        this.bundleItems = bundleItems;
+    }
 }

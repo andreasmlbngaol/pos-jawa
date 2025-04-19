@@ -1,7 +1,11 @@
 package com.jawa.utsposclient.views.cashier;
 
+import com.jawa.utsposclient.dto.PurchaseTransaction;
 import com.jawa.utsposclient.dto.TransactionItem;
+import com.jawa.utsposclient.entities.PurchaseTransactions;
 import com.jawa.utsposclient.repo.ProductRepository;
+import com.jawa.utsposclient.repo.TransactionRepository;
+import com.jawa.utsposclient.utils.DateUtils;
 import com.jawa.utsposclient.utils.StringUtils;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -9,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
+
+import java.time.LocalDate;
 
 public class PurchaseTransactionController extends CashierController {
 
@@ -28,7 +34,7 @@ public class PurchaseTransactionController extends CashierController {
 
     private double getGrandTotal() {
         return productTable.getItems().stream()
-            .mapToDouble(TransactionItem::getTotalPrice)
+            .mapToDouble(item -> item != null && item.getTotalPrice() != null ? item.getTotalPrice() : 0)
             .sum();
     }
 
@@ -40,10 +46,16 @@ public class PurchaseTransactionController extends CashierController {
     @FXML
     private void initialize() {
         productTable.setEditable(true);
-        skuColumn.setCellValueFactory(new PropertyValueFactory<>("sku"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        skuColumn.setCellValueFactory(cellData ->
+            new SimpleObjectProperty<>(cellData.getValue().getProduct().getSku())
+        );
+        nameColumn.setCellValueFactory(cellData ->
+            new SimpleObjectProperty<>(cellData.getValue().getProduct().getName())
+        );
         quantityColumn.setEditable(true);
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        quantityColumn.setCellValueFactory(cellData ->
+            new SimpleObjectProperty<>(cellData.getValue().getQuantity())
+        );
         quantityColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         quantityColumn.setOnEditCommit(event -> {
             TransactionItem item = event.getRowValue();
@@ -86,7 +98,7 @@ public class PurchaseTransactionController extends CashierController {
                     var items = productTable.getItems();
                     boolean found = false;
                     for(var item : items) {
-                        if(item.getSku().equals(product.getSku())) {
+                        if(item.getProduct().getSku().equals(product.getSku())) {
                             item.incrementQuantity();
                             found = true;
                             break;
@@ -127,10 +139,23 @@ public class PurchaseTransactionController extends CashierController {
             if (change < 0) {
                 alert = new Alert(Alert.AlertType.ERROR, "Paid is less than total price!");
             } else {
+                var transaction = new PurchaseTransaction();
+                transaction.setUser(user);
+                transaction.setTotalAmount(total);
+                transaction.setPaidAmount(paid);
+                transaction.setChangeAmount(change);
+                transaction.setCreatedAt(DateUtils.localDateToDate(LocalDate.now()));
+                transaction.setItems(productTable.getItems());
+
+                TransactionRepository.executePurchaseTransaction(transaction);
+
                 alert = new Alert(Alert.AlertType.INFORMATION, "Change: " + StringUtils.moneyFormat(change));
                 resetPurchase(); // ← Panggil setelah berhasil
+
+
             }
         } catch (Exception e) {
+            System.err.println(e.getMessage());
             alert = new Alert(Alert.AlertType.ERROR, "Insert valid paid nominal!");
         }
 

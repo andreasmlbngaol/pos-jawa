@@ -1,6 +1,7 @@
 package com.jawa.utsposclient.dao;
 
 import com.jawa.utsposclient.db.Database;
+import com.jawa.utsposclient.entities.Products;
 import com.jawa.utsposclient.enums.ProductType;
 
 public class ProductsDao {
@@ -22,5 +23,9 @@ public class ProductsDao {
             query.setParameter("sku", sku);
             return query.uniqueResult();
         });
+    }
+
+    public static Products getProductEntityById(Long id) {
+        return Database.executeTransaction(session -> session.get(Products.class, id));
     }
 }

@@ -77,6 +77,7 @@ public class SessionManager {
 
     public static boolean clearSession() {
         var token = JawaAuth.getInstance().getToken();
+        System.out.println("Token: " + token);
         UserSessionsDao.deleteSession(token);
 
         return new File(SESSION_FILE).delete();

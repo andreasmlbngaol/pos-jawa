@@ -47,6 +47,7 @@ public class Database {
                 DigitalProducts.class,
                 Transactions.class,
                 TransactionItems.class,
+                PurchaseTransactions.class,
                 UserSessions.class
             );
 
