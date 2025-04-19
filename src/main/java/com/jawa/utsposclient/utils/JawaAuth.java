@@ -5,6 +5,7 @@ import com.jawa.utsposclient.dto.User;
 public class JawaAuth {
     private static JawaAuth instance;
     private User current;
+    private String token;
 
     private JawaAuth() {}
 
@@ -19,11 +20,19 @@ public class JawaAuth {
         return current;
     }
 
-    public void login(User user) {
+    public void login(User user, String token) {
         current = user;
     }
 
     public void logout() {
         current = null;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
