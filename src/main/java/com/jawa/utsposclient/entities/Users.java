@@ -38,7 +38,7 @@ public class Users {
     public Users() {}
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username.trim().toLowerCase();
     }
 
     public void setName(String name) {
