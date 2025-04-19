@@ -5,14 +5,9 @@
 <?import javafx.scene.layout.*?>
 
 <DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.AddCashierDialogController">
-    <header>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="43.0" prefWidth="480.0">
-            <Label layoutX="194.0" layoutY="13.0" text="%add_cashier_dialog_title" textFill="WHITE" />
-        </AnchorPane>
-    </header>
     <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
-            <VBox layoutX="24.0" layoutY="14.0" prefHeight="167.0" prefWidth="430.0">
+            <VBox layoutX="25.0" layoutY="50.0" prefHeight="138.0" prefWidth="430.0">
                 <Label text="%username_label" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="10.0" />
@@ -29,11 +24,6 @@
             </VBox>
         </AnchorPane>
     </content>
-    <expandableContent>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-    </expandableContent>
     <ButtonType buttonData="OK_DONE" text="%save_button" />
     <ButtonType buttonData="CANCEL_CLOSE" text="%cancel_button" />
-    <!--        <ButtonType mnemonicParsing="false" text="%save_button" onAction="#onAddCashier"/>-->
-    <!--        <ButtonType mnemonicParsing="false" text="%cancel_button"/>-->
 </DialogPane>

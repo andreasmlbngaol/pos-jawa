@@ -8,13 +8,12 @@ import javafx.fxml.FXML;
 import java.io.IOException;
 
 public class AdminHomeController extends AdminController {
-    private Admin user;
 
     @FXML
     private void initialize() throws IOException {
-        this.user = (Admin) JawaAuth.getInstance().getCurrent();
+        Admin admin = (Admin) JawaAuth.getInstance().getCurrent();
 
-        if(user == null) {
+        if(admin == null) {
             System.err.println("You are not logged in. Redirect to login page.");
             switchScene(AppScene.LOGIN);
         }
@@ -29,20 +28,4 @@ public class AdminHomeController extends AdminController {
     private void onSwitchToManageUser() throws IOException {
         switchScene(AppScene.MANAGE_USER);
     }
-
-
-
-//    @FXML
-//    protected void onSignOutButtonClick() {
-//        try {
-//            var result = AuthRepository.logout();
-//
-//            if(result.isSuccess()) SessionManager.clearLocalSession(apiClient.getCookieManager());
-//            else System.out.println(result.getMessage());
-//
-//            switchScene("/login-view.fxml", "Login");
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 }

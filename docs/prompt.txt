@@ -1,0 +1,111 @@
+1.
+
+```
+    @FXML
+    protected void onLogin() {
+        try {
+            var user = AuthRepository.login(usernameTextField.getText(), passwordField.getText());
+
+            if (user != null) {
+                JawaAuth.getInstance().login(user);
+                // Tambah session belakangan
+
+                if(user.isMustChangePassword()) {
+                  switchScene(AppScene.SET_PASSWORD);
+                } else if(user instanceof Admin) {
+                switchScene(AppScene.ADMIN_HOME);
+                } else {
+                    switchScene(AppScene.CASHIER_HOME);
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Username atau password salah!");
+                alert.showAndWait();
+            }
+        } catch (IOException | RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+    }
+```
+
+Untuk sekarang di LoginController, saya pakai ini untuk melakukan autentikasi dimana ini ngecek ke database dan menyesuaikan username dan password, saya ingin buat sama dengan konsep session begitu
+
+2.
+Masalahnya ini konsepnya belum sebelumnya saya coba dengan Ktor, saya coba buat file local session, jadi saat aplikasi dijalankan pertama dia akan cek file nya kalau ada, dia tidak perlu lagi otentikasi lagi dan langsung masuk ke halaman sesuai role nya. Tetapi, disini saya belum ada entity untuk session apakah harus nya dibuat atau ada cara lain yang lebih efisien untuk melakukan checking ke database nya?
+
+3.
+Nah ini dia, kalau dia di file langsung, kan user bisa langsung modifikasi dan bisa saja mengakali sistemnya kalau di database nya tidak disimpan data terkait otentikasinya
+
+4.
+Nah saya tertarik dengan token dan pengecekan ke database ini, tapi bisa gak kalau ini dienkripsi lalu di dekripsi lagi nanti? Ada cara nya begitu?
+
+5.
+```
+package com.jawa.utsposclient.entities;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "user_sessions")
+public class UserSessions {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "user_id", nullable = false)
+    private long userId;
+
+    @Column(nullable = false)
+    private String token;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+}
+```
+
+Cara menghubungkan user_id ini dengan id di Users
+
+6.
+```
+public class UserSessionsDao {
+    public static Users getUserByToken(String token) {
+        return Database.executeTransaction(session -> {
+           var query = session.createQuery(
+               "SELECT UserSessions.user FROM UserSessions s WHERE s.token = :token",
+               Users.class
+           );
+           query.setParameter("token", token);
+           return query.uniqueResult();
+        });
+    }
+```
+
+org.hibernate.query.SemanticException: Could not interpret path expression 'UserSessions.user'
+
+Apakah ini masalahnya karena ini?
+
+7.
+Cara menambahkan tombol copy di sebuah alert information adakah? Atau bagiamana caranya agar info nya bisa dicopy?
+
+8.

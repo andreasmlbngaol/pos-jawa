@@ -3,19 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
-   <VBox layoutY="4.0" prefHeight="620.0" prefWidth="1100.0">
-      <children>
-          <Button mnemonicParsing="false" onAction="#onBackToHome" text="%back_button" />
-         <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0">
-           <columns>
-             <TableColumn fx:id="productIdColumn" prefWidth="75.0" text="id" />
-             <TableColumn fx:id="skuColumn" prefWidth="75.0" text="sku" />
-               <TableColumn fx:id="nameColumn" prefWidth="75.0" text="name" />
-               <TableColumn fx:id="priceColumn" prefWidth="75.0" text="price" />
-               <TableColumn fx:id="actionColumn" prefWidth="75.0" text="action" />
-           </columns>
-         </TableView>
-         <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" text="Add Product" />
-      </children></VBox>
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
+    <VBox layoutY="4.0" prefHeight="620.0" prefWidth="1100.0">
+        <Button mnemonicParsing="false" onAction="#onBackToHome" text="%back_button"/>
+        <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn fx:id="productIdColumn" prefWidth="75.0" text="id"/>
+                <TableColumn fx:id="skuColumn" prefWidth="75.0" text="sku"/>
+                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="name"/>
+                <TableColumn fx:id="priceColumn" prefWidth="75.0" text="price"/>
+                <TableColumn fx:id="typeColumn" prefWidth="75.0" text="type"/>
+                <TableColumn fx:id="actionColumn" prefWidth="75.0" text="action"/>
+            </columns>
+        </TableView>
+        <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" text="Add Product"/>
+    </VBox>
 </AnchorPane>

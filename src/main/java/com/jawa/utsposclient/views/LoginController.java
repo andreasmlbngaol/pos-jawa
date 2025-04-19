@@ -31,11 +31,13 @@ public class LoginController extends Controller {
     @FXML
     protected void onLogin() {
         try {
-            var user = AuthRepository.login(usernameTextField.getText(), passwordField.getText());
+            var username = usernameTextField.getText().trim().toLowerCase();
+            var password = passwordField.getText().trim();
+
+            var user = AuthRepository.login(username, password);
 
             if (user != null) {
-                JawaAuth.getInstance().login(user);
-                // Tambah session belakangan
+                JawaAuth.getInstance().login(user, JawaAuth.getInstance().getToken());
 
                 if(user.isMustChangePassword()) {
                   switchScene(AppScene.SET_PASSWORD);

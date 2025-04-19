@@ -7,20 +7,34 @@
     <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="194.0" prefWidth="600.0">
             <VBox prefHeight="316.0" prefWidth="600.0">
-                <Label layoutX="10.0" layoutY="36.0" text="Type" />
-                <ComboBox fx:id="typeComboBox" prefWidth="150.0" />
-                <Label text="Name" />
-                <TextField fx:id="nameTextField" />
-                <Label layoutX="10.0" layoutY="10.0" text="Sku" />
-                <TextField fx:id="skuTextField" layoutX="10.0" layoutY="28.0" />
-                <Label layoutX="10.0" layoutY="53.0" text="Price" />
-                <TextField fx:id="priceTextField" layoutX="10.0" layoutY="71.0" />
-                <Label layoutX="10.0" layoutY="196.0" text="Expiry Date" />
-                <DatePicker fx:id="expiryDatePicker" prefHeight="26.0" prefWidth="212.0" />
-                <Label layoutX="10.0" layoutY="196.0" text="URL" />
-                <TextField fx:id="urlTextField" layoutX="10.0" layoutY="214.0" />
-                <Label layoutX="10.0" layoutY="284.0" text="Vendor Name" />
-                <TextField fx:id="vendorTextField" layoutX="10.0" layoutY="301.0" />
+                <VBox>
+                    <Label text="Type"/>
+                    <ComboBox fx:id="typeComboBox" prefWidth="150.0"/>
+                </VBox>
+                <VBox>
+                    <Label text="Sku"/>
+                    <TextField fx:id="skuTextField"/>
+                </VBox>
+                <VBox>
+                    <Label text="Name"/>
+                    <TextField fx:id="nameTextField"/>
+                </VBox>
+                <VBox>
+                    <Label text="Price"/>
+                    <TextField fx:id="priceTextField"/>
+                </VBox>
+                <VBox fx:id="expiryDateGroup">
+                    <Label text="Expiry Date"/>
+                    <DatePicker fx:id="expiryDatePicker" prefHeight="26.0" prefWidth="212.0"/>
+                </VBox>
+                <VBox fx:id="urlGroup">
+                    <Label text="URL"/>
+                    <TextField fx:id="urlTextField"/>
+                </VBox>
+                <VBox fx:id="vendorGroup">
+                    <Label text="Vendor Name"/>
+                    <TextField fx:id="vendorTextField"/>
+                </VBox>
             </VBox>
         </AnchorPane>
     </content>

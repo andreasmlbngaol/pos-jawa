@@ -4,8 +4,10 @@ package com.jawa.utsposclient.views.admin;
 import com.jawa.utsposclient.MainApp;
 import com.jawa.utsposclient.dto.Product;
 import com.jawa.utsposclient.enums.AppScene;
+import com.jawa.utsposclient.enums.ProductType;
 import com.jawa.utsposclient.repo.ProductRepository;
 import com.jawa.utsposclient.utils.StringRes;
+import com.jawa.utsposclient.utils.StringUtils;
 import com.jawa.utsposclient.views.fragment.AddProductDialogController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +22,7 @@ public class ManageProductController extends AdminController {
     @FXML private TableColumn<Product, String> skuColumn;
     @FXML private TableColumn<Product, String> nameColumn;
     @FXML private TableColumn<Product, Double> priceColumn;
+    @FXML private TableColumn<Product, ProductType> typeColumn;
     @FXML private TableColumn<Product, Void> actionColumn;
 
     private void loadProducts() {
@@ -35,6 +38,19 @@ public class ManageProductController extends AdminController {
         skuColumn.setCellValueFactory(new PropertyValueFactory<>("sku"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        priceColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(StringUtils.moneyFormat(item));
+                }
+            }
+        });
+
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
 
         loadProducts();
     }

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class ProductRepository {
     public static List<Product> getAllProducts() {
         return Database.executeTransaction(session -> {
-            List<Products> productEntities = session.createQuery("FROM Products p WHERE p.isAvailable = true", Products.class).getResultList();
+            List<Products> productEntities = session.createQuery("FROM Products p WHERE p.isAvailable = true ORDER BY p.id", Products.class).getResultList();
             return productEntities.stream()
                 .map(product -> new Product(
                     product.getId(),

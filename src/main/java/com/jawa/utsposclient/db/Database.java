@@ -16,14 +16,14 @@ import java.util.function.Function;
 public class Database {
     private static SessionFactory sessionFactory;
 
-    public static void init() throws Exception {
+    public static void init() {
         if(sessionFactory == null) {
             sessionFactory = buildSessionFactory();
             Seeder.seedAdmin();
         }
     }
 
-    private static SessionFactory buildSessionFactory() throws Exception {
+    private static SessionFactory buildSessionFactory() {
         try {
             Configuration config = new Configuration();
 
@@ -32,7 +32,6 @@ public class Database {
             settings.put(Environment.JAKARTA_JDBC_URL, Config.getProperty("hibernate.url"));
             settings.put(Environment.JAKARTA_JDBC_USER, Config.getProperty("hibernate.username"));
             settings.put(Environment.JAKARTA_JDBC_PASSWORD, Config.getProperty("hibernate.password"));
-//            settings.put(Environment.DIALECT, Config.getProperty("hibernate.dialect"));
             settings.put(Environment.SHOW_SQL, Config.getProperty("hibernate.show_sql"));
             settings.put(Environment.HBM2DDL_AUTO, Config.getProperty("hibernate.hbm2ddl.auto"));
 
@@ -47,7 +46,8 @@ public class Database {
                 BundleItems.class,
                 DigitalProducts.class,
                 Transactions.class,
-                TransactionItems.class
+                TransactionItems.class,
+                UserSessions.class
             );
 
             entities.forEach(config::addAnnotatedClass);
@@ -57,10 +57,6 @@ public class Database {
             System.err.println("Error building session factory");
             throw e;
         }
-    }
-
-    public static void shutdown() {
-        sessionFactory.close();
     }
 
     public static <R> R executeTransaction(Function<Session, R> action) {

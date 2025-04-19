@@ -1,5 +1,8 @@
 package com.jawa.utsposclient;
 
+import com.jawa.utsposclient.enums.Role;
+import com.jawa.utsposclient.utils.JawaAuth;
+import com.jawa.utsposclient.utils.SessionManager;
 import com.jawa.utsposclient.views.Controller;
 import com.jawa.utsposclient.db.Database;
 import com.jawa.utsposclient.enums.AppScene;
@@ -17,7 +20,15 @@ public class MainApp extends Application {
     public void start(Stage stage) {
         try {
             Database.init();
-            var firstScene = AppScene.LOGIN;
+
+
+            AppScene firstScene;
+            if(SessionManager.loadSession()) {
+                var user = JawaAuth.getInstance().getCurrent();
+                if(user.isMustChangePassword()) firstScene = AppScene.SET_PASSWORD;
+                else if(user.getRole() == Role.Admin) firstScene = AppScene.ADMIN_HOME;
+                else firstScene = AppScene.CASHIER_HOME;
+            } else firstScene = AppScene.LOGIN;
             // Nanti ini check udah login atau belum. Kalau udah gak perlu ke login lagi. Tapi belakangan
 
             var controller = new Controller();
@@ -30,10 +41,7 @@ public class MainApp extends Application {
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-//            alert.setHeaderText("Database initialization failed");
             alert.setContentText(e.getMessage());
-            System.out.println(e.getMessage());
-
             alert.showAndWait();
             Platform.exit();
         }

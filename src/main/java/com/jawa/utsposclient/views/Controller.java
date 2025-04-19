@@ -1,7 +1,9 @@
 package com.jawa.utsposclient.views;
 
 import com.jawa.utsposclient.MainApp;
+import com.jawa.utsposclient.dto.User;
 import com.jawa.utsposclient.enums.AppScene;
+import com.jawa.utsposclient.utils.JawaAuth;
 import com.jawa.utsposclient.utils.StringRes;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +13,15 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Locale;
 import java.util.Optional;
 
 public class Controller {
+    protected User user = JawaAuth.getInstance().getCurrent();
+
     private Stage stage;
 
     public void setStage(Stage stage) {
+        stage.setResizable(false);
         this.stage = stage;
     }
 
@@ -29,7 +33,6 @@ public class Controller {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(appScene.getFxml()));
         fxmlLoader.setResources(StringRes.getBundle());
         Scene scene = new Scene(fxmlLoader.load(), AppScene.width, AppScene.height);
-
         Object controller = fxmlLoader.getController();
         if (controller instanceof Controller) {
             ((Controller) controller).setStage(stage);
@@ -48,7 +51,8 @@ public class Controller {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            // Lanjutkan sign out
+            user.logout();
+
             try {
                 switchScene(AppScene.LOGIN);
             } catch (IOException e) {

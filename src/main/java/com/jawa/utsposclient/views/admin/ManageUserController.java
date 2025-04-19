@@ -2,10 +2,12 @@ package com.jawa.utsposclient.views.admin;
 
 
 import com.jawa.utsposclient.MainApp;
+import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.dto.User;
 import com.jawa.utsposclient.enums.Role;
-import com.jawa.utsposclient.repo.UserRepository;
 import com.jawa.utsposclient.enums.AppScene;
+import com.jawa.utsposclient.utils.JavaFXExt;
+import com.jawa.utsposclient.utils.JawaAuth;
 import com.jawa.utsposclient.utils.StringRes;
 import com.jawa.utsposclient.views.fragment.AddCashierDialogController;
 import javafx.collections.FXCollections;
@@ -29,8 +31,10 @@ public class ManageUserController extends AdminController {
     @FXML private TableColumn<User, String> roleColumn;
     @FXML private TableColumn<User, Void> actionColumn;
 
+    private final Admin admin = (Admin) JawaAuth.getInstance().getCurrent();
+
     private void loadUsers() {
-        ObservableList<User> users = FXCollections.observableArrayList(UserRepository.getAllUsers());
+        ObservableList<User> users = FXCollections.observableArrayList(admin.getAllUsers());
         userTable.setItems(users);
     }
 
@@ -53,21 +57,24 @@ public class ManageUserController extends AdminController {
             {
                 resetPasswordButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-
-                    String otp = UserRepository.resetPassword(user.getId());
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, otp);
-                    alert.showAndWait();
+                    if(user.getRole() == Role.Cashier) {
+                        String otp = admin.resetPasswordAndGetOtp(user.getId());
+                        JavaFXExt.showCopyableAlert("", "", String.format("OTP: %s", otp));
+                    }
                 });
 
                 deleteButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
-                    Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this user?", ButtonType.YES, ButtonType.NO);
-                    confirm.showAndWait().ifPresent(response -> {
-                        if (response == ButtonType.YES) {
-                            UserRepository.softDelete(user.getId());
-                            loadUsers();
-                        }
-                    });
+
+                    if(user.getRole() == Role.Cashier) {
+                        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this user?", ButtonType.YES, ButtonType.NO);
+                        confirm.showAndWait().ifPresent(response -> {
+                            if (response == ButtonType.YES) {
+                                admin.softDelete(user.getId());
+                                loadUsers();
+                            }
+                        });
+                    }
                 });
 
                 container.setAlignment(Pos.CENTER);
@@ -85,7 +92,6 @@ public class ManageUserController extends AdminController {
                     setGraphic(null);
                 }
             }
-
         });
 
         nameColumn.setOnEditCommit(event -> {
@@ -93,7 +99,7 @@ public class ManageUserController extends AdminController {
             String newName = event.getNewValue();
 
             if(newName != null && !newName.trim().isEmpty()) {
-                UserRepository.updateName(user.getId(), newName);
+                admin.changeName(user.getId(), newName);
                 loadUsers();
             }
         });
@@ -120,11 +126,7 @@ public class ManageUserController extends AdminController {
 
                     var otp = ((AddCashierDialogController) loader.getController()).onAddCashierAndGetOtp();
 
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "OTP: " + otp);
-                    alert.setTitle("OTP");
-                    alert.showAndWait();
-                    // Panggil langsung jika butuh melakukan aksi setelah dialog ditutup
-                    // atau pastikan aksi dilakukan saat tombol "Save" ditekan di controllernya
+                    JavaFXExt.showCopyableAlert("", "", String.format("OTP: %s", otp));
                     System.out.println("Cashier added!");
                 }
             });
