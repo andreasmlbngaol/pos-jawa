@@ -51,5 +51,9 @@
         ![Modify Database Configuration](docs/modify_database.png)
     - Change `ADMIN_USERNAME`, `ADMIN_NAME`, `ADMIN_PASSWORD` as you like
         ![Modify Default Admin Configuration](docs/modify_admin.png)
+3. **Modify Session Secret Key:**
+    - Open [**config.example.properties**](src/main/resources/com/jawa/utsposclient/config.example.properties) in `/src/main/resources/com/jawa/utsposclient/`
+    - Change `SECRET_KEY` as you want
+        ![Modify Secret Key](docs/modify_secret_key.png)
     - Rename the file name `config.example.properties` to `config.properties`
-3. **Run application** /
+4. **Run application** /
