@@ -14,4 +14,12 @@ public class StringUtils {
         return String.format("%04d", number);
     }
 
+    public static String toValidSecretKey(String plainKey, int length) {
+        if(plainKey.length() < length) {
+            return String.format("%-" + length + "s", plainKey).replace(' ', '0');
+        } else if(plainKey.length() > length) {
+            return plainKey.substring(0, length);
+        }
+        return plainKey;
+    }
 }

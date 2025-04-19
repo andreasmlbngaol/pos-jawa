@@ -3,12 +3,11 @@ package com.jawa.utsposclient.views.cashier;
 import com.jawa.utsposclient.dto.Cashier;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
-import com.jawa.utsposclient.views.Controller;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class CashierHomeController extends Controller {
+public class CashierHomeController extends CashierController {
     private Cashier user;
 
     @FXML

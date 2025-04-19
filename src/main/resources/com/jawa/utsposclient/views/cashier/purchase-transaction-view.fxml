@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.PurchaseTransactionController">
+   <children>
+      <VBox prefHeight="620.0" prefWidth="1101.0">
+         <children>
+            <VBox>
+               <children>
+                  <Label text="SKU" />
+                  <TextField />
+               </children>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="Label" />
+                        <TextField />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Label" />
+                        <TextField />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

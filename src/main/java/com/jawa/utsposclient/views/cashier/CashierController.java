@@ -1,4 +1,4 @@
-package com.jawa.utsposclient.views.admin;
+package com.jawa.utsposclient.views.cashier;
 
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.views.Controller;
@@ -7,9 +7,9 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class AdminController extends Controller implements UserController {
+public class CashierController extends Controller implements UserController {
     @FXML
     private void onBackToHome() throws IOException {
-        switchScene(AppScene.ADMIN_HOME);
+        switchScene(AppScene.CASHIER_HOME);
     }
 }

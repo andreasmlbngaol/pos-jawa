@@ -6,7 +6,9 @@ import java.util.Base64;
 
 public class CryptoUtils {
     private static final String ALGORITHM = Config.getProperty("crypto.algorithm");
-    private static final String SECRET_KEY = Config.getProperty("crypto.secret.key");
+    private static final int LENGTH = 16;
+    private static final String SECRET_KEY = StringUtils.toValidSecretKey(Config.getProperty("crypto.secret.key"), LENGTH);;
+
 
     public static String encrypt(String plainText) throws Exception {
         Cipher cipher = Cipher.getInstance(ALGORITHM);
