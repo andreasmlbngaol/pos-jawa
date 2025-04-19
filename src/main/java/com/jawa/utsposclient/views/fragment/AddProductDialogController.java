@@ -6,6 +6,7 @@ import com.jawa.utsposclient.entities.NonPerishableProducts;
 import com.jawa.utsposclient.entities.PerishableProducts;
 import com.jawa.utsposclient.enums.ProductType;
 import com.jawa.utsposclient.repo.ProductRepository;
+import com.jawa.utsposclient.utils.DateUtils;
 import com.jawa.utsposclient.utils.StringUtils;
 import com.jawa.utsposclient.views.Controller;
 import javafx.fxml.FXML;
@@ -15,8 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 public class AddProductDialogController extends Controller {
@@ -108,7 +107,7 @@ public class AddProductDialogController extends Controller {
                 product.setPrice(price);
                 product.setAvailable(true);
                 product.setType(ProductType.Perishable);
-                product.setExpiryDate(Date.from(expiryDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                product.setExpiryDate(DateUtils.localDateToDate(expiryDate));
                 ProductRepository.addProduct(product);
             }
             case Digital -> {

@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class AdminController extends Controller implements UserController {
     @FXML
-    private void onBackToHome() throws IOException {
+    public void onBackToHome() throws IOException {
         switchScene(AppScene.ADMIN_HOME);
     }
 }

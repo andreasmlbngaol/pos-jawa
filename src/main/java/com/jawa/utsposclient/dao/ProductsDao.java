@@ -12,4 +12,15 @@ public class ProductsDao {
         .setParameter("type", type)
         .uniqueResult());
     }
+
+    public static Object getProductEntityBySku(String sku) {
+        return Database.executeTransaction(session -> {
+            var query = session.createQuery(
+                "FROM Products p WHERE p.sku = :sku AND p.isAvailable=true",
+                Object.class
+            );
+            query.setParameter("sku", sku);
+            return query.uniqueResult();
+        });
+    }
 }

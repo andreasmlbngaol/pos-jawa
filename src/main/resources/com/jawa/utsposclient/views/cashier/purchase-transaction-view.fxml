@@ -1,35 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.PurchaseTransactionController">
-   <children>
-      <VBox prefHeight="620.0" prefWidth="1101.0">
-         <children>
-            <VBox>
-               <children>
-                  <Label text="SKU" />
-                  <TextField />
-               </children>
-            </VBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <VBox>
-                     <children>
-                        <Label text="Label" />
-                        <TextField />
-                     </children>
-                  </VBox>
-                  <VBox>
-                     <children>
-                        <Label text="Label" />
-                        <TextField />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-         </children>
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jawa.utsposclient.views.cashier.PurchaseTransactionController">
+   <VBox prefHeight="620.0" prefWidth="1101.0">
+      <padding>
+         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
+      </padding>
+      <Button mnemonicParsing="false" onAction="#onBackToHome" text="Back"/>
+      <VBox>
+         <Label text="SKU"/>
+         <TextField fx:id="skuTextField"/>
       </VBox>
-   </children>
+      <HBox prefHeight="51.0" prefWidth="1102.0">
+         <VBox prefWidth="550.0">
+            <Label text="Name"/>
+            <TextField fx:id="nameTextField" disable="true" editable="false"/>
+         </VBox>
+         <VBox prefWidth="550.0">
+            <Label text="Harga"/>
+            <TextField fx:id="priceTextField" disable="true" editable="false"/>
+         </VBox>
+      </HBox>
+      <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0">
+         <columns>
+            <TableColumn fx:id="skuColumn" prefWidth="155.1999969482422" text="sku"/>
+            <TableColumn fx:id="nameColumn" prefWidth="503.79998779296875" text="name"/>
+            <TableColumn fx:id="quantityColumn" minWidth="0.0" prefWidth="201.79998779296875" text="quantity"/>
+            <TableColumn fx:id="totalItemPriceColumn" prefWidth="207.1999755859374" text="total"/>
+         </columns>
+      </TableView>
+      <HBox alignment="CENTER_RIGHT">
+         <Label text="Total"/>
+         <TextField fx:id="totalPriceTextField" prefHeight="26.0" prefWidth="219.0"/>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="26.0" layoutY="320.0">
+         <Label text="Yang dibayar"/>
+         <TextField fx:id="paidTextField" prefHeight="26.0" prefWidth="219.0"/>
+      </HBox>
+      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onExecuteTransaction"
+              text="Shadow Power! Execute!"/>
+   </VBox>
 </AnchorPane>

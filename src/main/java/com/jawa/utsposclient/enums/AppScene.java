@@ -15,6 +15,8 @@ public enum AppScene {
     ADD_PRODUCT_DIALOG("fragment/add-product-dialog-fragment", "Add Product"),
 
     CASHIER_HOME("cashier/cashier-home-view", "Cashier Home"),
+    PURCHASE_TRANSACTION("cashier/purchase-transaction-view", "Purchase Transaction"),
+    REFUND_TRANSACTION("cashier/refund-transaction-view", "Refund Transaction"),
 
     ;
 

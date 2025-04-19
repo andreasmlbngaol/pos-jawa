@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class CashierController extends Controller implements UserController {
     @FXML
-    private void onBackToHome() throws IOException {
+    public void onBackToHome() throws IOException {
         switchScene(AppScene.CASHIER_HOME);
     }
 }
