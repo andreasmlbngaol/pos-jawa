@@ -95,7 +95,7 @@
             </TableView>
          </VBox>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #e8b323;" text="Execute" textFill="WHITE">
+      <Button mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #e8b323;" text="Refund" textFill="WHITE">
          <VBox.margin>
             <Insets left="20.0" top="20.0" />
          </VBox.margin>
