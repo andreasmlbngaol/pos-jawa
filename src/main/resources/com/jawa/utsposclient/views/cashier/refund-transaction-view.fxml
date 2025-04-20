@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.RefundTransactionController">
@@ -13,7 +15,14 @@
          </VBox.margin>
          <font>
             <Font name="System Bold" size="14.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <DropShadow height="36.21" radius="16.7275" width="32.7">
+               <color>
+                  <Color red="1.0" green="0.7647058963775635" />
+               </color>
+            </DropShadow>
+         </effect></Button>
       <VBox prefHeight="49.0" prefWidth="1037.0">
          <Label text="Transaction ID" textFill="WHITE">
             <font>
@@ -25,7 +34,17 @@
          <TextField fx:id="transactionIdTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="530.0" promptText="Transaction ID">
             <VBox.margin>
                <Insets bottom="20.0" left="20.0" />
-            </VBox.margin></TextField>
+            </VBox.margin>
+            <effect>
+               <Lighting diffuseConstant="1.07">
+                  <bumpInput>
+                     <Shadow />
+                  </bumpInput>
+                  <light>
+                     <Light.Distant />
+                  </light>
+               </Lighting>
+            </effect></TextField>
       </VBox>
       <VBox layoutX="10.0" layoutY="36.0">
          <Label text="Cashier" textFill="WHITE">
@@ -38,7 +57,17 @@
          <TextField fx:id="cashierNameTextField" editable="false" maxWidth="-Infinity" prefHeight="26.0" prefWidth="530.0" promptText="Cashier">
             <VBox.margin>
                <Insets bottom="20.0" left="20.0" />
-            </VBox.margin></TextField>
+            </VBox.margin>
+            <effect>
+               <Lighting diffuseConstant="1.06">
+                  <bumpInput>
+                     <Shadow />
+                  </bumpInput>
+                  <light>
+                     <Light.Distant />
+                  </light>
+               </Lighting>
+            </effect></TextField>
       </VBox>
       <VBox layoutX="10.0" layoutY="79.0">
          <Label text="Created At" textFill="WHITE">
@@ -51,7 +80,17 @@
          <TextField fx:id="createdAtTextField" editable="false" maxWidth="-Infinity" prefHeight="20.0" prefWidth="529.0" promptText="Created At">
             <VBox.margin>
                <Insets bottom="20.0" left="20.0" />
-            </VBox.margin></TextField>
+            </VBox.margin>
+            <effect>
+               <Lighting diffuseConstant="1.07" specularExponent="21.47" surfaceScale="1.78">
+                  <bumpInput>
+                     <Shadow />
+                  </bumpInput>
+                  <light>
+                     <Light.Distant />
+                  </light>
+               </Lighting>
+            </effect></TextField>
       </VBox>
       <HBox prefHeight="300.0" prefWidth="1100.0">
          <VBox>
@@ -95,12 +134,19 @@
             </TableView>
          </VBox>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #e8b323;" text="Refund" textFill="WHITE">
+      <Button mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #e8b323;" text="Execute" textFill="WHITE">
          <VBox.margin>
             <Insets left="20.0" top="20.0" />
          </VBox.margin>
          <font>
             <Font name="System Bold" size="14.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <DropShadow height="39.72" radius="17.605" width="32.7">
+               <color>
+                  <Color red="1.0" green="0.7647058963775635" />
+               </color>
+            </DropShadow>
+         </effect></Button>
    </VBox>
 </AnchorPane>

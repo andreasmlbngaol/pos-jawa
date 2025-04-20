@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
@@ -9,6 +10,13 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.LoginController">
     <ImageView fitHeight="352.0" fitWidth="492.0" layoutX="36.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../images/apalah.jpg" />
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="1.0" green="1.0" blue="1.0" />
+            </color>
+         </DropShadow>
+      </effect>
     </ImageView>
     <Label layoutX="447.0" layoutY="23.0" prefHeight="59.0" prefWidth="299.0" text="Welcome back!">
         <font>
@@ -41,17 +49,43 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <TextField fx:id="usernameTextField" layoutX="643.0" layoutY="245.0" prefHeight="36.0" prefWidth="324.0" promptText="Username" />
+    <TextField fx:id="usernameTextField" layoutX="643.0" layoutY="245.0" prefHeight="36.0" prefWidth="324.0" promptText="Username">
+      <effect>
+         <Lighting>
+            <bumpInput>
+               <Shadow />
+            </bumpInput>
+            <light>
+               <Light.Distant />
+            </light>
+         </Lighting>
+      </effect></TextField>
     <Label layoutX="643.0" layoutY="312.0" prefHeight="27.0" prefWidth="79.0" text="Password" textFill="WHITE">
         <font>
             <Font size="18.0" />
         </font>
     </Label>
-    <PasswordField fx:id="passwordField" layoutX="643.0" layoutY="349.0" prefHeight="36.0" prefWidth="324.0" promptText="Password" />
+    <PasswordField fx:id="passwordField" layoutX="643.0" layoutY="349.0" prefHeight="36.0" prefWidth="324.0" promptText="Password">
+      <effect>
+         <Lighting>
+            <bumpInput>
+               <Shadow />
+            </bumpInput>
+            <light>
+               <Light.Distant />
+            </light>
+         </Lighting>
+      </effect></PasswordField>
     <Button layoutX="704.0" layoutY="427.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #e8b323;" text="Login" textFill="WHITE">
         <font>
             <Font name="System Bold" size="14.0" />
         </font>
+      <effect>
+         <DropShadow height="28.02" radius="15.265" width="35.04">
+            <color>
+               <Color red="1.0" green="1.0" blue="1.0" />
+            </color></DropShadow>
+      </effect>
     </Button>
     <Label layoutX="25.0" layoutY="590.0" prefHeight="15.0" prefWidth="202.0" text="Copyright 2025 - Universitas Sumatera Utara" textFill="WHITE">
         <font>

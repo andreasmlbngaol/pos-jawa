@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
@@ -13,7 +15,14 @@
          </VBox.margin>
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <DropShadow height="32.7" radius="17.020000000000003" width="37.38">
+               <color>
+                  <Color red="1.0" green="0.7647058963775635" />
+               </color>
+            </DropShadow>
+         </effect></Button>
         <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0">
             <columns>
                 <TableColumn fx:id="productIdColumn" prefWidth="75.0" text="id" />
@@ -33,6 +42,13 @@
          </VBox.margin>
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <DropShadow height="35.04" radius="17.02" width="35.04">
+               <color>
+                  <Color red="1.0" green="0.7647058963775635" />
+               </color>
+            </DropShadow>
+         </effect></Button>
     </VBox>
 </AnchorPane>

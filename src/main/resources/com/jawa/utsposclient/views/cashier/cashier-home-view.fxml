@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
@@ -10,15 +11,36 @@
       <Button layoutX="893.0" layoutY="33.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #e8b323;" text="%logout_button" textFill="WHITE">
             <font>
                   <Font name="System Bold" size="14.0" />
-            </font></Button>
+            </font>
+      <effect>
+         <DropShadow height="32.7" radius="15.265" width="30.36">
+            <color>
+               <Color red="1.0" green="1.0" blue="1.0" />
+            </color>
+         </DropShadow>
+      </effect></Button>
       <Button layoutX="605.0" layoutY="400.0" mnemonicParsing="false" onAction="#onSwitchToPurchase" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323;" text="%purchase_transaction_menu" textFill="WHITE">
             <font>
                   <Font name="System Bold" size="14.0" />
-            </font></Button>
+            </font>
+      <effect>
+         <DropShadow height="39.72" radius="19.36" width="39.72">
+            <color>
+               <Color red="1.0" green="0.7647058963775635" />
+            </color>
+         </DropShadow>
+      </effect></Button>
       <Button layoutX="323.0" layoutY="400.0" mnemonicParsing="false" onAction="#onSwitchToRefund" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323;" text="%refund_transaction_menu" textFill="WHITE">
             <font>
                   <Font name="System Bold" size="14.0" />
-            </font></Button>
+            </font>
+      <effect>
+         <DropShadow height="39.72" radius="19.36" width="39.72">
+            <color>
+               <Color red="1.0" green="0.7647058963775635" />
+            </color>
+         </DropShadow>
+      </effect></Button>
       <Label layoutX="367.0" layoutY="87.0" prefHeight="46.0" prefWidth="365.0" text="What would you like to do?" textAlignment="CENTER">
             <font>
                   <Font size="30.0" />

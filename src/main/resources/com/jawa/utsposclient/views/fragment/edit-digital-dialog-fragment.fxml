@@ -1,31 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<DialogPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.EditDigitalDialogController">
+<DialogPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.EditDigitalDialogController">
     <content>
         <AnchorPane>
             <VBox prefHeight="400.0" prefWidth="607.0">
                 <VBox>
-                    <Label text="SKU" />
-                    <TextField fx:id="skuTextField" disable="true" editable="false" />
+                    <Label text="SKU" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="20.0" top="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+                    <TextField fx:id="skuTextField" disable="true" editable="false" promptText="SKU Number">
+                  <VBox.margin>
+                     <Insets bottom="20.0" left="20.0" />
+                  </VBox.margin></TextField>
                 </VBox>
                 <VBox layoutX="10.0" layoutY="10.0">
-                    <Label text="Name" />
-                    <TextField fx:id="nameTextField" />
+                    <Label text="Name" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+                    <TextField fx:id="nameTextField" promptText="Product Name">
+                  <VBox.margin>
+                     <Insets bottom="20.0" left="20.0" />
+                  </VBox.margin></TextField>
                 </VBox>
                 <VBox layoutX="10.0" layoutY="53.0">
-                    <Label text="Price" />
-                    <TextField fx:id="priceTextField" />
+                    <Label text="Price" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets left="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+                    <TextField fx:id="priceTextField" promptText="Price">
+                  <VBox.margin>
+                     <Insets bottom="20.0" left="20.0" top="10.0" />
+                  </VBox.margin></TextField>
                 </VBox>
                 <VBox layoutX="10.0" layoutY="96.0">
-                    <Label text="URL"/>
-                    <TextField fx:id="urlTextField"/>
+                    <Label text="URL" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+                    <TextField fx:id="urlTextField" promptText="URL">
+                  <VBox.margin>
+                     <Insets bottom="20.0" left="20.0" />
+                  </VBox.margin></TextField>
                 </VBox>
                 <VBox layoutX="10.0" layoutY="140.0">
-                    <Label text="Vendor Name"/>
-                    <TextField fx:id="vendorTextField"/>
+                    <Label text="Vendor Name" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+                    <TextField fx:id="vendorTextField" promptText="Vendor Name">
+                  <VBox.margin>
+                     <Insets left="20.0" />
+                  </VBox.margin></TextField>
                 </VBox>
             </VBox>
         </AnchorPane>
