@@ -65,11 +65,11 @@
             <TableView fx:id="originalTable" prefHeight="300.0" prefWidth="550.0">
                <columns>
                   <TableColumn fx:id="skuOriginalColumn" prefWidth="67.0" text="sku" />
-                  <TableColumn fx:id="originalNameColumn" prefWidth="164.0" text="name" />
-                  <TableColumn fx:id="originalPriceColumn" prefWidth="85.0" text="price per item" />
-                  <TableColumn fx:id="originalQuantityColumn" prefWidth="54.0" text="quantity" />
-                  <TableColumn fx:id="originalTotalColumn" prefWidth="101.0" text="total" />
-                  <TableColumn fx:id="originalActionColumn" prefWidth="85.19998168945312" text="action" />
+                  <TableColumn fx:id="originalNameColumn" prefWidth="147.0" text="name" />
+                  <TableColumn fx:id="originalPriceColumn" prefWidth="106.19998168945312" text="price per item" />
+                  <TableColumn fx:id="originalQuantityColumn" prefWidth="51.4000244140625" text="quantity" />
+                  <TableColumn fx:id="originalTotalColumn" prefWidth="54.600006103515625" text="total" />
+                  <TableColumn fx:id="originalActionColumn" prefWidth="132.59994506835938" text="action" />
                </columns>
                <VBox.margin>
                   <Insets left="20.0" right="5.0" top="10.0" />

@@ -66,12 +66,12 @@
                </VBox.margin></TextField>
          </VBox>
       </HBox>
-      <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7E7997;">
+      <TableView fx:id="productTable" prefHeight="198.0" prefWidth="1042.0" style="-fx-background-color: #7E7997;">
          <columns>
             <TableColumn fx:id="skuColumn" prefWidth="155.1999969482422" text="sku" />
             <TableColumn fx:id="nameColumn" prefWidth="503.79998779296875" text="name" />
-            <TableColumn fx:id="quantityColumn" minWidth="0.0" prefWidth="201.79998779296875" text="quantity" />
-            <TableColumn fx:id="totalItemPriceColumn" prefWidth="207.1999755859374" text="total" />
+            <TableColumn fx:id="quantityColumn" minWidth="0.0" prefWidth="199.4000244140625" text="quantity" />
+            <TableColumn fx:id="totalItemPriceColumn" prefWidth="209.5999999999999" text="total" />
          </columns>
       </TableView>
       <HBox alignment="CENTER_RIGHT">
@@ -104,7 +104,7 @@
          <children>
             <Button alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onExecuteTransaction" prefHeight="31.0" prefWidth="113.0" style="-fx-background-color: #e8b323;" text="Shadow Power! Execute!" textFill="WHITE">
                <HBox.margin>
-                  <Insets left="963.0" top="20.0" />
+                  <Insets left="950.0" top="20.0" />
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="14.0" />
