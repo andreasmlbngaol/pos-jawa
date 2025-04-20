@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.PurchaseTransactionController">
@@ -16,7 +18,14 @@
          </VBox.margin>
          <font>
             <Font name="System Bold" size="14.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <DropShadow height="32.7" radius="16.435000000000002" width="35.04">
+               <color>
+                  <Color red="1.0" green="0.7647058963775635" />
+               </color>
+            </DropShadow>
+         </effect></Button>
       <Label prefHeight="27.0" prefWidth="136.0" text="Checkout Page" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -33,10 +42,20 @@
             <font>
                <Font size="14.0" />
             </font></Label>
-         <TextField fx:id="skuTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="526.0">
+         <TextField fx:id="skuTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="526.0" promptText="SKU Number">
             <VBox.margin>
                <Insets bottom="20.0" />
-            </VBox.margin></TextField>
+            </VBox.margin>
+            <effect>
+               <Lighting diffuseConstant="1.18">
+                  <bumpInput>
+                     <Shadow />
+                  </bumpInput>
+                  <light>
+                     <Light.Distant />
+                  </light>
+               </Lighting>
+            </effect></TextField>
       </VBox>
       <HBox prefHeight="51.0" prefWidth="1102.0">
          <VBox prefWidth="550.0">
@@ -47,7 +66,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextField fx:id="nameTextField" disable="true" editable="false">
+            <TextField fx:id="nameTextField" disable="true" editable="false" promptText="Product Name">
                <VBox.margin>
                   <Insets bottom="20.0" right="10.0" />
                </VBox.margin></TextField>
@@ -60,7 +79,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextField fx:id="priceTextField" disable="true" editable="false">
+            <TextField fx:id="priceTextField" disable="true" editable="false" promptText="Price">
                <VBox.margin>
                   <Insets left="10.0" />
                </VBox.margin></TextField>
@@ -108,7 +127,14 @@
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font></Button>
+               </font>
+               <effect>
+                  <DropShadow height="37.37" radius="15.8475" width="28.02">
+                     <color>
+                        <Color red="1.0" green="0.7647058963775635" />
+                     </color>
+                  </DropShadow>
+               </effect></Button>
          </children>
       </HBox>
    </VBox>
