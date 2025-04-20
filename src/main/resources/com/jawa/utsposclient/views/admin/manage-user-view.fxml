@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageUserController">
@@ -22,10 +23,26 @@
       <font>
          <Font name="System Bold" size="14.0" />
       </font></Button>
-   <Label layoutX="92.0" layoutY="88.0" prefHeight="35.0" prefWidth="252.0" text="Welcome Back BOSS!" textFill="WHITE">
+   <Label layoutX="92.0" layoutY="88.0" prefHeight="35.0" prefWidth="252.0" text="Welcome Back BOSS!">
       <font>
-         <Font size="24.0" />
-      </font></Label>
+         <Font name="System Bold" size="24.0" />
+      </font>
+      <textFill>
+         <LinearGradient endY="1.0" startX="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="1.0" green="1.0" blue="1.0" />
+                  </color>
+               </Stop>
+            </stops>
+         </LinearGradient>
+      </textFill></Label>
    <Label layoutX="92.0" layoutY="122.0" prefHeight="20.0" prefWidth="204.0" text="Let's Manage your Employes" textFill="WHITE">
       <font>
          <Font size="14.0" />

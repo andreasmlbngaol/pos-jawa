@@ -10,10 +10,13 @@
       <padding>
          <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
       </padding>
-      <Button mnemonicParsing="false" onAction="#onBackToHome" style="-fx-background-color: #e8b323;" text="Back" textFill="WHITE">
+      <Button mnemonicParsing="false" onAction="#onBackToHome" prefHeight="36.0" prefWidth="65.0" style="-fx-background-color: #e8b323;" text="Back" textFill="WHITE">
          <VBox.margin>
             <Insets bottom="20.0" top="10.0" />
-         </VBox.margin></Button>
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
       <Label prefHeight="27.0" prefWidth="136.0" text="Checkout Page" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -26,7 +29,10 @@
          <Label text="SKU" textFill="WHITE">
             <VBox.margin>
                <Insets bottom="10.0" />
-            </VBox.margin></Label>
+            </VBox.margin>
+            <font>
+               <Font size="14.0" />
+            </font></Label>
          <TextField fx:id="skuTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="526.0">
             <VBox.margin>
                <Insets bottom="20.0" />
@@ -37,7 +43,10 @@
             <Label text="Name" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="10.0" />
-               </VBox.margin></Label>
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
             <TextField fx:id="nameTextField" disable="true" editable="false">
                <VBox.margin>
                   <Insets bottom="20.0" right="10.0" />
@@ -47,7 +56,10 @@
             <Label text="Harga" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" />
-               </VBox.margin></Label>
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
             <TextField fx:id="priceTextField" disable="true" editable="false">
                <VBox.margin>
                   <Insets left="10.0" />
@@ -66,7 +78,10 @@
          <Label text="Total" textFill="WHITE">
             <HBox.margin>
                <Insets right="10.0" top="20.0" />
-            </HBox.margin></Label>
+            </HBox.margin>
+            <font>
+               <Font size="14.0" />
+            </font></Label>
          <TextField fx:id="totalPriceTextField" prefHeight="26.0" prefWidth="219.0">
             <HBox.margin>
                <Insets top="20.0" />
@@ -76,12 +91,25 @@
          <Label text="Yang dibayar" textFill="WHITE">
             <HBox.margin>
                <Insets right="10.0" top="20.0" />
-            </HBox.margin></Label>
+            </HBox.margin>
+            <font>
+               <Font size="14.0" />
+            </font></Label>
          <TextField fx:id="paidTextField" prefHeight="26.0" prefWidth="219.0">
             <HBox.margin>
                <Insets top="20.0" />
             </HBox.margin></TextField>
       </HBox>
-      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onExecuteTransaction" style="-fx-background-color: #e8b323;" text="Shadow Power! Execute!" textFill="WHITE" />
+      <HBox prefHeight="43.0" prefWidth="1070.0">
+         <children>
+            <Button alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onExecuteTransaction" prefHeight="31.0" prefWidth="113.0" style="-fx-background-color: #e8b323;" text="Shadow Power! Execute!" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="963.0" top="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+         </children>
+      </HBox>
    </VBox>
 </AnchorPane>
