@@ -24,7 +24,7 @@
              <TableColumn fx:id="usernameColumn" minWidth="0.0" prefWidth="237.79998779296875" style="-fx-alignment: CENTER;" text="%username_header" />
              <TableColumn fx:id="nameColumn" prefWidth="312.60003662109375" style="-fx-alignment: CENTER;" text="%name_header" />
              <TableColumn fx:id="roleColumn" prefWidth="108.20001220703125" style="-fx-alignment: CENTER;" text="%role_header" />
-             <TableColumn fx:id="actionColumn" prefWidth="300.199951171875" style="-fx-alignment: CENTER;" text="%action_header" />
+             <TableColumn fx:id="actionColumn" prefWidth="304.800048828125" style="-fx-alignment: CENTER;" text="%action_header" />
          </columns>
      </TableView>
      <Button layoutX="839.0" layoutY="545.0" mnemonicParsing="false" onAction="#onShowAddCashierDialog" prefHeight="38.0" prefWidth="242.0" style="-fx-background-color: #e8b323;" text="%show_add_cashier_dialog_button" textFill="WHITE">
@@ -43,7 +43,7 @@
          <Font name="System Bold" size="24.0" />
       </font>
       <textFill>
-         <LinearGradient endY="1.0" startX="1.0">
+         <LinearGradient startX="1.0">
             <stops>
                <Stop>
                   <color>

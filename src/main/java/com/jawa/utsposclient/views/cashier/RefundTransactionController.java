@@ -6,6 +6,7 @@ import com.jawa.utsposclient.dto.RefundTransaction;
 import com.jawa.utsposclient.dto.TransactionItem;
 import com.jawa.utsposclient.repo.TransactionRepository;
 import com.jawa.utsposclient.utils.DateUtils;
+import com.jawa.utsposclient.utils.FramelessStyledAlert;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -70,6 +71,8 @@ public class RefundTransactionController extends CashierController {
             private final Button refundButton = new Button("Refund");
 
             {
+                refundButton.setStyle("-fx-background-color: #af140b; -fx-text-fill: white;");
+
                 refundButton.setOnAction(event -> {
                     TransactionItem item = getTableView().getItems().get(getIndex());
                     addItemToRefund(item);
@@ -125,12 +128,12 @@ public class RefundTransactionController extends CashierController {
             PurchaseTransaction trx = TransactionRepository.getPurchaseTransactionById(transactionId);
             boolean exist = TransactionRepository.isRefundTransactionExist(transactionId);
             if(exist) {
-                showAlert("Transaction with ID: " + transactionId + " is already refunded.");
+                FramelessStyledAlert.show("Already refunded", "Transaction with ID: " + transactionId + " is already refunded.");
                 return;
             }
 
             if (trx == null) {
-                showAlert("Transaction not found.");
+                FramelessStyledAlert.show("404 Not Found", "Transaction not found.");
                 return;
             }
 
@@ -141,7 +144,7 @@ public class RefundTransactionController extends CashierController {
             originalTable.setItems(originalItems);
 
         } catch (NumberFormatException e) {
-            showAlert("Invalid transaction ID.");
+            FramelessStyledAlert.show("400 Bad Request", "Invalid transaction ID.");
         }
     }
 
@@ -168,7 +171,7 @@ public class RefundTransactionController extends CashierController {
     @FXML
     private void onExecuteRefund() {
         if (refundItems.isEmpty()) {
-            showAlert("No items selected for refund.");
+            FramelessStyledAlert.show("No Item", "No item selected for refund.");
             return;
         }
 
@@ -177,9 +180,13 @@ public class RefundTransactionController extends CashierController {
             PurchaseTransaction originalTransaction = TransactionRepository.getPurchaseTransactionById(transactionId);
 
             if (originalTransaction == null) {
-                showAlert("Original transaction not found.");
+                FramelessStyledAlert.show("No Transaction", "No transaction found with ID: " + transactionId + "." );
                 return;
             }
+
+            boolean confirmed = FramelessStyledAlert.showConfirmation("Refund?", "Are you sure you want to refund this transaction?");
+
+            if(!confirmed) return;
 
             RefundTransaction refundTransaction = new RefundTransaction();
             refundTransaction.setUser(originalTransaction.getUser());
@@ -206,11 +213,11 @@ public class RefundTransactionController extends CashierController {
             // Proses transaksi via method Payable
             var id = refundTransaction.processTransactionAndGetId();
             LogsDao.createRefundTransaction(user.getId(), id);
-            showAlert("Refund successful!");
+            FramelessStyledAlert.show("Success", "Refund success! Transaction ID: " + id);
             resetForm();
 
         } catch (NumberFormatException e) {
-            showAlert("Invalid transaction ID.");
+            FramelessStyledAlert.show("Invalid ID", "Invalid transaction ID.");
         }
     }
 
@@ -225,11 +232,5 @@ public class RefundTransactionController extends CashierController {
         refundItems.clear();
         originalTable.getItems().clear();
         refundTable.getItems().clear();
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText(message);
-        alert.show();
     }
 }

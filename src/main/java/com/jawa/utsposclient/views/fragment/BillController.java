@@ -28,7 +28,7 @@ public class BillController extends Controller {
         System.out.println(transaction.getId());
         transactionIdLabel.setText("#" + transaction.getId());
         var cashier = transaction.getUser();
-        cashierLabel.setText(String.format("%s (%s)", cashier.getName(), cashier.getUsername()));
+        cashierLabel.setText(String.format(cashier.getName()));
         dateLabel.setText(DateUtils.formatDateTime(transaction.getCreatedAt()));
 
         billTable.getItems().setAll(transaction.getItems());

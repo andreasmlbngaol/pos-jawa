@@ -27,36 +27,35 @@
             <columns>
                 <TableColumn fx:id="productIdColumn" prefWidth="75.0" style="-fx-alignment: CENTER;" text="id" />
                 <TableColumn fx:id="skuColumn" prefWidth="151.1999969482422" style="-fx-alignment: CENTER;" text="sku" />
-                <TableColumn fx:id="nameColumn" prefWidth="282.3999786376953" text="name" style="-fx-alignment: CENTER_LEFT;"  />
-                <TableColumn fx:id="priceColumn" prefWidth="143.5999755859375" text="price" style="-fx-alignment: CENTER_RIGHT;"  />
+                <TableColumn fx:id="nameColumn" prefWidth="282.3999786376953" style="-fx-alignment: CENTER_LEFT;" text="name" />
+                <TableColumn fx:id="priceColumn" prefWidth="143.5999755859375" style="-fx-alignment: CENTER_RIGHT;" text="price" />
                 <TableColumn fx:id="typeColumn" prefWidth="180.0" style="-fx-alignment: CENTER;" text="type" />
-                <TableColumn fx:id="actionColumn" prefWidth="192.199951171875" style="-fx-alignment: CENTER;" text="action" />
+                <TableColumn fx:id="actionColumn" prefWidth="202.800048828125" style="-fx-alignment: CENTER;" text="action" />
             </columns>
          <VBox.margin>
             <Insets left="30.0" right="30.0" />
          </VBox.margin>
         </TableView>
-      <HBox alignment="CENTER_RIGHT">
-         <VBox.margin>
-            <Insets left="30.0" top="30.0" />
-         </VBox.margin>
-         <children>
-              <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" prefHeight="42.0" prefWidth="108.0" style="-fx-background-color: #e8b323;" text="Add Product" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <effect>
-                  <DropShadow height="35.04" radius="17.02" width="35.04">
-                     <color>
-                        <Color red="1.0" green="0.7647058963775635" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <HBox.margin>
-                  <Insets right="30.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
+        <HBox alignment="CENTER_RIGHT">
+            <VBox.margin>
+                <Insets left="30.0" top="30.0"/>
+            </VBox.margin>
+            <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" prefHeight="42.0" prefWidth="108.0"
+                    style="-fx-background-color: #e8b323;" text="Add Product" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="12.0"/>
+                </font>
+                <effect>
+                    <DropShadow height="35.04" radius="17.02" width="35.04">
+                        <color>
+                            <Color red="1.0" green="0.7647058963775635"/>
+                        </color>
+                    </DropShadow>
+                </effect>
+                <HBox.margin>
+                    <Insets right="30.0"/>
+                </HBox.margin>
+          </Button>
+        </HBox>
     </VBox>
 </AnchorPane>

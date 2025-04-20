@@ -6,6 +6,7 @@ import com.jawa.utsposclient.dto.PurchaseTransaction;
 import com.jawa.utsposclient.dto.TransactionItem;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.repo.ProductRepository;
+import com.jawa.utsposclient.utils.FramelessStyledAlert;
 import com.jawa.utsposclient.utils.StringUtils;
 import com.jawa.utsposclient.views.fragment.BillController;
 import javafx.beans.property.SimpleObjectProperty;
@@ -116,6 +117,7 @@ public class PurchaseTransactionController extends CashierController {
                     updateTableAndTotal();
                     skuTextField.clear();
                 } else {
+                    FramelessStyledAlert.show("404 Not Found", "Product not found!");
                     nameTextField.clear();
                     priceTextField.clear();
                     skuTextField.requestFocus();
@@ -135,15 +137,16 @@ public class PurchaseTransactionController extends CashierController {
         var total = getGrandTotal();
         if(total <= 0) return;
 
-        Alert alert;
         try {
             var paid = Double.parseDouble(paidTextField.getText());
 
             var change = paid - total;
             if (change < 0) {
-                alert = new Alert(Alert.AlertType.ERROR, "Paid is less than total price!");
-                alert.showAndWait();
+                FramelessStyledAlert.show("Invalid Paid", "Paid is less than total price!");
             } else {
+                var confirmed = FramelessStyledAlert.showConfirmation("Confirm?", "Are you sure you want to proceed?");
+                if (!confirmed) return;
+
                 var transaction = new PurchaseTransaction();
                 transaction.setUser(user);
                 transaction.setTotalAmount(total);
@@ -176,8 +179,7 @@ public class PurchaseTransactionController extends CashierController {
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
-            alert = new Alert(Alert.AlertType.ERROR, "Insert valid paid nominal!");
-            alert.showAndWait();
+            FramelessStyledAlert.show("Invalid Paid", "Insert valid paid nominal!");
         }
 
     }

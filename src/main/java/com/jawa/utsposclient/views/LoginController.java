@@ -4,9 +4,9 @@ import com.jawa.utsposclient.dao.LogsDao;
 import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.repo.AuthRepository;
 import com.jawa.utsposclient.enums.AppScene;
+import com.jawa.utsposclient.utils.FramelessStyledAlert;
 import com.jawa.utsposclient.utils.JawaAuth;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 
@@ -49,8 +49,8 @@ public class LoginController extends Controller {
                     switchScene(AppScene.CASHIER_HOME);
                 }
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Username atau password salah!");
-                alert.showAndWait();
+//                JavaFXExt.showStyledAlert(Alert.AlertType.ERROR, "Login Failed", "Username atau password salah!");
+                FramelessStyledAlert.show("Login Failed", "Username atau Password salah!");
             }
         } catch (IOException | RuntimeException e) {
             throw new RuntimeException(e);

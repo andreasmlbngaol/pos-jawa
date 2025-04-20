@@ -58,9 +58,9 @@
         <Label style="-fx-font-weight: bold;" text="Transaction Detail:" textFill="WHITE" />
         <TableView fx:id="billTable" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="250.0">
             <columns>
-                <TableColumn fx:id="itemNameColumn" prefWidth="146.00000286102295" text="Item" />
-                <TableColumn fx:id="itemQuantityColumn" prefWidth="34.79998779296875" text="Qty" />
-                <TableColumn fx:id="itemPriceColumn" prefWidth="97.59999084472656" text="Harga" />
+                <TableColumn fx:id="itemNameColumn" editable="false" prefWidth="139.40002477169037" sortable="false" style="-fx-alignment: CENTER_LEFT;" text="Item" />
+                <TableColumn fx:id="itemQuantityColumn" editable="false" prefWidth="26.4000244140625" sortable="false" style="-fx-alignment: CENTER;" text="Qty" />
+                <TableColumn fx:id="itemPriceColumn" editable="false" prefWidth="110.39996337890625" sortable="false" style="-fx-alignment: CENTER_RIGHT;" text="Harga" />
             </columns>
         </TableView>
         <Separator />
@@ -68,15 +68,16 @@
         <!-- Total -->
         <HBox alignment="CENTER_RIGHT" spacing="10">
             <Label style="-fx-font-weight: bold;" text="Total:" textFill="WHITE" />
-            <Label fx:id="totalLabel" alignment="CENTER_RIGHT" prefWidth="90.0" text="Rp0" textAlignment="RIGHT" textFill="WHITE" />
+            <Label fx:id="totalLabel" alignment="CENTER_RIGHT" prefWidth="100.0" text="Rp0" textAlignment="RIGHT" textFill="WHITE" />
         </HBox>
 
         <!-- Paid -->
 
         <HBox alignment="CENTER_RIGHT" spacing="10">
             <Label style="-fx-font-weight: bold;" text="Paid:" textFill="WHITE" />
-            <Label fx:id="paidLabel" alignment="CENTER_RIGHT" prefWidth="90.0" text="Rp0" textFill="WHITE" />
+            <Label fx:id="paidLabel" alignment="CENTER_RIGHT" prefWidth="100.0" text="Rp0" textFill="WHITE" />
         </HBox>
+      <Separator layoutX="20.0" layoutY="148.0" />
 
         <!-- Change -->
 
@@ -85,7 +86,7 @@
             <HBox.margin>
                <Insets bottom="2.0" />
             </HBox.margin></Label>
-            <Label fx:id="changeLabel" alignment="CENTER_RIGHT" prefWidth="90.0" text="Rp0" textFill="WHITE" />
+            <Label fx:id="changeLabel" alignment="CENTER_RIGHT" prefWidth="100.0" text="Rp0" textFill="WHITE" />
         </HBox>
 
         <!-- Footer -->

@@ -7,7 +7,7 @@ import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.dto.User;
 import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.enums.AppScene;
-import com.jawa.utsposclient.utils.JavaFXExt;
+import com.jawa.utsposclient.utils.FramelessStyledAlert;
 import com.jawa.utsposclient.utils.JawaAuth;
 import com.jawa.utsposclient.utils.StringRes;
 import com.jawa.utsposclient.views.fragment.AddCashierDialogController;
@@ -56,12 +56,15 @@ public class ManageUserController extends AdminController {
             private final HBox container = new HBox(10, resetPasswordButton, deleteButton);
 
             {
+                resetPasswordButton.setStyle("-fx-background-color: #e8c123; -fx-text-fill: black;");
+                deleteButton.setStyle("-fx-background-color: #af140b; -fx-text-fill: white;");
+
                 resetPasswordButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     if(user.getRole() == Role.Cashier) {
                         LogsDao.resetPassword(admin.getId(), user.getId());
                         String otp = admin.resetPasswordAndGetOtp(user.getId());
-                        JavaFXExt.showCopyableAlert("", "", String.format("OTP: %s", otp));
+                        FramelessStyledAlert.showCopyable("OTP", String.format("OTP: %s", otp));
                     }
                 });
 
@@ -70,13 +73,15 @@ public class ManageUserController extends AdminController {
 
                     if(user.getRole() == Role.Cashier) {
                         LogsDao.deleteCashier(admin.getId(), user.getId());
-                        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this user?", ButtonType.YES, ButtonType.NO);
-                        confirm.showAndWait().ifPresent(response -> {
-                            if (response == ButtonType.YES) {
-                                admin.softDelete(user.getId());
-                                loadUsers();
-                            }
-                        });
+                        boolean confirmed = FramelessStyledAlert.showConfirmation(
+                            "Delete?",
+                            "Are you sure you want to delete this user?"
+                        );
+
+                        if (confirmed) {
+                            admin.softDelete(user.getId());
+                            loadUsers();
+                        }
                     }
                 });
 
@@ -127,12 +132,10 @@ public class ManageUserController extends AdminController {
             // Show the dialog and wait for the user to click Save or Cancel
             dialog.showAndWait().ifPresent(result -> {
                 if (result.getButtonData() == ButtonBar.ButtonData.OK_DONE) {
-
                     var otp = ((AddCashierDialogController) loader.getController()).onAddCashierAndGetOtp();
                     LogsDao.addCashier(admin.getId());
 
-                    JavaFXExt.showCopyableAlert("", "", String.format("OTP: %s", otp));
-                    System.out.println("Cashier added!");
+                    FramelessStyledAlert.showCopyable("OTP", String.format("OTP: %s", otp));
                 }
             });
 

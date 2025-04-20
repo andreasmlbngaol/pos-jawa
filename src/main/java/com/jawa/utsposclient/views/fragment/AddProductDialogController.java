@@ -40,6 +40,21 @@ public class AddProductDialogController extends Controller {
         List<ProductType> types = List.of(ProductType.values());
         typeComboBox.getItems().addAll(types);
 
+        typeComboBox.setCellFactory(cb -> new ListCell<>() {
+            @Override
+            protected void updateItem(ProductType item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : item.getDisplayName());
+            }
+        });
+        typeComboBox.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(ProductType item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : item.getDisplayName());
+            }
+        });
+
         typeComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             var itemCount = ProductsDao.getProductCountByType(newValue) + 1;
             skuTextField.setText(String.format("%s-%s", newValue.getSkuCode(), StringUtils.formatWithPrefix(itemCount)));

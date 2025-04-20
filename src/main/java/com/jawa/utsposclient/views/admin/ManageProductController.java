@@ -7,6 +7,7 @@ import com.jawa.utsposclient.dto.*;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.enums.ProductType;
 import com.jawa.utsposclient.repo.ProductRepository;
+import com.jawa.utsposclient.utils.FramelessStyledAlert;
 import com.jawa.utsposclient.utils.StringRes;
 import com.jawa.utsposclient.utils.StringUtils;
 import com.jawa.utsposclient.views.fragment.*;
@@ -15,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -64,7 +66,7 @@ public class ManageProductController extends AdminController {
 
             {
                 editButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
-                deleteButton.setStyle("-fx-background-color: #F44336; -fx-text-fill: white;");
+                deleteButton.setStyle("-fx-background-color: #af140b; -fx-text-fill: white;");
 
                 editButton.setOnAction(event -> {
                     Product product = getTableView().getItems().get(getIndex());
@@ -95,16 +97,17 @@ public class ManageProductController extends AdminController {
 
                 deleteButton.setOnAction(event -> {
                     Product product = getTableView().getItems().get(getIndex());
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete product?");
-                    alert.showAndWait().ifPresent(response -> {
-                        if (response == ButtonType.OK) {
-                            ProductRepository.softDelete(product.getId());
-                            LogsDao.deleteProduct(user.getId(), product.getId());
-                            System.out.println("Product deleted!");
-                            loadProducts();
-                        }
-                    });
+                    boolean confirmed = FramelessStyledAlert.showConfirmation("Delete?", "Are you sure you want to delete this product?");
+
+                    if (confirmed) {
+                        ProductRepository.softDelete(product.getId());
+                        LogsDao.deleteProduct(user.getId(), product.getId());
+                        FramelessStyledAlert.show("Delete success!", String.format("%s - %s deleted!", product.getSku(), product.getName()));
+                        loadProducts();
+                    }
                 });
+
+                container.setAlignment(Pos.CENTER);
             }
 
             @Override
@@ -135,11 +138,11 @@ public class ManageProductController extends AdminController {
 
             dialog.showAndWait().ifPresent(result -> {
                 if(result.getButtonData() == ButtonBar.ButtonData.OK_DONE) {
-
                     var id = ((AddProductDialogController) loader.getController()).onAddProductAndGetId();
                     LogsDao.addProduct(user.getId(), id);
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product added!");
-                    alert.showAndWait();
+
+                    FramelessStyledAlert.show("Add success!", String.format("Product ID: %s", id));
+
                     System.out.println("Product added!");
                 }
             });
@@ -179,9 +182,7 @@ public class ManageProductController extends AdminController {
                     }
                     LogsDao.updateProduct(user.getId(), product.getId());
 
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product updated!");
-                    alert.showAndWait();
-                    System.out.println("Product updated!");
+                    FramelessStyledAlert.show("Update success!", String.format("%s - %s updated!", product.getSku(), product.getName()));
                     loadProducts();
                 }
             });
