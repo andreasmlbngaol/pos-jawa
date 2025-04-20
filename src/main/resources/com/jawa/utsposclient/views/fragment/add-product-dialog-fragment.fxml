@@ -27,7 +27,7 @@
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="skuTextField">
+                    <TextField fx:id="skuTextField" promptText="Sku">
                   <VBox.margin>
                      <Insets left="20.0" right="20.0" top="10.0" />
                   </VBox.margin></TextField>
@@ -40,7 +40,7 @@
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="nameTextField">
+                    <TextField fx:id="nameTextField" promptText="Name">
                   <VBox.margin>
                      <Insets left="20.0" right="20.0" top="10.0" />
                   </VBox.margin></TextField>
@@ -53,7 +53,7 @@
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="priceTextField">
+                    <TextField fx:id="priceTextField" promptText="Price">
                   <VBox.margin>
                      <Insets left="20.0" right="20.0" top="10.0" />
                   </VBox.margin></TextField>
@@ -66,7 +66,7 @@
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <DatePicker fx:id="expiryDatePicker" prefHeight="26.0" prefWidth="212.0">
+                    <DatePicker fx:id="expiryDatePicker" prefHeight="26.0" prefWidth="212.0" promptText="dd/mm/yy">
                   <VBox.margin>
                      <Insets left="20.0" top="10.0" />
                   </VBox.margin></DatePicker>
@@ -79,7 +79,7 @@
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="urlTextField">
+                    <TextField fx:id="urlTextField" promptText="URL">
                   <VBox.margin>
                      <Insets left="20.0" right="20.0" top="10.0" />
                   </VBox.margin></TextField>
@@ -92,7 +92,7 @@
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="vendorTextField">
+                    <TextField fx:id="vendorTextField" promptText="Vendor Name">
                   <VBox.margin>
                      <Insets left="20.0" right="20.0" top="10.0" />
                   </VBox.margin></TextField>

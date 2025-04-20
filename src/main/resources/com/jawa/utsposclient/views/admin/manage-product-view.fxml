@@ -3,13 +3,17 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
     <VBox layoutY="4.0" prefHeight="620.0" prefWidth="1100.0">
         <Button mnemonicParsing="false" onAction="#onBackToHome" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #e8b323;" text="%back_button" textFill="WHITE">
          <VBox.margin>
             <Insets bottom="30.0" left="30.0" top="30.0" />
-         </VBox.margin></Button>
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
         <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0">
             <columns>
                 <TableColumn fx:id="productIdColumn" prefWidth="75.0" text="id" />
@@ -26,6 +30,9 @@
         <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" prefHeight="42.0" prefWidth="108.0" style="-fx-background-color: #e8b323;" text="Add Product" textFill="WHITE">
          <VBox.margin>
             <Insets left="30.0" top="30.0" />
-         </VBox.margin></Button>
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
     </VBox>
 </AnchorPane>
