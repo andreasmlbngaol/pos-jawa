@@ -60,25 +60,29 @@ public class ProductRepository {
         });
     }
 
-    public static void addProduct(Products product) {
-        Database.executeVoidTransaction(session -> {
+    public static Long addProductAndGetId(Products product) {
+        return Database.executeTransaction(session -> {
             switch (product.getType()) {
                 case NonPerishable -> {
                     var nonPerishable = (NonPerishableProducts) product;
                     session.persist(nonPerishable);
+                    return nonPerishable.getId();
                 }
                 case Perishable -> {
                     var perishable = (PerishableProducts) product;
                     session.persist(perishable);
+                    return perishable.getId();
                 }
 
                 case Digital -> {
                     var digital = (DigitalProducts) product;
                     session.persist(digital);
+                    return digital.getId();
                 }
                 default -> {
                     var bundle = (BundleProducts) product;
                     session.persist(bundle);
+                    return bundle.getId();
                 }
             }
         });

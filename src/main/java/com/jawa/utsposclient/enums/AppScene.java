@@ -21,6 +21,7 @@ public enum AppScene {
     EDIT_NON_PERISHABLE_DIALOG("fragment/edit-non-perishable-dialog-fragment", "Edit Non Perishable Product"),
     EDIT_BUNDLE_DIALOG("fragment/edit-bundle-dialog-fragment", "Edit Bundle Product"),
     EDIT_DIGITAL_DIALOG("fragment/edit-digital-dialog-fragment", "Edit Digital Product"),
+    PURCHASE_BILL("fragment/purchase-bill-jawa-people", "Purchase Bill")
 
     ;
 

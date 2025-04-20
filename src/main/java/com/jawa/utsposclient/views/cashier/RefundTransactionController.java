@@ -1,5 +1,6 @@
 package com.jawa.utsposclient.views.cashier;
 
+import com.jawa.utsposclient.dao.LogsDao;
 import com.jawa.utsposclient.dto.PurchaseTransaction;
 import com.jawa.utsposclient.dto.RefundTransaction;
 import com.jawa.utsposclient.dto.TransactionItem;
@@ -13,7 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class RefundTransactionController extends CashierController {
@@ -134,7 +135,7 @@ public class RefundTransactionController extends CashierController {
             }
 
             cashierNameTextField.setText(trx.getUser().getName());
-            createdAtTextField.setText(trx.getCreatedAt().toString());
+            createdAtTextField.setText(DateUtils.formatDateTime(trx.getCreatedAt()));
 
             originalItems.setAll(trx.getItems());
             originalTable.setItems(originalItems);
@@ -182,7 +183,7 @@ public class RefundTransactionController extends CashierController {
 
             RefundTransaction refundTransaction = new RefundTransaction();
             refundTransaction.setUser(originalTransaction.getUser());
-            refundTransaction.setCreatedAt(DateUtils.localDateToDate(LocalDate.now()));
+            refundTransaction.setCreatedAt(LocalDateTime.now());
             refundTransaction.setRefundReason("Customer returned item(s)");
 
             double total = 0;
@@ -203,8 +204,8 @@ public class RefundTransactionController extends CashierController {
             refundTransaction.setPurchaseTransaction(originalTransaction);
 
             // Proses transaksi via method Payable
-            refundTransaction.processTransaction();
-
+            var id = refundTransaction.processTransactionAndGetId();
+            LogsDao.createRefundTransaction(user.getId(), id);
             showAlert("Refund successful!");
             resetForm();
 

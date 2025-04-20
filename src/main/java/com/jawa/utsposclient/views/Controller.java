@@ -1,6 +1,7 @@
 package com.jawa.utsposclient.views;
 
 import com.jawa.utsposclient.MainApp;
+import com.jawa.utsposclient.dao.LogsDao;
 import com.jawa.utsposclient.dto.User;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
@@ -51,6 +52,7 @@ public class Controller {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
+            LogsDao.logout(user.getId());
             user.logout();
 
             try {

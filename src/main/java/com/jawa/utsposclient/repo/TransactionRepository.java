@@ -4,12 +4,12 @@ import com.jawa.utsposclient.dao.TransactionsDao;
 import com.jawa.utsposclient.dto.*;
 
 public class TransactionRepository {
-    public static void executePurchaseTransaction(PurchaseTransaction transaction) {
-        TransactionsDao.insertPurchaseTransaction(transaction);
+    public static Long executePurchaseTransaction(PurchaseTransaction transaction) {
+        return TransactionsDao.insertPurchaseTransaction(transaction);
     }
 
-    public static void executeRefundTransaction(RefundTransaction transaction) {
-        TransactionsDao.insertRefundTransaction(transaction);
+    public static Long executeRefundTransaction(RefundTransaction transaction) {
+        return TransactionsDao.insertRefundTransaction(transaction);
     }
 
     public static boolean isRefundTransactionExist(Long purchaseTransactionId) {

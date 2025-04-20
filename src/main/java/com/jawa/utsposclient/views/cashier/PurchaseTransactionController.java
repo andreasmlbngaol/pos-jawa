@@ -1,17 +1,25 @@
 package com.jawa.utsposclient.views.cashier;
 
+import com.jawa.utsposclient.MainApp;
+import com.jawa.utsposclient.dao.LogsDao;
 import com.jawa.utsposclient.dto.PurchaseTransaction;
 import com.jawa.utsposclient.dto.TransactionItem;
+import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.repo.ProductRepository;
-import com.jawa.utsposclient.utils.DateUtils;
 import com.jawa.utsposclient.utils.StringUtils;
+import com.jawa.utsposclient.views.fragment.BillController;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
-import java.time.LocalDate;
+import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class PurchaseTransactionController extends CashierController {
 
@@ -134,27 +142,44 @@ public class PurchaseTransactionController extends CashierController {
             var change = paid - total;
             if (change < 0) {
                 alert = new Alert(Alert.AlertType.ERROR, "Paid is less than total price!");
+                alert.showAndWait();
             } else {
                 var transaction = new PurchaseTransaction();
                 transaction.setUser(user);
                 transaction.setTotalAmount(total);
                 transaction.setPaidAmount(paid);
                 transaction.setChangeAmount(change);
-                transaction.setCreatedAt(DateUtils.localDateToDate(LocalDate.now()));
+                transaction.setCreatedAt(LocalDateTime.now());
                 transaction.setItems(productTable.getItems());
 
-                transaction.processTransaction();
+                var id = transaction.processTransactionAndGetId();
+                transaction.setId(id);
 
-                alert = new Alert(Alert.AlertType.INFORMATION, "Change: " + StringUtils.moneyFormat(change));
+                var bill = AppScene.PURCHASE_BILL;
+                FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(bill.getFxml()));
+                try {
+                    Parent root = loader.load();
+                    BillController billController = loader.getController();
+                    billController.setTransaction(transaction);
+
+                    Stage stage = new Stage();
+                    stage.setTitle(bill.getTitle());
+                    stage.setScene(new Scene(root));
+                    stage.show();
+
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                }
+                LogsDao.createPurchaseTransaction(user.getId(), id);
                 resetPurchase(); // ← Panggil setelah berhasil
 
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
             alert = new Alert(Alert.AlertType.ERROR, "Insert valid paid nominal!");
+            alert.showAndWait();
         }
 
-        alert.showAndWait();
     }
 
     private void resetPurchase() {

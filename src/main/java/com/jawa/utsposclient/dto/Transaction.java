@@ -1,13 +1,13 @@
 package com.jawa.utsposclient.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Transaction {
     private Long id;
     private User user;
     private double totalAmount;
-    private Date createdAt;
+    private LocalDateTime createdAt;
     private List<TransactionItem> items;
 
     public Long getId() {
@@ -34,11 +34,11 @@ public class Transaction {
         this.totalAmount = totalAmount;
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

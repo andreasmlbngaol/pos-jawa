@@ -49,7 +49,8 @@ public class Database {
                 TransactionItems.class,
                 PurchaseTransactions.class,
                 RefundTransactions.class,
-                UserSessions.class
+                UserSessions.class,
+                Logs.class
             );
 
             entities.forEach(config::addAnnotatedClass);

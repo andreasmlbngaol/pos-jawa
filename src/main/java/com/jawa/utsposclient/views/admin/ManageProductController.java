@@ -2,6 +2,7 @@ package com.jawa.utsposclient.views.admin;
 
 
 import com.jawa.utsposclient.MainApp;
+import com.jawa.utsposclient.dao.LogsDao;
 import com.jawa.utsposclient.dto.*;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.enums.ProductType;
@@ -98,6 +99,7 @@ public class ManageProductController extends AdminController {
                     alert.showAndWait().ifPresent(response -> {
                         if (response == ButtonType.OK) {
                             ProductRepository.softDelete(product.getId());
+                            LogsDao.deleteProduct(user.getId(), product.getId());
                             System.out.println("Product deleted!");
                             loadProducts();
                         }
@@ -133,8 +135,9 @@ public class ManageProductController extends AdminController {
 
             dialog.showAndWait().ifPresent(result -> {
                 if(result.getButtonData() == ButtonBar.ButtonData.OK_DONE) {
-                    ((AddProductDialogController) loader.getController()).onAddProduct();
 
+                    var id = ((AddProductDialogController) loader.getController()).onAddProductAndGetId();
+                    LogsDao.addProduct(user.getId(), id);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product added!");
                     alert.showAndWait();
                     System.out.println("Product added!");
@@ -174,6 +177,7 @@ public class ManageProductController extends AdminController {
                     if (controller instanceof ProductDialogController pdc) {
                         pdc.onUpdateProduct();
                     }
+                    LogsDao.updateProduct(user.getId(), product.getId());
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product updated!");
                     alert.showAndWait();

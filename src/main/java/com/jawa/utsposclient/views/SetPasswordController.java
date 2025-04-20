@@ -1,5 +1,6 @@
 package com.jawa.utsposclient.views;
 
+import com.jawa.utsposclient.dao.LogsDao;
 import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
@@ -41,6 +42,7 @@ public class SetPasswordController extends Controller {
         var user = JawaAuth.getInstance().getCurrent();
         if(password.getText().equals(confirmPassword.getText())) {
             JawaAuth.getInstance().getCurrent().setPassword(password.getText());
+            LogsDao.setPassword(user.getId());
 
             if(user.getRole() == Role.Admin) {
                 switchScene(AppScene.ADMIN_HOME);

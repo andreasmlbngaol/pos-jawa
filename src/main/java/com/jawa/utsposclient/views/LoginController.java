@@ -1,5 +1,6 @@
 package com.jawa.utsposclient.views;
 
+import com.jawa.utsposclient.dao.LogsDao;
 import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.repo.AuthRepository;
 import com.jawa.utsposclient.enums.AppScene;
@@ -38,6 +39,7 @@ public class LoginController extends Controller {
 
             if (user != null) {
                 JawaAuth.getInstance().login(user, JawaAuth.getInstance().getToken());
+                LogsDao.login(user.getId());
 
                 if(user.isMustChangePassword()) {
                   switchScene(AppScene.SET_PASSWORD);

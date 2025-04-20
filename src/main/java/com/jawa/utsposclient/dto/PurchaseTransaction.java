@@ -33,6 +33,10 @@ public class PurchaseTransaction extends Transaction implements Payable {
         this.serializeTransaction();
     }
 
+    public Long processTransactionAndGetId() {
+        return TransactionRepository.executePurchaseTransaction(this);
+    }
+
     @Override
     public void serializeTransaction() {
         TransactionRepository.executePurchaseTransaction(this);

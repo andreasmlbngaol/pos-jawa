@@ -8,8 +8,8 @@ import com.jawa.utsposclient.entities.RefundTransactions;
 import com.jawa.utsposclient.entities.TransactionItems;
 
 public class TransactionsDao {
-    public static void insertPurchaseTransaction(PurchaseTransaction transaction) {
-        Database.executeVoidTransaction(session -> {
+    public static Long insertPurchaseTransaction(PurchaseTransaction transaction) {
+        return Database.executeTransaction(session -> {
             PurchaseTransactions transactionEntity = new PurchaseTransactions();
 
             transactionEntity.setUser(UsersDao.getUserEntityByUsername(transaction.getUser().getUsername()));
@@ -33,6 +33,7 @@ public class TransactionsDao {
 
             transactionEntity.setItems(items);
             session.persist(transactionEntity);
+            return transactionEntity.getId();
         });
     }
 
@@ -47,8 +48,8 @@ public class TransactionsDao {
         });
     }
 
-    public static void insertRefundTransaction(RefundTransaction transaction) {
-        Database.executeVoidTransaction(session -> {
+    public static Long insertRefundTransaction(RefundTransaction transaction) {
+        return Database.executeTransaction(session -> {
             RefundTransactions transactionEntity = new RefundTransactions();
 
             // Set data dasar transaksi
@@ -78,6 +79,7 @@ public class TransactionsDao {
 
             // Simpan ke DB
             session.persist(transactionEntity);
+            return transactionEntity.getId();
         });
     }
 

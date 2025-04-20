@@ -33,6 +33,10 @@ public class RefundTransaction extends Transaction implements Payable {
         this.serializeTransaction();
     }
 
+    public Long processTransactionAndGetId() {
+        return TransactionRepository.executeRefundTransaction(this);
+    }
+
     @Override
     public void serializeTransaction() {
         TransactionRepository.executeRefundTransaction(this);

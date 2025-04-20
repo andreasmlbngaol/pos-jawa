@@ -2,6 +2,7 @@ package com.jawa.utsposclient.views.admin;
 
 
 import com.jawa.utsposclient.MainApp;
+import com.jawa.utsposclient.dao.LogsDao;
 import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.dto.User;
 import com.jawa.utsposclient.enums.Role;
@@ -58,6 +59,7 @@ public class ManageUserController extends AdminController {
                 resetPasswordButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     if(user.getRole() == Role.Cashier) {
+                        LogsDao.resetPassword(admin.getId(), user.getId());
                         String otp = admin.resetPasswordAndGetOtp(user.getId());
                         JavaFXExt.showCopyableAlert("", "", String.format("OTP: %s", otp));
                     }
@@ -67,6 +69,7 @@ public class ManageUserController extends AdminController {
                     User user = getTableView().getItems().get(getIndex());
 
                     if(user.getRole() == Role.Cashier) {
+                        LogsDao.deleteCashier(admin.getId(), user.getId());
                         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this user?", ButtonType.YES, ButtonType.NO);
                         confirm.showAndWait().ifPresent(response -> {
                             if (response == ButtonType.YES) {
@@ -99,7 +102,8 @@ public class ManageUserController extends AdminController {
             String newName = event.getNewValue();
 
             if(newName != null && !newName.trim().isEmpty()) {
-                admin.changeName(user.getId(), newName);
+                LogsDao.updateCashierName(admin.getId(), user.getId(), newName.trim());
+                admin.changeName(user.getId(), newName.trim());
                 loadUsers();
             }
         });
@@ -125,6 +129,7 @@ public class ManageUserController extends AdminController {
                 if (result.getButtonData() == ButtonBar.ButtonData.OK_DONE) {
 
                     var otp = ((AddCashierDialogController) loader.getController()).onAddCashierAndGetOtp();
+                    LogsDao.addCashier(admin.getId());
 
                     JavaFXExt.showCopyableAlert("", "", String.format("OTP: %s", otp));
                     System.out.println("Cashier added!");

@@ -94,7 +94,7 @@ public class AddProductDialogController extends Controller {
     }
 
     @FXML
-    public void onAddProduct() {
+    public Long onAddProductAndGetId() {
         ProductType type = typeComboBox.getValue();
         String name = nameTextField.getText();
         String sku = skuTextField.getText();
@@ -111,7 +111,7 @@ public class AddProductDialogController extends Controller {
                 product.setPrice(price);
                 product.setAvailable(true);
                 product.setType(ProductType.NonPerishable);
-                ProductRepository.addProduct(product);
+                return ProductRepository.addProductAndGetId(product);
             }
             case Perishable -> {
                 PerishableProducts product = new PerishableProducts();
@@ -121,7 +121,7 @@ public class AddProductDialogController extends Controller {
                 product.setAvailable(true);
                 product.setType(ProductType.Perishable);
                 product.setExpiryDate(DateUtils.localDateToDate(expiryDate));
-                ProductRepository.addProduct(product);
+                return ProductRepository.addProductAndGetId(product);
             }
             case Digital -> {
                 DigitalProducts product = new DigitalProducts();
@@ -132,7 +132,7 @@ public class AddProductDialogController extends Controller {
                 product.setType(ProductType.Digital);
                 product.setUrl(url);
                 product.setVendorName(vendor);
-                ProductRepository.addProduct(product);
+                return ProductRepository.addProductAndGetId(product);
             }
             default -> {
                 BundleProducts product = new BundleProducts();
@@ -141,7 +141,7 @@ public class AddProductDialogController extends Controller {
                 product.setPrice(price);
                 product.setAvailable(true);
                 product.setType(ProductType.Bundle);
-                ProductRepository.addProduct(product);
+                var id = ProductRepository.addProductAndGetId(product);
 
                 for (BundleItem item : bundleItems) {
                     Products productEntity = ProductRepository.getProductEntityById(item.getProduct().getId());
@@ -158,7 +158,7 @@ public class AddProductDialogController extends Controller {
                         System.err.println("Product not found for SKU: " + item.getProduct().getSku());
                     }
                 }
-
+                return id;
             }
         }
     }
