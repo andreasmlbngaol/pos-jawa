@@ -3,8 +3,8 @@ package com.jawa.utsposclient.dto;
 import com.jawa.utsposclient.enums.ProductType;
 
 public class DigitalProduct extends Product {
-    private final String url;
-    private final String vendorName;
+    private String url;
+    private String vendorName;
 
     public DigitalProduct(
         Long id,
@@ -25,5 +25,13 @@ public class DigitalProduct extends Product {
 
     public String getVendorName() {
         return vendorName;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setVendorName(String vendorName) {
+        this.vendorName = vendorName;
     }
 }

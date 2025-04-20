@@ -5,7 +5,7 @@ import com.jawa.utsposclient.enums.ProductType;
 import java.time.LocalDate;
 
 public class PerishableProduct extends Product {
-    private final LocalDate expiryDate;
+    private LocalDate expiryDate;
 
     public PerishableProduct(
         Long id,
@@ -20,5 +20,9 @@ public class PerishableProduct extends Product {
 
     public LocalDate getExpiryDate() {
         return expiryDate;
+    }
+
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
     }
 }

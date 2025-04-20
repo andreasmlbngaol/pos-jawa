@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.EditDigitalDialogController">
+    <content>
+        <AnchorPane>
+            <VBox prefHeight="400.0" prefWidth="607.0">
+                <VBox>
+                    <Label text="SKU" />
+                    <TextField fx:id="skuTextField" disable="true" editable="false" />
+                </VBox>
+                <VBox layoutX="10.0" layoutY="10.0">
+                    <Label text="Name" />
+                    <TextField fx:id="nameTextField" />
+                </VBox>
+                <VBox layoutX="10.0" layoutY="53.0">
+                    <Label text="Price" />
+                    <TextField fx:id="priceTextField" />
+                </VBox>
+                <VBox layoutX="10.0" layoutY="96.0">
+                    <Label text="URL"/>
+                    <TextField fx:id="urlTextField"/>
+                </VBox>
+                <VBox layoutX="10.0" layoutY="140.0">
+                    <Label text="Vendor Name"/>
+                    <TextField fx:id="vendorTextField"/>
+                </VBox>
+            </VBox>
+        </AnchorPane>
+    </content>
+    <ButtonType buttonData="OK_DONE" text="%save_button" />
+    <ButtonType buttonData="CANCEL_CLOSE" text="%cancel_button" />
+</DialogPane>

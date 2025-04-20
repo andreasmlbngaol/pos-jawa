@@ -28,4 +28,12 @@ public class ProductsDao {
     public static Products getProductEntityById(Long id) {
         return Database.executeTransaction(session -> session.get(Products.class, id));
     }
+
+    public static void setProductUnavailable(Long id) {
+        Database.executeVoidTransaction(session -> {
+            var product = session.get(Products.class, id);
+            if(product == null) throw new IllegalArgumentException("Product not found");
+            product.setAvailable(false);
+        });
+    }
 }

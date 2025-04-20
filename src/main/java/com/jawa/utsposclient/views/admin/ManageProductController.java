@@ -2,19 +2,21 @@ package com.jawa.utsposclient.views.admin;
 
 
 import com.jawa.utsposclient.MainApp;
-import com.jawa.utsposclient.dto.Product;
+import com.jawa.utsposclient.dto.*;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.enums.ProductType;
 import com.jawa.utsposclient.repo.ProductRepository;
 import com.jawa.utsposclient.utils.StringRes;
 import com.jawa.utsposclient.utils.StringUtils;
-import com.jawa.utsposclient.views.fragment.AddProductDialogController;
+import com.jawa.utsposclient.views.fragment.*;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 
 public class ManageProductController extends AdminController {
     @FXML private TableView<Product> productTable;
@@ -22,7 +24,7 @@ public class ManageProductController extends AdminController {
     @FXML private TableColumn<Product, String> skuColumn;
     @FXML private TableColumn<Product, String> nameColumn;
     @FXML private TableColumn<Product, Double> priceColumn;
-    @FXML private TableColumn<Product, ProductType> typeColumn;
+    @FXML private TableColumn<Product, String> typeColumn;
     @FXML private TableColumn<Product, Void> actionColumn;
 
     private void loadProducts() {
@@ -32,7 +34,7 @@ public class ManageProductController extends AdminController {
 
     @FXML
     private void initialize() {
-        productTable.setEditable(true);
+        productTable.setEditable(false);
 
         productIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         skuColumn.setCellValueFactory(new PropertyValueFactory<>("sku"));
@@ -50,7 +52,69 @@ public class ManageProductController extends AdminController {
             }
         });
 
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        typeColumn.setCellValueFactory(cellData ->
+            new SimpleStringProperty(cellData.getValue().getType().getDisplayName())
+        );
+
+        actionColumn.setCellFactory(col -> new TableCell<>() {
+            private final Button editButton = new Button("Edit");
+            private final Button deleteButton = new Button("Delete");
+            private final HBox container = new HBox(10, editButton, deleteButton);
+
+            {
+                editButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+                deleteButton.setStyle("-fx-background-color: #F44336; -fx-text-fill: white;");
+
+                editButton.setOnAction(event -> {
+                    Product product = getTableView().getItems().get(getIndex());
+                    ProductType type = product.getType();
+
+                    switch (type) {
+                        case Perishable -> showEditDialog(
+                            (PerishableProduct) product,
+                            AppScene.EDIT_PERISHABLE_DIALOG,
+                            EditPerishableDialogController.class,
+                            (p, c) -> c.setProduct(p)
+                        );
+                        case NonPerishable -> showEditDialog(
+                            (NonPerishableProduct) product,
+                            AppScene.EDIT_NON_PERISHABLE_DIALOG,
+                            EditNonPerishableDialogController.class,
+                            (p, c) -> c.setProduct(p)
+                        );
+                        case Digital -> showEditDialog(
+                            (DigitalProduct) product,
+                            AppScene.EDIT_DIGITAL_DIALOG,
+                            EditDigitalDialogController.class,
+                            (p, c) -> c.setProduct(p)
+                        );
+                        case Bundle -> showEditBundleDialog(product);
+                    }
+                });
+
+                deleteButton.setOnAction(event -> {
+                    Product product = getTableView().getItems().get(getIndex());
+                    ProductRepository.softDelete(product.getId());
+                    loadProducts();
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete product?");
+                    alert.showAndWait().ifPresent(response -> {
+                        if (response == ButtonType.OK) {
+                            System.out.println("Product deleted!");
+                        }
+                    });
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(container);
+                }
+            }
+        });
 
         loadProducts();
     }
@@ -82,4 +146,50 @@ public class ManageProductController extends AdminController {
             System.err.println(e.getMessage());
         }
     }
+
+    private void showEditBundleDialog(Product product) {
+        var bundle = (BundleProduct) product;
+    }
+
+    private <T extends Product, C> void showEditDialog(
+        T product,
+        AppScene dialogScene,
+        Class<C> controllerClass,
+        DialogControllerInitializer<T, C> initializer
+    ) {
+        try {
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(dialogScene.getFxml()));
+            loader.setResources(StringRes.getBundle());
+            DialogPane dialogPane = loader.load();
+
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setDialogPane(dialogPane);
+            dialog.setTitle(dialogScene.getTitle());
+
+            C controller = loader.getController();
+            initializer.init(product, controller);
+
+            dialog.showAndWait().ifPresent(result -> {
+                if (result.getButtonData() == ButtonBar.ButtonData.OK_DONE) {
+                    if (controller instanceof ProductDialogController pdc) {
+                        pdc.onUpdateProduct();
+                    }
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product updated!");
+                    alert.showAndWait();
+                    System.out.println("Product updated!");
+                    loadProducts();
+                }
+            });
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+    }
+
+    @FunctionalInterface
+    private interface DialogControllerInitializer<T, C> {
+        void init(T product, C controller);
+    }
+
 }
+

@@ -17,6 +17,10 @@ public enum AppScene {
     CASHIER_HOME("cashier/cashier-home-view", "Cashier Home"),
     PURCHASE_TRANSACTION("cashier/purchase-transaction-view", "Purchase Transaction"),
     REFUND_TRANSACTION("cashier/refund-transaction-view", "Refund Transaction"),
+    EDIT_PERISHABLE_DIALOG("fragment/edit-perishable-dialog-fragment", "Edit Perishable Product"),
+    EDIT_NON_PERISHABLE_DIALOG("fragment/edit-non-perishable-dialog-fragment", "Edit Non Perishable Product"),
+    EDIT_BUNDLE_DIALOG("fragment/edit-bundle-dialog-fragment", "Edit Bundle Product"),
+    EDIT_DIGITAL_DIALOG("fragment/edit-digital-dialog-fragment", "Edit Digital Product"),
 
     ;
 

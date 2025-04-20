@@ -14,13 +14,48 @@ public class ProductRepository {
         return Database.executeTransaction(session -> {
             List<Products> productEntities = session.createQuery("FROM Products p WHERE p.isAvailable = true ORDER BY p.id", Products.class).getResultList();
             return productEntities.stream()
-                .map(product -> new Product(
-                    product.getId(),
-                    product.getName(),
-                    product.getSku(),
-                    product.getPrice(),
-                    product.getType()
-                ))
+                .map(product -> {
+                    switch (product.getType()) {
+                        case Perishable -> {
+                            var perishable = (PerishableProducts) product;
+                            var expiryDate = DateUtils.dateToLocalDate(perishable.getExpiryDate());
+                            return new PerishableProduct(
+                                product.getId(),
+                                product.getName(),
+                                product.getSku(),
+                                product.getPrice(),
+                                expiryDate
+                            );
+                        }
+                        case NonPerishable -> {
+                            return new NonPerishableProduct(
+                                product.getId(),
+                                product.getName(),
+                                product.getSku(),
+                                product.getPrice()
+                            );
+                        }
+                        case Digital -> {
+                            var digital = (DigitalProducts) product;
+                            return new DigitalProduct(
+                                product.getId(),
+                                product.getName(),
+                                product.getSku(),
+                                product.getPrice(),
+                                digital.getUrl(),
+                                digital.getVendorName()
+                            );
+                        }
+                        default -> {
+                            return new BundleProduct(
+                                product.getId(),
+                                product.getName(),
+                                product.getSku(),
+                                product.getPrice()
+                            );
+                        }
+                    }
+                })
                 .collect(Collectors.toList());
         });
     }
@@ -79,5 +114,39 @@ public class ProductRepository {
                 return new BundleProduct(id, name, sku, price);
             }
         }
+    }
+
+    public static void softDelete(Long id) {
+        ProductsDao.setProductUnavailable(id);
+    }
+
+    public static void editPerishableProduct(PerishableProduct product) {
+        Database.executeVoidTransaction(session -> {
+            var perishable = session.get(PerishableProducts.class, product.getId());
+            if(perishable == null) throw new IllegalArgumentException("Product not found");
+            perishable.setName(product.getName());
+            perishable.setPrice(product.getPrice());
+            perishable.setExpiryDate(DateUtils.localDateToDate(product.getExpiryDate()));
+        });
+    }
+
+    public static void editNonPerishableProduct(NonPerishableProduct product) {
+        Database.executeVoidTransaction(session -> {
+            var nonPerishable = session.get(NonPerishableProducts.class, product.getId());
+            if(nonPerishable == null) throw new IllegalArgumentException("Product not found");
+            nonPerishable.setName(product.getName());
+            nonPerishable.setPrice(product.getPrice());
+        });
+    }
+
+    public static void editDigitalProduct(DigitalProduct product) {
+        Database.executeVoidTransaction(session -> {
+            var digital = session.get(DigitalProducts.class, product.getId());
+            if(digital == null) throw new IllegalArgumentException("Product not found");
+            digital.setName(product.getName());
+            digital.setPrice(product.getPrice());
+            digital.setUrl(product.getUrl());
+            digital.setVendorName(product.getVendorName());
+        });
     }
 }

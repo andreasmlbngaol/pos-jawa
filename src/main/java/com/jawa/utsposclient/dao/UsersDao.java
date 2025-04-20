@@ -82,7 +82,7 @@ public class UsersDao {
     public static void updateName(Long id, String name) {
         Database.executeVoidTransaction(session -> {
             Users user = session.get(Users.class, id);
-            if(user != null) {
+                if(user != null) {
                 user.setName(name);
             } else {
                 throw new IllegalArgumentException("User not found");
