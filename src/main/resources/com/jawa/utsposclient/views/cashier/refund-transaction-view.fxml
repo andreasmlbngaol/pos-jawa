@@ -5,8 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.RefundTransactionController">
-   <VBox prefHeight="679.0" prefWidth="1100.0">
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.RefundTransactionController">
+   <VBox prefHeight="620.0" prefWidth="1100.0">
       <Button mnemonicParsing="false" onAction="#onBackToHome" prefHeight="33.0" prefWidth="71.0" style="-fx-background-color: #e8b323;" text="Back" textFill="WHITE">
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" top="20.0" />
@@ -22,37 +22,45 @@
             <VBox.margin>
                <Insets bottom="10.0" left="20.0" />
             </VBox.margin></Label>
-         <TextField fx:id="transactionIdTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="530.0" promptText="Transaction ID">
+         <TextField fx:id="transactionIdTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="518.0" promptText="Transaction ID">
             <VBox.margin>
                <Insets bottom="20.0" left="20.0" />
             </VBox.margin></TextField>
       </VBox>
-      <VBox layoutX="10.0" layoutY="36.0">
-         <Label text="Cashier" textFill="WHITE">
-            <VBox.margin>
-               <Insets bottom="10.0" left="20.0" />
-            </VBox.margin>
-            <font>
-               <Font size="14.0" />
-            </font></Label>
-         <TextField fx:id="cashierNameTextField" editable="false" maxWidth="-Infinity" prefHeight="26.0" prefWidth="530.0" promptText="Cashier">
-            <VBox.margin>
-               <Insets bottom="20.0" left="20.0" />
-            </VBox.margin></TextField>
-      </VBox>
-      <VBox layoutX="10.0" layoutY="79.0">
-         <Label text="Created At" textFill="WHITE">
-            <VBox.margin>
-               <Insets bottom="10.0" left="20.0" />
-            </VBox.margin>
-            <font>
-               <Font size="14.0" />
-            </font></Label>
-         <TextField fx:id="createdAtTextField" editable="false" maxWidth="-Infinity" prefHeight="20.0" prefWidth="529.0" promptText="Created At">
-            <VBox.margin>
-               <Insets bottom="20.0" left="20.0" />
-            </VBox.margin></TextField>
-      </VBox>
+      <HBox>
+         <children>
+            <VBox prefHeight="78.0" prefWidth="538.0">
+               <Label text="Cashier" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="cashierNameTextField" editable="false" maxWidth="-Infinity" prefHeight="26.0" prefWidth="530.0" promptText="Cashier">
+                  <VBox.margin>
+                     <Insets bottom="20.0" left="20.0" />
+                  </VBox.margin>
+               </TextField>
+            </VBox>
+            <VBox>
+               <Label text="Created At" textFill="WHITE">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="20.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="createdAtTextField" editable="false" maxWidth="-Infinity" prefHeight="20.0" prefWidth="529.0" promptText="Created At">
+                  <VBox.margin>
+                     <Insets bottom="20.0" left="20.0" />
+                  </VBox.margin>
+               </TextField>
+            </VBox>
+         </children>
+      </HBox>
       <HBox prefHeight="300.0" prefWidth="1100.0">
          <VBox>
             <Label text="Original" textFill="WHITE">
@@ -69,7 +77,7 @@
                   <TableColumn fx:id="originalPriceColumn" prefWidth="106.19998168945312" text="price per item" />
                   <TableColumn fx:id="originalQuantityColumn" prefWidth="51.4000244140625" text="quantity" />
                   <TableColumn fx:id="originalTotalColumn" prefWidth="54.600006103515625" text="total" />
-                  <TableColumn fx:id="originalActionColumn" prefWidth="132.59994506835938" text="action" />
+                  <TableColumn fx:id="originalActionColumn" prefWidth="104.79998168945315" text="action" />
                </columns>
                <VBox.margin>
                   <Insets left="20.0" right="5.0" top="10.0" />
@@ -87,7 +95,7 @@
                   <TableColumn fx:id="refundNameColumn" prefWidth="170.0" text="name" />
                   <TableColumn fx:id="refundPriceColumn" prefWidth="102.0" text="price per item" />
                   <TableColumn fx:id="refundQuantityColumn" prefWidth="89.0" text="quantity" />
-                  <TableColumn fx:id="refundTotalColumn" prefWidth="127.0" text="total" />
+                  <TableColumn fx:id="refundTotalColumn" prefWidth="109.60003051757815" text="total" />
                </columns>
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />

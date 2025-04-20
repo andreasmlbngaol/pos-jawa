@@ -94,12 +94,12 @@ public class ManageProductController extends AdminController {
 
                 deleteButton.setOnAction(event -> {
                     Product product = getTableView().getItems().get(getIndex());
-                    ProductRepository.softDelete(product.getId());
-                    loadProducts();
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete product?");
                     alert.showAndWait().ifPresent(response -> {
                         if (response == ButtonType.OK) {
+                            ProductRepository.softDelete(product.getId());
                             System.out.println("Product deleted!");
+                            loadProducts();
                         }
                     });
                 });

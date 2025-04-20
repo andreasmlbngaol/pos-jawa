@@ -97,6 +97,26 @@
                      <Insets left="20.0" right="20.0" top="10.0" />
                   </VBox.margin></TextField>
                 </VBox>
+                <VBox fx:id="bundleGroup" visible="false" managed="false">
+                    <Label text="Bundle Items" textFill="WHITE">
+                        <VBox.margin>
+                            <Insets left="20.0" top="20.0"/>
+                        </VBox.margin>
+                        <font>
+                            <Font size="13.0"/>
+                        </font>
+                    </Label>
+                    <HBox alignment="CENTER_LEFT" spacing="10.0" fx:id="selectedItemsContainer">
+                        <VBox.margin>
+                            <Insets left="20.0" top="10.0"/>
+                        </VBox.margin>
+                    </HBox>
+                    <Button text="+ Add Item" onAction="#onAddBundleItemClicked" style="-fx-background-color: #e8b323;">
+                        <VBox.margin>
+                            <Insets left="20.0" top="10.0"/>
+                        </VBox.margin>
+                    </Button>
+                </VBox>
             </VBox>
         </AnchorPane>
     </content>

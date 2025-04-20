@@ -1,21 +1,21 @@
 package com.jawa.utsposclient.views.fragment;
 
 import com.jawa.utsposclient.dao.ProductsDao;
-import com.jawa.utsposclient.entities.DigitalProducts;
-import com.jawa.utsposclient.entities.NonPerishableProducts;
-import com.jawa.utsposclient.entities.PerishableProducts;
+import com.jawa.utsposclient.dto.BundleItem;
+import com.jawa.utsposclient.dto.Product;
+import com.jawa.utsposclient.entities.*;
 import com.jawa.utsposclient.enums.ProductType;
 import com.jawa.utsposclient.repo.ProductRepository;
 import com.jawa.utsposclient.utils.DateUtils;
 import com.jawa.utsposclient.utils.StringUtils;
 import com.jawa.utsposclient.views.Controller;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddProductDialogController extends Controller {
@@ -29,6 +29,11 @@ public class AddProductDialogController extends Controller {
     @FXML private DatePicker expiryDatePicker;
     @FXML private TextField urlTextField;
     @FXML private TextField vendorTextField;
+    @FXML private VBox bundleGroup;
+    @FXML private HBox selectedItemsContainer;
+
+    private final List<BundleItem> bundleItems = new ArrayList<>();
+
 
 
     @FXML private void initialize() {
@@ -47,6 +52,8 @@ public class AddProductDialogController extends Controller {
                     urlGroup.setManaged(false);
                     vendorGroup.setVisible(false);
                     vendorGroup.setManaged(false);
+                    bundleGroup.setVisible(false);
+                    bundleGroup.setManaged(false);
                 }
                 case Perishable -> {
                     expiryDateGroup.setVisible(true);
@@ -55,6 +62,8 @@ public class AddProductDialogController extends Controller {
                     urlGroup.setManaged(false);
                     vendorGroup.setVisible(false);
                     vendorGroup.setManaged(false);
+                    bundleGroup.setVisible(false);
+                    bundleGroup.setManaged(false);
                 }
                 case Digital -> {
                     expiryDateGroup.setVisible(false);
@@ -63,6 +72,8 @@ public class AddProductDialogController extends Controller {
                     urlGroup.setManaged(true);
                     vendorGroup.setVisible(true);
                     vendorGroup.setManaged(true);
+                    bundleGroup.setVisible(false);
+                    bundleGroup.setManaged(false);
                 }
                 default -> {
                     expiryDateGroup.setVisible(false);
@@ -71,6 +82,8 @@ public class AddProductDialogController extends Controller {
                     urlGroup.setManaged(false);
                     vendorGroup.setVisible(false);
                     vendorGroup.setManaged(false);
+                    bundleGroup.setVisible(true);
+                    bundleGroup.setManaged(true);
                 }
             }
         });
@@ -122,8 +135,82 @@ public class AddProductDialogController extends Controller {
                 ProductRepository.addProduct(product);
             }
             default -> {
+                BundleProducts product = new BundleProducts();
+                product.setName(name);
+                product.setSku(sku);
+                product.setPrice(price);
+                product.setAvailable(true);
+                product.setType(ProductType.Bundle);
+                ProductRepository.addProduct(product);
+
+                for (BundleItem item : bundleItems) {
+                    Products productEntity = ProductRepository.getProductEntityById(item.getProduct().getId());
+
+                    if (productEntity != null) {
+                        BundleItems bundleItemEntity = new BundleItems();
+                        bundleItemEntity.setBundleProduct(product);
+                        bundleItemEntity.setProduct(productEntity);
+                        bundleItemEntity.setQuantity(item.getQuantity());
+
+                        ProductRepository.addBundleItem(bundleItemEntity);
+                    } else {
+                        // Optional: kasih log kalau SKU tidak ditemukan
+                        System.err.println("Product not found for SKU: " + item.getProduct().getSku());
+                    }
+                }
 
             }
+        }
+    }
+
+    @FXML
+    private void onAddBundleItemClicked() {
+        List<Product> all = ProductRepository.getAllProducts().stream()
+            .filter(p -> p.getType() != ProductType.Bundle)
+            .toList();
+
+        ChoiceDialog<Product> dialog = new ChoiceDialog<>(all.isEmpty() ? null : all.get(0), all);
+        dialog.setTitle("Select Product");
+        dialog.setHeaderText("Choose a product to add to the bundle");
+
+        dialog.showAndWait().ifPresent(selectedProduct -> {
+            TextInputDialog qtyDialog = new TextInputDialog("1");
+            qtyDialog.setTitle("Quantity");
+            qtyDialog.setHeaderText("Enter quantity for " + selectedProduct.getName());
+            qtyDialog.showAndWait().ifPresent(qtyStr -> {
+                try {
+                    int qty = Integer.parseInt(qtyStr);
+                    if (qty <= 0) throw new NumberFormatException();
+
+                    // Cek kalau produk udah ada
+                    var existing = bundleItems.stream()
+                        .filter(b -> b.getProduct().equals(selectedProduct))
+                        .findFirst();
+
+                    if (existing.isPresent()) {
+                        existing.get().setQuantity(existing.get().getQuantity() + qty);
+                    } else {
+                        bundleItems.add(new BundleItem(selectedProduct, qty));
+                    }
+
+                    updateSelectedItemsUI();
+                } catch (NumberFormatException e) {
+                    // handle invalid quantity input (optionally show alert)
+                }
+            });
+        });
+    }
+
+    private void updateSelectedItemsUI() {
+        selectedItemsContainer.getChildren().clear();
+        for (BundleItem item : bundleItems) {
+            Button btn = new Button(item.toString());
+            btn.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white;");
+            btn.setOnAction(e -> {
+                bundleItems.remove(item);
+                updateSelectedItemsUI();
+            });
+            selectedItemsContainer.getChildren().add(btn);
         }
     }
 

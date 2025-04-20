@@ -45,7 +45,7 @@ public abstract class Products {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toUpperCase().trim();
     }
 
     public String getSku() {

@@ -116,6 +116,10 @@ public class ProductRepository {
         }
     }
 
+    public static Products getProductEntityById(Long id) {
+        return Database.executeTransaction(session -> session.get(Products.class, id));
+    }
+
     public static void softDelete(Long id) {
         ProductsDao.setProductUnavailable(id);
     }
@@ -148,5 +152,9 @@ public class ProductRepository {
             digital.setUrl(product.getUrl());
             digital.setVendorName(product.getVendorName());
         });
+    }
+
+    public static void addBundleItem(BundleItems item) {
+        Database.executeVoidTransaction(session -> session.persist(item));
     }
 }

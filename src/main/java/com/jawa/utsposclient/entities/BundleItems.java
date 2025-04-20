@@ -33,4 +33,24 @@ public class BundleItems {
     public int getQuantity() {
         return quantity;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setBundleProduct(BundleProducts bundleProduct) {
+        this.bundleProduct = bundleProduct;
+    }
+
+    public void setProduct(Products product) {
+        this.product = product;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }
