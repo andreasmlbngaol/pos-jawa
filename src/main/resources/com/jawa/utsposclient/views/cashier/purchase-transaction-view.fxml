@@ -102,7 +102,7 @@
       </HBox>
       <HBox prefHeight="43.0" prefWidth="1070.0">
          <children>
-            <Button alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onExecuteTransaction" prefHeight="31.0" prefWidth="113.0" style="-fx-background-color: #e8b323;" text="Shadow Power! Execute!" textFill="WHITE">
+            <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onExecuteTransaction" prefHeight="31.0" prefWidth="113.0" style="-fx-background-color: #e8b323;" text="Charge" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets left="950.0" top="20.0" />
                </HBox.margin>
