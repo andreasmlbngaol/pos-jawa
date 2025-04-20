@@ -23,7 +23,7 @@
                </color>
             </DropShadow>
          </effect></Button>
-        <TableView fx:id="productTable" prefHeight="200.0" prefWidth="200.0">
+        <TableView fx:id="productTable" prefHeight="392.0" prefWidth="1059.0">
             <columns>
                 <TableColumn fx:id="productIdColumn" prefWidth="75.0" text="id" />
                 <TableColumn fx:id="skuColumn" prefWidth="151.1999969482422" text="sku" />
