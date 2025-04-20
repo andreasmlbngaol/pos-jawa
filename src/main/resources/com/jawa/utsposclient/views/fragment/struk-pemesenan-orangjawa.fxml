@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane prefHeight="466.0" prefWidth="300.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.StrukPemesenanOrangjawa">
+
+    <VBox alignment="TOP_CENTER" prefHeight="473.0" prefWidth="280.0" spacing="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <!-- Header -->
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="JAWA MARKET">
+         <textFill>
+            <LinearGradient endY="0.6363635993365085" startY="0.13257575757575757">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007680491551459294">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+        <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="255.0" style="-fx-font-size: 11px;" text="Universitas Sumatra Utara, Padang Bulan" textFill="WHITE" />
+        <Separator />
+
+        <!-- Info Kasir dan Tanggal -->
+        <HBox spacing="10">
+            <Label prefHeight="18.0" prefWidth="89.0" text="Transaction ID   :" textFill="WHITE" />
+         <Label prefHeight="18.0" prefWidth="123.0" text="01" textFill="WHITE" />
+            <Label fx:id="TransactionID" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label prefHeight="18.0" prefWidth="89.0" text="Cashier              :" textFill="WHITE" />
+         <Label prefHeight="18.0" prefWidth="145.0" text="vonzy" textFill="WHITE" />
+            <Label fx:id="kasirLabel" />
+        </HBox>
+        <HBox spacing="10">
+            <Label prefHeight="18.0" prefWidth="88.0" text="Date                  :" textFill="WHITE" />
+         <Label prefHeight="18.0" prefWidth="156.0" text="17 Agustus 1945" textFill="WHITE" />
+            <Label fx:id="tanggalLabel" />
+        </HBox>
+        <Separator />
+
+        <!-- Daftar Item -->
+        <Label style="-fx-font-weight: bold;" text="Detail Pemesanan:" textFill="WHITE" />
+        <TableView fx:id="tableStruk">
+            <columns>
+                <TableColumn fx:id="colItem" prefWidth="120" text="Item" />
+                <TableColumn fx:id="colQty" prefWidth="50" text="Qty" />
+                <TableColumn fx:id="colHarga" prefWidth="100" text="Harga" />
+            </columns>
+        </TableView>
+        <Separator />
+
+        <!-- Total -->
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Label style="-fx-font-weight: bold;" text="Total:" textFill="WHITE" />
+            <Label fx:id="totalLabel" text="Rp0" textFill="WHITE" />
+        </HBox>
+
+        <!-- Paid -->
+
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Label style="-fx-font-weight: bold;" text="Paid:" textFill="WHITE" />
+            <Label fx:id="PaidLabel" text="Rp0" textFill="WHITE" />
+        </HBox>
+
+        <!-- Change -->
+
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Label style="-fx-font-weight: bold;" text="Change:" textFill="WHITE">
+            <HBox.margin>
+               <Insets bottom="2.0" />
+            </HBox.margin></Label>
+            <Label fx:id="ChangeLabel" text="Rp0" textFill="WHITE" />
+        </HBox>
+
+        <!-- Footer -->
+        <Label style="-fx-font-size: 12px;" text="Terima kasih telah berbelanja!" textFill="WHITE" />
+      <Label alignment="CENTER" prefHeight="29.0" prefWidth="158.0" text="Jawa, Jawa, Jawa" textFill="WHITE">
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin></Label>
+    </VBox>
+</AnchorPane>
