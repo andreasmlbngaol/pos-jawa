@@ -87,10 +87,10 @@
       </HBox>
       <TableView fx:id="productTable" prefHeight="198.0" prefWidth="1042.0" style="-fx-background-color: #7E7997;">
          <columns>
-            <TableColumn fx:id="skuColumn" prefWidth="155.1999969482422" text="sku" />
-            <TableColumn fx:id="nameColumn" prefWidth="503.79998779296875" text="name" />
-            <TableColumn fx:id="quantityColumn" minWidth="0.0" prefWidth="199.4000244140625" text="quantity" />
-            <TableColumn fx:id="totalItemPriceColumn" prefWidth="209.5999999999999" text="total" />
+            <TableColumn fx:id="skuColumn" prefWidth="188.3999900817871" style="-fx-alignment: CENTER;" text="sku" />
+            <TableColumn fx:id="nameColumn" prefWidth="639.1999969482422" style="-fx-alignment: CENTER_LEFT;" text="name" />
+            <TableColumn fx:id="quantityColumn" minWidth="0.0" prefWidth="83.2000732421875" style="-fx-alignment: CENTER;" text="quantity" />
+            <TableColumn fx:id="totalItemPriceColumn" prefWidth="152.59991455078125" style="-fx-alignment: CENTER_RIGHT;" text="total" />
          </columns>
       </TableView>
       <HBox alignment="CENTER_RIGHT">
@@ -101,7 +101,7 @@
             <font>
                <Font size="14.0" />
             </font></Label>
-         <TextField fx:id="totalPriceTextField" prefHeight="26.0" prefWidth="219.0">
+         <TextField fx:id="totalPriceTextField" prefHeight="26.0" prefWidth="219.0" style="-fx-alignment: CENTER_RIGHT;">
             <HBox.margin>
                <Insets top="20.0" />
             </HBox.margin></TextField>
@@ -114,7 +114,7 @@
             <font>
                <Font size="14.0" />
             </font></Label>
-         <TextField fx:id="paidTextField" prefHeight="26.0" prefWidth="219.0">
+         <TextField fx:id="paidTextField" prefHeight="26.0" prefWidth="219.0" style="-fx-alignment: CENTER_RIGHT;">
             <HBox.margin>
                <Insets top="20.0" />
             </HBox.margin></TextField>

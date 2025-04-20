@@ -101,14 +101,14 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TableView fx:id="originalTable" prefHeight="300.0" prefWidth="550.0">
+            <TableView fx:id="originalTable" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #7E7997;">
                <columns>
-                  <TableColumn fx:id="skuOriginalColumn" prefWidth="67.0" text="sku" />
-                  <TableColumn fx:id="originalNameColumn" prefWidth="147.0" text="name" />
-                  <TableColumn fx:id="originalPriceColumn" prefWidth="106.19998168945312" text="price per item" />
-                  <TableColumn fx:id="originalQuantityColumn" prefWidth="51.4000244140625" text="quantity" />
-                  <TableColumn fx:id="originalTotalColumn" prefWidth="54.600006103515625" text="total" />
-                  <TableColumn fx:id="originalActionColumn" prefWidth="132.59994506835938" text="action" />
+                  <TableColumn fx:id="skuOriginalColumn" prefWidth="83.20000076293945" style="-fx-alignment: CENTER;" text="sku" />
+                  <TableColumn fx:id="originalNameColumn" prefWidth="131.1999969482422" style="-fx-alignment: CENTER_LEFT;" text="name" />
+                  <TableColumn fx:id="originalPriceColumn" prefWidth="85.39997863769531" style="-fx-alignment: CENTER_RIGHT;" text="price per item" />
+                  <TableColumn fx:id="originalQuantityColumn" prefWidth="53.600006103515625" style="-fx-alignment: CENTER;" text="quantity" />
+                  <TableColumn fx:id="originalTotalColumn" prefWidth="84.80001831054688" style="-fx-alignment: CENTER_RIGHT;" text="total" />
+                  <TableColumn fx:id="originalActionColumn" prefWidth="91.79998779296875" style="-fx-alignment: CENTER;" text="action" />
                </columns>
                <VBox.margin>
                   <Insets left="20.0" right="5.0" top="10.0" />
@@ -120,13 +120,13 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TableView fx:id="refundTable" prefHeight="300.0" prefWidth="550.0">
+            <TableView fx:id="refundTable" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #7E7997;">
                <columns>
-                  <TableColumn fx:id="refundSkuColumn" prefWidth="60.19999539852142" text="sku" />
-                  <TableColumn fx:id="refundNameColumn" prefWidth="170.0" text="name" />
-                  <TableColumn fx:id="refundPriceColumn" prefWidth="102.0" text="price per item" />
-                  <TableColumn fx:id="refundQuantityColumn" prefWidth="89.0" text="quantity" />
-                  <TableColumn fx:id="refundTotalColumn" prefWidth="127.0" text="total" />
+                  <TableColumn fx:id="refundSkuColumn" prefWidth="91.79998934268951" style="-fx-alignment: CENTER;" text="sku" />
+                  <TableColumn fx:id="refundNameColumn" prefWidth="201.79998016357422" style="-fx-alignment: CENTER_LEFT;" text="name" />
+                  <TableColumn fx:id="refundPriceColumn" prefWidth="87.0" style="-fx-alignment: CENTER_RIGHT;" text="price per item" />
+                  <TableColumn fx:id="refundQuantityColumn" prefWidth="53.79998779296875" style="-fx-alignment: CENTER;" text="quantity" />
+                  <TableColumn fx:id="refundTotalColumn" prefWidth="94.19998168945312" style="-fx-alignment: CENTER;" text="total" />
                </columns>
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
