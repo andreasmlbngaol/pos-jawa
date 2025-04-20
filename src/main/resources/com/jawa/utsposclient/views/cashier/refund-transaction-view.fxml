@@ -51,61 +51,59 @@
       </VBox>
       <HBox>
          <padding>
-            <Insets right="10.0"/>
+            <Insets right="10.0" />
          </padding>
          <VBox.margin>
-            <Insets left="20.0" right="20.0"/>
+            <Insets left="20.0" right="20.0" />
          </VBox.margin>
          <VBox>
             <Label text="Cashier" textFill="WHITE">
                <VBox.margin>
-                  <Insets bottom="10.0"/>
+                  <Insets bottom="10.0" />
                </VBox.margin>
                <font>
-                  <Font size="14.0"/>
+                  <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cashierNameTextField" editable="false" maxWidth="-Infinity" prefHeight="26.0"
-                       prefWidth="530.0" promptText="Cashier">
+            <TextField fx:id="cashierNameTextField" editable="false" maxWidth="-Infinity" prefHeight="26.0" prefWidth="530.0" promptText="Cashier">
                <VBox.margin>
-                  <Insets/>
+                  <Insets />
                </VBox.margin>
                <effect>
                   <Lighting diffuseConstant="1.06">
                      <bumpInput>
-                        <Shadow/>
+                        <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant/>
+                        <Light.Distant />
                      </light>
                   </Lighting>
                </effect>
             </TextField>
             <HBox.margin>
-               <Insets/>
+               <Insets />
             </HBox.margin>
          </VBox>
          <VBox>
             <Label text="Created At" textFill="WHITE">
                <VBox.margin>
-                  <Insets bottom="10.0" left="20.0"/>
+                  <Insets bottom="10.0" left="20.0" />
                </VBox.margin>
                <font>
-                  <Font size="14.0"/>
+                  <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="createdAtTextField" editable="false" maxWidth="-Infinity" prefHeight="26.0"
-                       prefWidth="500.0" promptText="Created At">
+            <TextField fx:id="createdAtTextField" editable="false" maxWidth="-Infinity" prefHeight="26.0" prefWidth="500.0" promptText="Created At">
                <VBox.margin>
-                  <Insets bottom="20.0" left="20.0"/>
+                  <Insets bottom="20.0" left="20.0" />
                </VBox.margin>
                <effect>
                   <Lighting diffuseConstant="1.07" specularExponent="21.47" surfaceScale="1.78">
                      <bumpInput>
-                        <Shadow/>
+                        <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant/>
+                        <Light.Distant />
                      </light>
                   </Lighting>
                </effect>
@@ -128,7 +126,7 @@
                   <TableColumn fx:id="originalPriceColumn" prefWidth="85.39997863769531" style="-fx-alignment: CENTER_RIGHT;" text="price per item" />
                   <TableColumn fx:id="originalQuantityColumn" prefWidth="53.600006103515625" style="-fx-alignment: CENTER;" text="quantity" />
                   <TableColumn fx:id="originalTotalColumn" prefWidth="84.80001831054688" style="-fx-alignment: CENTER_RIGHT;" text="total" />
-                  <TableColumn fx:id="originalActionColumn" prefWidth="91.79998779296875" style="-fx-alignment: CENTER;" text="action" />
+                  <TableColumn fx:id="originalActionColumn" prefWidth="84.19998168945312" style="-fx-alignment: CENTER;" text="action" />
                </columns>
                <VBox.margin>
                   <Insets left="20.0" right="5.0" top="10.0" />
@@ -154,19 +152,27 @@
             </TableView>
          </VBox>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #e8b323;" text="Execute" textFill="WHITE">
+      <HBox alignment="CENTER_RIGHT">
          <VBox.margin>
             <Insets left="20.0" top="20.0" />
          </VBox.margin>
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <effect>
-            <DropShadow height="39.72" radius="17.605" width="32.7">
-               <color>
-                  <Color red="1.0" green="0.7647058963775635" />
-               </color>
-            </DropShadow>
-         </effect></Button>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #e8b323;" text="Execute" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow height="39.72" radius="17.605" width="32.7">
+                     <color>
+                        <Color red="1.0" green="0.7647058963775635" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </VBox>
 </AnchorPane>

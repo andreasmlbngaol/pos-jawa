@@ -14,7 +14,8 @@
                   <VBox.margin>
                      <Insets left="20.0" top="20.0" />
                   </VBox.margin></Label>
-                    <ComboBox fx:id="typeComboBox" prefWidth="150.0" style="-fx-background-color: #e8b323;">
+                    <ComboBox fx:id="typeComboBox" prefHeight="32.0" prefWidth="180.0"
+                              style="-fx-background-color: #e8b323; -fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: white;">
                   <VBox.margin>
                      <Insets left="20.0" right="20.0" top="10.0" />
                   </VBox.margin></ComboBox>
@@ -97,23 +98,23 @@
                      <Insets left="20.0" right="20.0" top="10.0" />
                   </VBox.margin></TextField>
                 </VBox>
-                <VBox fx:id="bundleGroup" visible="false" managed="false">
+                <VBox fx:id="bundleGroup" managed="false" visible="false">
                     <Label text="Bundle Items" textFill="WHITE">
                         <VBox.margin>
-                            <Insets left="20.0" top="20.0"/>
+                            <Insets left="20.0" top="20.0" />
                         </VBox.margin>
                         <font>
-                            <Font size="13.0"/>
+                            <Font size="13.0" />
                         </font>
                     </Label>
-                    <HBox alignment="CENTER_LEFT" spacing="10.0" fx:id="selectedItemsContainer">
+                    <HBox fx:id="selectedItemsContainer" alignment="CENTER_LEFT" spacing="10.0">
                         <VBox.margin>
-                            <Insets left="20.0" top="10.0"/>
+                            <Insets left="20.0" top="10.0" />
                         </VBox.margin>
                     </HBox>
-                    <Button text="+ Add Item" onAction="#onAddBundleItemClicked" style="-fx-background-color: #e8b323;">
+                    <Button onAction="#onAddBundleItemClicked" style="-fx-background-color: #e8b323;" text="+ Add Item">
                         <VBox.margin>
-                            <Insets left="20.0" top="10.0"/>
+                            <Insets left="20.0" top="10.0" />
                         </VBox.margin>
                     </Button>
                 </VBox>
