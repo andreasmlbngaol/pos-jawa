@@ -7,10 +7,16 @@ import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.FramelessStyledAlert;
 import com.jawa.utsposclient.utils.JawaAuth;
 import com.jawa.utsposclient.utils.StringRes;
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -18,6 +24,62 @@ public class Controller {
     protected User user = JawaAuth.getInstance().getCurrent();
 
     private Stage stage;
+
+    protected void  addHoverEffect(Button button) {
+        DropShadow shadow = new DropShadow();
+        shadow.setRadius(20);
+        shadow.setColor(Color.web("#ffffff", 0.4));
+
+        button.setOnMouseEntered(e -> {
+            button.setEffect(shadow);
+
+            ScaleTransition st = new ScaleTransition(
+                    Duration.millis(200), button
+            );
+            st.setToX(1.10);
+            st.setToY(1.10);
+            st.play();
+        });
+
+        button.setOnMouseExited(e -> {
+            button.setEffect(null);
+
+            ScaleTransition st = new ScaleTransition(
+                    Duration.millis(200), button
+            );
+            st.setToX(1.0);
+            st.setToY(1.0);
+            st.play();
+        });
+    }
+
+    protected void  addHoverEffect(VBox vBox) {
+        DropShadow shadow = new DropShadow();
+        shadow.setRadius(20);
+        shadow.setColor(Color.web("#ffffff", 0.4));
+
+        vBox.setOnMouseEntered(e -> {
+            vBox.setEffect(shadow);
+
+            ScaleTransition st = new ScaleTransition(
+                    Duration.millis(200), vBox
+            );
+            st.setToX(1.10);
+            st.setToY(1.10);
+            st.play();
+        });
+
+        vBox.setOnMouseExited(e -> {
+            vBox.setEffect(null);
+
+            ScaleTransition st = new ScaleTransition(
+                    Duration.millis(200), vBox
+            );
+            st.setToX(1.0);
+            st.setToY(1.0);
+            st.play();
+        });
+    }
 
     public void setStage(Stage stage) {
         stage.setResizable(false);

@@ -16,6 +16,8 @@ public class AdminHomeController extends AdminController {
         if(admin == null) {
             System.err.println("You are not logged in. Redirect to login page.");
             switchScene(AppScene.LOGIN);
+
+
         }
     }
 

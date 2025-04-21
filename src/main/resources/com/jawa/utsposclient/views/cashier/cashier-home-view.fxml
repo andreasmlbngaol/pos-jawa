@@ -7,8 +7,8 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.CashierHomeController">
-      <Button layoutX="893.0" layoutY="33.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%logout_button" textFill="WHITE">
+<AnchorPane  prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.CashierHomeController">
+      <Button fx:id="logoutButton" layoutX="893.0" layoutY="33.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%logout_button" textFill="WHITE">
             <font>
                   <Font name="System Bold" size="14.0" />
             </font>
@@ -19,7 +19,7 @@
             </color>
          </DropShadow>
       </effect></Button>
-      <Button layoutX="296.0" layoutY="383.0" mnemonicParsing="false" onAction="#onSwitchToRefund" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%refund_transaction_menu" textFill="WHITE">
+      <Button fx:id="refundButton" layoutX="296.0" layoutY="383.0" mnemonicParsing="false" onAction="#onSwitchToRefund" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%refund_transaction_menu" textFill="WHITE">
             <font>
                   <Font name="System Bold" size="14.0" />
             </font>
@@ -31,7 +31,7 @@
          </DropShadow>
       </effect>
    </Button>
-      <Button layoutX="493.0" layoutY="383.0" mnemonicParsing="false" onAction="#onSwitchToPurchase" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%purchase_transaction_menu" textFill="WHITE">
+      <Button fx:id="purchaseButton" layoutX="493.0" layoutY="383.0" mnemonicParsing="false" onAction="#onSwitchToPurchase" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%purchase_transaction_menu" textFill="WHITE">
             <font>
                   <Font name="System Bold" size="14.0" />
             </font>
@@ -43,7 +43,7 @@
          </DropShadow>
       </effect>
    </Button>
-   <Button layoutX="683.0" layoutY="383.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="History" textFill="WHITE">
+   <Button fx:id="historyButton" layoutX="683.0" layoutY="383.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="History" textFill="WHITE">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>

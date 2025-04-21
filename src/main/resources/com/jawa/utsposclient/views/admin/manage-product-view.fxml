@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
     <VBox layoutY="4.0" prefHeight="620.0" prefWidth="1100.0">
-        <Button mnemonicParsing="false" onAction="#onBackToHome" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #e8b323;" text="%back_button" textFill="WHITE">
+        <Button mnemonicParsing="false" onAction="#onBackToHome" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%back_button" textFill="WHITE">
          <VBox.margin>
             <Insets bottom="30.0" left="30.0" top="30.0" />
          </VBox.margin>
@@ -38,22 +38,21 @@
         </TableView>
         <HBox alignment="CENTER_RIGHT">
             <VBox.margin>
-                <Insets left="30.0" top="30.0"/>
+                <Insets left="30.0" top="30.0" />
             </VBox.margin>
-            <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" prefHeight="42.0" prefWidth="108.0"
-                    style="-fx-background-color: #e8b323;" text="Add Product" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" prefHeight="42.0" prefWidth="108.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="Add Product" textFill="WHITE">
                 <font>
-                    <Font name="System Bold" size="12.0"/>
+                    <Font name="System Bold" size="12.0" />
                 </font>
                 <effect>
                     <DropShadow height="35.04" radius="17.02" width="35.04">
                         <color>
-                            <Color red="1.0" green="0.7647058963775635"/>
+                            <Color red="1.0" green="0.7647058963775635" />
                         </color>
                     </DropShadow>
                 </effect>
                 <HBox.margin>
-                    <Insets right="30.0"/>
+                    <Insets right="30.0" />
                 </HBox.margin>
           </Button>
         </HBox>

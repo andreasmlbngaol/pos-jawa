@@ -1,6 +1,6 @@
 package com.jawa.utsposclient.dao;
 
-import com.jawa.utsposclient.db.Database;
+import  com.jawa.utsposclient.db.Database;
 import com.jawa.utsposclient.entities.Users;
 import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.utils.PasswordManager;
@@ -63,7 +63,6 @@ public class UsersDao {
         cashier.setRole(Role.Cashier);
         cashier.setMustChangePassword(true);
         cashier.setActive(true);
-
         insertUser(cashier);
     }
 

@@ -70,7 +70,7 @@ public class Database {
                 result = action.apply(session);
                 transaction.commit();
             } catch (Exception e) {
-                transaction.rollback();
+                transaction.rollback();// transaksi gagal
                 throw e;
             }
             return result;
