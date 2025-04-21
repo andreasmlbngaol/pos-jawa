@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
@@ -7,59 +8,91 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageUserController">
-     <Button layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="38.0" prefWidth="162.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%back_button" textFill="WHITE">
-      <font>
-         <Font name="System Bold" size="14.0" />
-      </font>
-      <effect>
-         <DropShadow height="37.38" radius="18.19" width="37.38">
-            <color>
-               <Color red="1.0" green="0.7647058963775635" />
-            </color>
-         </DropShadow>
-      </effect></Button>
-     <TableView fx:id="userTable" layoutX="24.0" layoutY="164.0" prefHeight="337.0" prefWidth="1058.0" style="-fx-background-color: #353147;">
-         <columns>
-             <TableColumn fx:id="userIdColumn" editable="false" prefWidth="89.4000244140625" style="-fx-alignment: CENTER;" text="%user_id_header" />
-             <TableColumn fx:id="usernameColumn" minWidth="0.0" prefWidth="237.79998779296875" style="-fx-alignment: CENTER;" text="%username_header" />
-             <TableColumn fx:id="nameColumn" prefWidth="312.60003662109375" style="-fx-alignment: CENTER;" text="%name_header" />
-             <TableColumn fx:id="roleColumn" prefWidth="108.20001220703125" style="-fx-alignment: CENTER;" text="%role_header" />
-             <TableColumn fx:id="actionColumn" prefWidth="304.800048828125" style="-fx-alignment: CENTER;" text="%action_header" />
-         </columns>
-     </TableView>
-     <Button layoutX="839.0" layoutY="545.0" mnemonicParsing="false" onAction="#onShowAddCashierDialog" prefHeight="38.0" prefWidth="242.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%show_add_cashier_dialog_button" textFill="WHITE">
-      <font>
-         <Font name="System Bold" size="14.0" />
-      </font>
-      <effect>
-         <DropShadow height="32.7" radius="17.020000000000003" width="37.38">
-            <color>
-               <Color red="1.0" green="0.7647058963775635" />
-            </color>
-         </DropShadow>
-      </effect></Button>
-   <Label layoutX="24.0" layoutY="80.0" prefHeight="35.0" prefWidth="252.0" text="Welcome Back BOSS!">
-      <font>
-         <Font name="System Bold" size="24.0" />
-      </font>
-      <textFill>
-         <LinearGradient startX="1.0">
-            <stops>
-               <Stop>
-                  <color>
-                     <Color />
-                  </color>
-               </Stop>
-               <Stop offset="1.0">
-                  <color>
-                     <Color red="1.0" green="1.0" blue="1.0" />
-                  </color>
-               </Stop>
-            </stops>
-         </LinearGradient>
-      </textFill></Label>
-   <Label layoutX="24.0" layoutY="116.0" prefHeight="20.0" prefWidth="204.0" text="Let's Manage your Employes" textFill="WHITE">
-      <font>
-         <Font size="14.0" />
-      </font></Label>
+   <VBox prefHeight="620.0" prefWidth="1100.0">
+      <children>
+         <HBox alignment="CENTER_LEFT">
+            <children>
+                 <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  <effect>
+                     <DropShadow height="37.38" radius="18.19" width="37.38">
+                        <color>
+                           <Color red="1.0" green="0.7647058963775635" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+            </children>
+            <VBox.margin>
+               <Insets bottom="32.0" />
+            </VBox.margin>
+         </HBox>
+         <VBox>
+            <children>
+               <Label prefHeight="35.0" prefWidth="252.0" text="Welcome Back BOSS!">
+                  <font>
+                     <Font name="System Bold" size="24.0" />
+                  </font>
+                  <textFill>
+                     <LinearGradient startX="1.0">
+                        <stops>
+                           <Stop>
+                              <color>
+                                 <Color />
+                              </color>
+                           </Stop>
+                           <Stop offset="1.0">
+                              <color>
+                                 <Color red="1.0" green="1.0" blue="1.0" />
+                              </color>
+                           </Stop>
+                        </stops>
+                     </LinearGradient>
+                  </textFill>
+               </Label>
+               <Label prefHeight="20.0" prefWidth="204.0" text="Let's Manage your Employes" textFill="WHITE">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+            </children>
+            <VBox.margin>
+               <Insets bottom="32.0" />
+            </VBox.margin>
+         </VBox>
+           <TableView fx:id="userTable" style="-fx-background-color: #353147;">
+               <columns>
+                   <TableColumn fx:id="userIdColumn" editable="false" prefWidth="89.4000244140625" style="-fx-alignment: CENTER;" text="%user_id_header" />
+                   <TableColumn fx:id="usernameColumn" minWidth="0.0" prefWidth="237.79998779296875" style="-fx-alignment: CENTER;" text="%username_header" />
+                   <TableColumn fx:id="nameColumn" prefWidth="312.60003662109375" style="-fx-alignment: CENTER;" text="%name_header" />
+                   <TableColumn fx:id="roleColumn" prefWidth="108.20001220703125" style="-fx-alignment: CENTER;" text="%role_header" />
+                   <TableColumn fx:id="actionColumn" prefWidth="282.5999755859375" style="-fx-alignment: CENTER;" text="%action_header" />
+               </columns>
+            <VBox.margin>
+               <Insets bottom="32.0" />
+            </VBox.margin>
+           </TableView>
+         <HBox alignment="CENTER_RIGHT">
+            <children>
+                 <Button fx:id="addCashierButton" mnemonicParsing="false" onAction="#onShowAddCashierDialog" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  <effect>
+                     <DropShadow height="32.7" radius="17.020000000000003" width="37.38">
+                        <color>
+                           <Color red="1.0" green="0.7647058963775635" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+            </children>
+         </HBox>
+      </children>
+      <padding>
+         <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+      </padding>
+   </VBox>
 </AnchorPane>
