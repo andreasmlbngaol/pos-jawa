@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.AdminHomeController">
-   <Button layoutX="893.0" layoutY="33.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #e8b323;" text="%logout_button" textFill="WHITE">
+   <Button layoutX="893.0" layoutY="33.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%logout_button" textFill="WHITE">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>
@@ -19,7 +19,7 @@
             </color>
          </DropShadow>
       </effect></Button>
-   <Button layoutX="635.0" layoutY="348.0" mnemonicParsing="false" onAction="#onSwitchToManageProduct" prefHeight="68.0" prefWidth="143.0" style="-fx-background-color: #e8b323;" text="%manage_product_menu" textFill="WHITE">
+   <Button layoutX="262.0" layoutY="343.0" mnemonicParsing="false" onAction="#onSwitchToManageUser" prefHeight="68.0" prefWidth="143.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%manage_user_menu" textFill="WHITE">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>
@@ -29,8 +29,9 @@
                <Color red="1.0" green="0.7647058963775635" />
             </color>
          </DropShadow>
-      </effect></Button>
-   <Button layoutX="325.0" layoutY="348.0" mnemonicParsing="false" onAction="#onSwitchToManageUser" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323;" text="%manage_user_menu" textFill="WHITE">
+      </effect>
+   </Button>
+   <Button layoutX="478.20001220703125" layoutY="343.0" mnemonicParsing="false" onAction="#onSwitchToManageProduct" prefHeight="68.0" prefWidth="143.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%manage_product_menu" textFill="WHITE">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>
@@ -40,7 +41,20 @@
                <Color red="1.0" green="0.7647058963775635" />
             </color>
          </DropShadow>
-      </effect></Button>
+      </effect>
+   </Button>
+   <Button layoutX="694.0" layoutY="343.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="143.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="History" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+      <effect>
+         <DropShadow height="39.72" radius="19.36" width="39.72">
+            <color>
+               <Color red="1.0" green="0.7647058963775635" />
+            </color>
+         </DropShadow>
+      </effect>
+   </Button>
    <Label layoutX="430.0" layoutY="68.0" prefHeight="46.0" prefWidth="239.0" text="What's Your Role!" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font size="30.0" />
@@ -50,10 +64,15 @@
       <font>
          <Font size="14.0" />
       </font></Label>
-   <ImageView fitHeight="150.0" fitWidth="96.0" layoutX="341.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="99.0" fitWidth="96.0" layoutX="286.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../images/people.png" />
    </ImageView>
-   <ImageView fitHeight="150.0" fitWidth="96.0" layoutX="659.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="150.0" fitWidth="96.0" layoutX="502.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../images/pick-list.png" />
+   </ImageView>
+   <ImageView fitHeight="150.0" fitWidth="96.0" layoutX="718.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../images/history.png" />
+      </image>
    </ImageView>
 </AnchorPane>

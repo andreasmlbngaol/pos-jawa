@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.CashierHomeController">
-      <Button layoutX="893.0" layoutY="33.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #e8b323;" text="%logout_button" textFill="WHITE">
+      <Button layoutX="893.0" layoutY="33.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%logout_button" textFill="WHITE">
             <font>
                   <Font name="System Bold" size="14.0" />
             </font>
@@ -19,7 +19,7 @@
             </color>
          </DropShadow>
       </effect></Button>
-      <Button layoutX="605.0" layoutY="400.0" mnemonicParsing="false" onAction="#onSwitchToPurchase" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323;" text="%purchase_transaction_menu" textFill="WHITE">
+      <Button layoutX="296.0" layoutY="383.0" mnemonicParsing="false" onAction="#onSwitchToRefund" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%refund_transaction_menu" textFill="WHITE">
             <font>
                   <Font name="System Bold" size="14.0" />
             </font>
@@ -29,8 +29,9 @@
                <Color red="1.0" green="0.7647058963775635" />
             </color>
          </DropShadow>
-      </effect></Button>
-      <Button layoutX="323.0" layoutY="400.0" mnemonicParsing="false" onAction="#onSwitchToRefund" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323;" text="%refund_transaction_menu" textFill="WHITE">
+      </effect>
+   </Button>
+      <Button layoutX="493.0" layoutY="383.0" mnemonicParsing="false" onAction="#onSwitchToPurchase" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%purchase_transaction_menu" textFill="WHITE">
             <font>
                   <Font name="System Bold" size="14.0" />
             </font>
@@ -40,7 +41,20 @@
                <Color red="1.0" green="0.7647058963775635" />
             </color>
          </DropShadow>
-      </effect></Button>
+      </effect>
+   </Button>
+   <Button layoutX="683.0" layoutY="383.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="128.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="History" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+      <effect>
+         <DropShadow height="39.72" radius="19.36" width="39.72">
+            <color>
+               <Color red="1.0" green="0.7647058963775635" />
+            </color>
+         </DropShadow>
+      </effect>
+   </Button>
       <Label layoutX="367.0" layoutY="87.0" prefHeight="46.0" prefWidth="365.0" text="What would you like to do?" textAlignment="CENTER">
             <font>
                   <Font size="30.0" />
@@ -67,10 +81,15 @@
          <Font size="14.0" />
       </font>
    </Label>
-    <ImageView fitHeight="150.0" fitWidth="96.0" layoutX="339.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="150.0" fitWidth="96.0" layoutX="340.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../../images/refund (1).png" />
     </ImageView>
-    <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="621.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="509.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../../images/payment-method.png" />
     </ImageView>
+   <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="699.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../images/history.png" />
+      </image>
+   </ImageView>
 </AnchorPane>
