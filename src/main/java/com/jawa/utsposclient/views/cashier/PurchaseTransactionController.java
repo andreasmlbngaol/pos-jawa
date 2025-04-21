@@ -7,6 +7,7 @@ import com.jawa.utsposclient.dto.TransactionItem;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.repo.ProductRepository;
 import com.jawa.utsposclient.utils.FramelessStyledAlert;
+import com.jawa.utsposclient.utils.JawaButton;
 import com.jawa.utsposclient.utils.StringUtils;
 import com.jawa.utsposclient.views.fragment.BillController;
 import javafx.beans.property.SimpleObjectProperty;
@@ -16,11 +17,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
+import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 public class PurchaseTransactionController extends CashierController {
 
@@ -36,6 +40,8 @@ public class PurchaseTransactionController extends CashierController {
     @FXML private TableColumn<TransactionItem, Double> totalItemPriceColumn;
     @FXML private TableColumn<TransactionItem, Integer> quantityColumn;
 
+    @FXML private Button backButton;
+    @FXML private Button chargeButton;
 
     private double getGrandTotal() {
         return productTable.getItems().stream()
@@ -50,6 +56,18 @@ public class PurchaseTransactionController extends CashierController {
 
     @FXML
     private void initialize() {
+
+        backButton.setGraphic(JawaButton.createExtendedFab(
+                MaterialDesign.MDI_ARROW_LEFT,
+                "",
+                Color.web("#e8b323"),
+                Color.WHITE,
+                Color.WHITE
+        ));
+        addHoverEffect(backButton);
+        addHoverEffect(chargeButton);
+
+
         productTable.setEditable(true);
         skuColumn.setCellValueFactory(cellData ->
             new SimpleObjectProperty<>(cellData.getValue().getProduct().getSku())
@@ -85,6 +103,7 @@ public class PurchaseTransactionController extends CashierController {
                 } else {
                     setText(StringUtils.moneyFormat(item));
                 }
+
             }
         });
 

@@ -47,6 +47,10 @@ public class ManageUserController extends AdminController {
 
     @FXML
     private void initialize() {
+
+        addHoverEffect(backButton);
+        addHoverEffect(addCashierButton);
+
         backButton.setGraphic(JawaButton.createExtendedFab(
             MaterialDesign.MDI_ARROW_LEFT,
             "",

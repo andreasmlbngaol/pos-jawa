@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.RefundTransactionController">
    <VBox prefWidth="1100.0">
-      <Button mnemonicParsing="false" onAction="#onBackToHome" prefHeight="33.0" prefWidth="71.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="Back" textFill="WHITE">
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="33.0" prefWidth="71.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="Back" textFill="WHITE">
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" top="20.0" />
          </VBox.margin>
@@ -157,7 +157,7 @@
             <Insets left="20.0" top="20.0" />
          </VBox.margin>
          <children>
-            <Button mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="Execute" textFill="WHITE">
+            <Button fx:id="executeButton" mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="34.0" prefWidth="77.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="Execute" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

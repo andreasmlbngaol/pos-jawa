@@ -74,6 +74,9 @@ public class ManageProductController extends AdminController {
                 } else {
                     setText(StringUtils.moneyFormat(item));
                 }
+
+                addHoverEffect(backButton);
+                addHoverEffect(addProductButton);
             }
         });
 

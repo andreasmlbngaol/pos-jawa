@@ -7,6 +7,7 @@ import com.jawa.utsposclient.dto.TransactionItem;
 import com.jawa.utsposclient.repo.TransactionRepository;
 import com.jawa.utsposclient.utils.DateUtils;
 import com.jawa.utsposclient.utils.FramelessStyledAlert;
+import com.jawa.utsposclient.utils.JawaButton;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,6 +15,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -43,9 +46,22 @@ public class RefundTransactionController extends CashierController {
     @FXML private TableColumn<TransactionItem, Number> refundQuantityColumn;
     @FXML private TableColumn<TransactionItem, Number> refundTotalColumn;
 
+    @FXML private Button backButton;
+    @FXML private Button executeButton;
 
     @FXML
     private void initialize() {
+
+        backButton.setGraphic(JawaButton.createExtendedFab(
+                MaterialDesign.MDI_ARROW_LEFT,
+                "",
+                Color.web("#e8b323"),
+                Color.WHITE,
+                Color.WHITE
+        ));
+
+        addHoverEffect(backButton);
+        addHoverEffect(executeButton);
         transactionIdTextField.setOnKeyPressed(event -> {
             if(event.getCode() == javafx.scene.input.KeyCode.ENTER) {
                 loadTransactionById();

@@ -58,13 +58,6 @@
                         <font>
                            <Font name="System Bold" size="14.0" />
                         </font>
-                        <effect>
-                           <DropShadow height="39.72" radius="19.36" width="39.72">
-                              <color>
-                                 <Color red="1.0" green="0.7647058963775635" />
-                              </color>
-                           </DropShadow>
-                        </effect>
                      </Button>
                   </children>
                </VBox>
@@ -77,13 +70,6 @@
                         <font>
                            <Font name="System Bold" size="14.0" />
                         </font>
-                        <effect>
-                           <DropShadow height="39.72" radius="19.36" width="39.72">
-                              <color>
-                                 <Color red="1.0" green="0.7647058963775635" />
-                              </color>
-                           </DropShadow>
-                        </effect>
                      </Button>
                   </children>
                </VBox>
@@ -98,13 +84,6 @@
                         <font>
                            <Font name="System Bold" size="14.0" />
                         </font>
-                        <effect>
-                           <DropShadow height="39.72" radius="19.36" width="39.72">
-                              <color>
-                                 <Color red="1.0" green="0.7647058963775635" />
-                              </color>
-                           </DropShadow>
-                        </effect>
                      </Button>
                   </children>
                </VBox>
