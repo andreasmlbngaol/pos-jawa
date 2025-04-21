@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -20,7 +21,10 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <TextField fx:id="searchTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="194.0" promptText="Transaction ID" />
+                  <TextField fx:id="searchTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="194.0" promptText="Transaction ID">
+                     <effect>
+                        <InnerShadow height="35.04" radius="21.112499999999997" width="51.41" />
+                     </effect></TextField>
                </children>
             </VBox>
             <TableView fx:id="transactionTable" style="-fx-background-color: #7E7997;">
