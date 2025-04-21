@@ -7,12 +7,17 @@ import com.jawa.utsposclient.utils.JawaButton;
 import com.jawa.utsposclient.utils.StringRes;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
 
 public class AdminHomeController extends AdminController {
+
+    @FXML private VBox productVBox;
+    @FXML private VBox userVBox;
+    @FXML private VBox historyVBox;
 
     @FXML private Button logoutButton;
 
@@ -34,6 +39,11 @@ public class AdminHomeController extends AdminController {
             Color.WHITE,
             Color.WHITE
         ));
+
+        addHoverEffect(productVBox);
+        addHoverEffect(userVBox);
+        addHoverEffect(historyVBox);
+        addHoverEffect(logoutButton);
     }
 
     @FXML
