@@ -3,31 +3,35 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.TransactionHistoryController">
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.TransactionHistoryController">
    <children>
       <VBox prefHeight="620.0" prefWidth="1100.0" spacing="32.0">
          <children>
             <HBox>
                <children>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-radius: 10;" />
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-radius: 10; -fx-background-color: #e8b323;" />
                </children>
             </HBox>
             <VBox>
                <children>
-                  <Label text="Transaction Id" />
-                  <TextField fx:id="searchTextField" />
+                  <Label text="Transaction Id" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="searchTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="194.0" promptText="Transaction ID" />
                </children>
             </VBox>
-            <TableView fx:id="transactionTable">
+            <TableView fx:id="transactionTable" style="-fx-background-color: #7E7997;">
               <columns>
-                <TableColumn fx:id="transactionIdColumn" prefWidth="84.99999237060547" text="transaction id" />
+                <TableColumn fx:id="transactionIdColumn" prefWidth="84.99999237060547" style="-fx-alignment: CENTER;" text="transaction id" />
                 <TableColumn fx:id="createdAtColumn" prefWidth="246.19998168945312" text="created at" />
-                  <TableColumn fx:id="cashierIdColumn" prefWidth="60.199951171875" text="cashier id" />
-                  <TableColumn fx:id="cashierUsernameColumn" prefWidth="213.20004272460938" text="cashier username" />
-                  <TableColumn fx:id="cashierNameColumn" prefWidth="206.79998779296875" text="cashier name" />
-                  <TableColumn fx:id="totalColumn" minWidth="0.0" prefWidth="127.4000244140625" text="total" />
-                  <TableColumn fx:id="actionColumn" minWidth="0.0" prefWidth="77.0" text="action" />
+                  <TableColumn fx:id="cashierIdColumn" prefWidth="60.199951171875" style="-fx-alignment: CENTER;" text="cashier id" />
+                  <TableColumn fx:id="cashierUsernameColumn" prefWidth="213.20004272460938" style="-fx-alignment: CENTER_LEFT;" text="cashier username" />
+                  <TableColumn fx:id="cashierNameColumn" prefWidth="206.79998779296875" style="-fx-alignment: CENTER_LEFT;" text="cashier name" />
+                  <TableColumn fx:id="totalColumn" minWidth="0.0" prefWidth="127.4000244140625" style="-fx-alignment: CENTER_RIGHT;" text="total" />
+                  <TableColumn fx:id="actionColumn" minWidth="0.0" prefWidth="77.0" style="-fx-alignment: CENTER;" text="action" />
               </columns>
             </TableView>
          </children>

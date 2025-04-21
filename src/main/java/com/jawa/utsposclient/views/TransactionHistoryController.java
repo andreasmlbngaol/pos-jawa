@@ -12,6 +12,7 @@ import com.jawa.utsposclient.views.fragment.BillController;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -38,15 +39,21 @@ public class TransactionHistoryController extends Controller {
     @FXML private TableColumn<PurchaseTransaction, String> totalColumn;
     @FXML private TableColumn<PurchaseTransaction, Void> actionColumn;
 
+    @FXML private TextField searchTextField;
+    private ObservableList<PurchaseTransaction> masterTransactions;
+
+
+
     @FXML private void onBackToHome() throws IOException {
         if(user.getRole() == Role.Admin) switchScene(AppScene.ADMIN_HOME);
         else switchScene(AppScene.CASHIER_HOME);
     }
 
     private void loadTransactions() {
-        ObservableList<PurchaseTransaction> transactions = FXCollections.observableArrayList(TransactionRepository.getAllPurchaseTransactions());
-        transactionTable.setItems(transactions);
+        masterTransactions = FXCollections.observableArrayList(TransactionRepository.getAllPurchaseTransactions());
+        transactionTable.setItems(masterTransactions);
     }
+
 
     @FXML
     private void initialize() {
@@ -121,5 +128,19 @@ public class TransactionHistoryController extends Controller {
         });
 
         loadTransactions();
+        FilteredList<PurchaseTransaction> filteredList = new FilteredList<>(masterTransactions, p -> true);
+
+        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(transaction -> {
+                if (newValue == null || newValue.isEmpty()) return true;
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                return String.valueOf(transaction.getId()).toLowerCase().contains(lowerCaseFilter);
+            });
+        });
+
+        transactionTable.setItems(filteredList);
+
     }
 }
