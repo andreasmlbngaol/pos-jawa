@@ -38,12 +38,35 @@ public class ManageUserController extends AdminController {
     @FXML private Button backButton;
     @FXML private Button addCashierButton;
 
+    @FXML private TextField searchUserField;
+    private ObservableList<User> allUsers;
+
+
     private final Admin admin = (Admin) JawaAuth.getInstance().getCurrent();
 
     private void loadUsers() {
-        ObservableList<User> users = FXCollections.observableArrayList(admin.getAllUsers());
-        userTable.setItems(users);
+        allUsers = FXCollections.observableArrayList(admin.getAllUsers());
+        userTable.setItems(allUsers);
     }
+
+    private void filterUsers(String keyword) {
+        if (keyword == null || keyword.trim().isEmpty()) {
+            userTable.setItems(allUsers);
+            return;
+        }
+
+        String lowerKeyword = keyword.toLowerCase();
+        ObservableList<User> filtered = FXCollections.observableArrayList();
+
+        for (User user : allUsers) {
+            if (user.getName().toLowerCase().contains(lowerKeyword)) {
+                filtered.add(user);
+            }
+        }
+
+        userTable.setItems(filtered);
+    }
+
 
     @FXML
     private void initialize() {
@@ -140,6 +163,9 @@ public class ManageUserController extends AdminController {
         });
 
         loadUsers();
+        searchUserField.textProperty().addListener((obs, oldVal, newVal) -> {
+            filterUsers(newVal);
+        });
     }
 
     @FXML

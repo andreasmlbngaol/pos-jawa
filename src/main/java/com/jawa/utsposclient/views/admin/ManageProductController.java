@@ -15,6 +15,7 @@ import com.jawa.utsposclient.views.fragment.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -36,10 +37,21 @@ public class ManageProductController extends AdminController {
     @FXML private Button backButton;
     @FXML private Button addProductButton;
 
+    @FXML private TextField searchField;
+
+
+    private final ObservableList<Product> masterProductList = FXCollections.observableArrayList();
+    private FilteredList<Product> filteredProductList;
+
     private void loadProducts() {
-        ObservableList<Product> products = FXCollections.observableArrayList(ProductRepository.getAllProducts());
-        productTable.setItems(products);
+        masterProductList.setAll(ProductRepository.getAllProducts());
+
+        if (filteredProductList == null) {
+            filteredProductList = new FilteredList<>(masterProductList, p -> true);
+            productTable.setItems(filteredProductList);
+        }
     }
+
 
     @FXML
     private void initialize() {
@@ -147,6 +159,20 @@ public class ManageProductController extends AdminController {
         });
 
         loadProducts();
+        searchField.textProperty().addListener((obs, oldValue, newValue) -> {
+            filteredProductList.setPredicate(product -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                return product.getName().toLowerCase().contains(lowerCaseFilter) ||
+                        product.getSku().toLowerCase().contains(lowerCaseFilter);
+            });
+        });
+
+
     }
 
     @FXML

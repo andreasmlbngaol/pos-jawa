@@ -62,6 +62,11 @@
                <Insets bottom="32.0" />
             </VBox.margin>
          </VBox>
+         <TextField fx:id="searchUserField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="193.0" promptText="Search by name">
+            <VBox.margin>
+               <Insets bottom="20.0" />
+            </VBox.margin>
+         </TextField>
            <TableView fx:id="userTable" style="-fx-background-color: #353147;">
                <columns>
                    <TableColumn fx:id="userIdColumn" editable="false" prefWidth="89.4000244140625" style="-fx-alignment: CENTER;" text="%user_id_header" />

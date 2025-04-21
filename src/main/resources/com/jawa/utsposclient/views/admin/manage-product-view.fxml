@@ -8,12 +8,17 @@
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
     <VBox layoutY="4.0" prefHeight="620.0" prefWidth="1100.0">
         <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
-         <VBox.margin>
-            <Insets bottom="30.0" left="30.0" top="30.0" />
-         </VBox.margin>
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </font>
+         <VBox.margin>
+            <Insets left="25.0" top="20.0" />
+         </VBox.margin>
+      </Button>
+      <TextField fx:id="searchField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="247.0" promptText="Search by Name or SKU">
+         <VBox.margin>
+            <Insets bottom="20.0" left="30.0" top="20.0" />
+         </VBox.margin></TextField>
         <TableView fx:id="productTable" prefHeight="418.0" prefWidth="1014.0" style="-fx-background-color: #353147;">
             <columns>
                 <TableColumn fx:id="productIdColumn" prefWidth="75.0" style="-fx-alignment: CENTER;" text="id" />
@@ -36,7 +41,7 @@
                     <Font name="System Bold" size="12.0" />
                 </font>
                 <HBox.margin>
-                    <Insets right="30.0" />
+                    <Insets bottom="20.0" right="30.0" />
                 </HBox.margin>
           </Button>
         </HBox>
