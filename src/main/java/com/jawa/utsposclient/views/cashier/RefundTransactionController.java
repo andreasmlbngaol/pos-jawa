@@ -8,6 +8,7 @@ import com.jawa.utsposclient.repo.TransactionRepository;
 import com.jawa.utsposclient.utils.DateUtils;
 import com.jawa.utsposclient.utils.FramelessStyledAlert;
 import com.jawa.utsposclient.utils.JawaButton;
+import com.jawa.utsposclient.utils.StringRes;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -51,7 +52,6 @@ public class RefundTransactionController extends CashierController {
 
     @FXML
     private void initialize() {
-
         backButton.setGraphic(JawaButton.createExtendedFab(
                 MaterialDesign.MDI_ARROW_LEFT,
                 "",
@@ -62,7 +62,7 @@ public class RefundTransactionController extends CashierController {
 
         executeButton.setGraphic(JawaButton.createExtendedFab(
             MaterialDesign.MDI_REFRESH,
-            "Refund",
+            StringRes.get("refund_title"),
             Color.web("#e8b323"),
             Color.WHITE,
             Color.WHITE
@@ -98,7 +98,7 @@ public class RefundTransactionController extends CashierController {
                 refundButton.setOnAction(event -> {
                     TransactionItem item = getTableView().getItems().get(getIndex());
                     addItemToRefund(item);
-                    updateButtonState(); // Optional: update setelah klik
+                    updateButtonState();
                 });
             }
 
@@ -140,9 +140,7 @@ public class RefundTransactionController extends CashierController {
         refundTotalColumn.setCellValueFactory(cellData ->
             new SimpleDoubleProperty(cellData.getValue().getTotalPrice()));
     }
-    /**
-     * Load transaksi awal berdasarkan ID
-     */
+
     @FXML
     private void loadTransactionById() {
         try {
@@ -150,12 +148,18 @@ public class RefundTransactionController extends CashierController {
             PurchaseTransaction trx = TransactionRepository.getPurchaseTransactionById(transactionId);
             boolean exist = TransactionRepository.isRefundTransactionExist(transactionId);
             if(exist) {
-                FramelessStyledAlert.show("Already refunded", "Transaction with ID: " + transactionId + " is already refunded.");
+                FramelessStyledAlert.show(
+                    StringRes.get("already_refunded_alert_title"),
+                    StringRes.getFormatted("already_refunded_alert_content",transactionId)
+                );
                 return;
             }
 
             if (trx == null) {
-                FramelessStyledAlert.show("404 Not Found", "Transaction not found.");
+                FramelessStyledAlert.show(
+                    StringRes.get("not_found_alert_title"),
+                    StringRes.getFormatted("transaction_not_found_alert_content", transactionId)
+                );
                 return;
             }
 
@@ -166,7 +170,10 @@ public class RefundTransactionController extends CashierController {
             originalTable.setItems(originalItems);
 
         } catch (NumberFormatException e) {
-            FramelessStyledAlert.show("400 Bad Request", "Invalid transaction ID.");
+            FramelessStyledAlert.show(
+                StringRes.get("bad_request_alert_title"),
+                StringRes.get("invalid_transaction_id_alert_content")
+            );
         }
     }
 
@@ -180,20 +187,16 @@ public class RefundTransactionController extends CashierController {
         }
     }
 
-//    /**
-//     * Hapus item dari daftar refund
-//     */
-//    public void removeItemFromRefund(TransactionItem item) {
-//        refundItems.remove(item);
-//    }
-
     /**
      * Eksekusi transaksi refund
      */
     @FXML
     private void onExecuteRefund() {
         if (refundItems.isEmpty()) {
-            FramelessStyledAlert.show("No Item", "No item selected for refund.");
+            FramelessStyledAlert.show(
+                StringRes.get("no_item_alert_title"),
+                StringRes.get("no_item_alert_content")
+            );
             return;
         }
 
@@ -201,19 +204,18 @@ public class RefundTransactionController extends CashierController {
             long transactionId = Long.parseLong(transactionIdTextField.getText().trim());
             PurchaseTransaction originalTransaction = TransactionRepository.getPurchaseTransactionById(transactionId);
 
-            if (originalTransaction == null) {
-                FramelessStyledAlert.show("No Transaction", "No transaction found with ID: " + transactionId + "." );
-                return;
-            }
+            if (originalTransaction == null) return;
 
-            boolean confirmed = FramelessStyledAlert.showConfirmation("Refund?", "Are you sure you want to refund this transaction?");
+            boolean confirmed = FramelessStyledAlert.showConfirmation(
+                StringRes.get("refund_confirmation_alert_title"),
+                StringRes.get("refund_confirmation_alert_content")
+            );
 
             if(!confirmed) return;
 
             RefundTransaction refundTransaction = new RefundTransaction();
             refundTransaction.setUser(originalTransaction.getUser());
             refundTransaction.setCreatedAt(LocalDateTime.now());
-            refundTransaction.setRefundReason("Customer returned item(s)");
 
             double total = 0;
             ArrayList<TransactionItem> newItems = new ArrayList<>();
@@ -229,17 +231,25 @@ public class RefundTransactionController extends CashierController {
             }
 
             refundTransaction.setItems(newItems);
+            var itemCount = refundTransaction.getItems().size();
+            var reason = StringRes.getFormatted("refund_reason", itemCount, itemCount > 1 ? "s" : "" );
+            refundTransaction.setRefundReason(reason);
             refundTransaction.setTotalAmount(total);
             refundTransaction.setPurchaseTransaction(originalTransaction);
 
-            // Proses transaksi via method Payable
             var id = refundTransaction.processTransactionAndGetId();
             LogsDao.createRefundTransaction(user.getId(), id);
-            FramelessStyledAlert.show("Success", "Refund success! Transaction ID: " + id);
+            FramelessStyledAlert.show(
+                StringRes.get("refund_success_alert_title"),
+                StringRes.getFormatted("refund_success_alert_content", id)
+            );
             resetForm();
 
         } catch (NumberFormatException e) {
-            FramelessStyledAlert.show("Invalid ID", "Invalid transaction ID.");
+            FramelessStyledAlert.show(
+                StringRes.get("bad_request_alert_title"),
+                StringRes.get("invalid_transaction_id_alert_content")
+            );
         }
     }
 

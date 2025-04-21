@@ -8,6 +8,7 @@ import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.repo.ProductRepository;
 import com.jawa.utsposclient.utils.FramelessStyledAlert;
 import com.jawa.utsposclient.utils.JawaButton;
+import com.jawa.utsposclient.utils.StringRes;
 import com.jawa.utsposclient.utils.StringUtils;
 import com.jawa.utsposclient.views.fragment.BillController;
 import javafx.beans.property.SimpleObjectProperty;
@@ -24,7 +25,6 @@ import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 public class PurchaseTransactionController extends CashierController {
 
@@ -58,12 +58,21 @@ public class PurchaseTransactionController extends CashierController {
     private void initialize() {
 
         backButton.setGraphic(JawaButton.createExtendedFab(
-                MaterialDesign.MDI_ARROW_LEFT,
-                "",
-                Color.web("#e8b323"),
-                Color.WHITE,
-                Color.WHITE
+            MaterialDesign.MDI_ARROW_LEFT,
+            "",
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
         ));
+        chargeButton.setGraphic(JawaButton.createExtendedFab(
+            MaterialDesign.MDI_CONTENT_SAVE_ALL,
+            StringRes.get("checkout_label"),
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+
+        ));
+
         addHoverEffect(backButton);
         addHoverEffect(chargeButton);
 
@@ -86,7 +95,7 @@ public class PurchaseTransactionController extends CashierController {
 
             if (newValue != null && newValue > 0) item.setQuantity(newValue);
             else item.setQuantity(event.getOldValue());
-            updateTableAndTotal(); // untuk update totalPrice
+            updateTableAndTotal();
 
         });
 
@@ -136,7 +145,10 @@ public class PurchaseTransactionController extends CashierController {
                     updateTableAndTotal();
                     skuTextField.clear();
                 } else {
-                    FramelessStyledAlert.show("404 Not Found", "Product not found!");
+                    FramelessStyledAlert.show(
+                        StringRes.get("not_found_alert_title"),
+                        StringRes.get("product_not_found_alert_content")
+                    );
                     nameTextField.clear();
                     priceTextField.clear();
                     skuTextField.requestFocus();
@@ -154,16 +166,28 @@ public class PurchaseTransactionController extends CashierController {
     @FXML
     private void onExecuteTransaction() {
         var total = getGrandTotal();
-        if(total <= 0) return;
+        if(total <= 0) {
+            FramelessStyledAlert.show(
+                StringRes.get("empty_chart_alert_title"),
+                StringRes.get("empty_chart_alert_content")
+            );
+            return;
+        }
 
         try {
             var paid = Double.parseDouble(paidTextField.getText());
 
             var change = paid - total;
             if (change < 0) {
-                FramelessStyledAlert.show("Invalid Paid", "Paid is less than total price!");
+                FramelessStyledAlert.show(
+                    StringRes.get("invalid_paid_alert_title") ,
+                    StringRes.get("less_paid_alert_content")
+                );
             } else {
-                var confirmed = FramelessStyledAlert.showConfirmation("Confirm?", "Are you sure you want to proceed?");
+                var confirmed = FramelessStyledAlert.showConfirmation(
+                    StringRes.get("confirm_process_transaction_alert_title"),
+                    StringRes.get("confirm_process_transaction_alert_content")
+                );
                 if (!confirmed) return;
 
                 var transaction = new PurchaseTransaction();
@@ -198,7 +222,10 @@ public class PurchaseTransactionController extends CashierController {
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
-            FramelessStyledAlert.show("Invalid Paid", "Insert valid paid nominal!");
+            FramelessStyledAlert.show(
+                StringRes.get("invalid_paid_alert_title"),
+                StringRes.get("invalid_paid_alert_content")
+            );
         }
 
     }

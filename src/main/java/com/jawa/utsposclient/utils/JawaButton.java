@@ -58,7 +58,7 @@ public class JawaButton {
         button.setGraphic(content);
         button.setStyle(String.format("""
             -fx-background-color: %s;
-            -fx-background-radius: 50;
+            -fx-background-radius: 10;
         """, toCssColor(backgroundColor)));
 
         return button;

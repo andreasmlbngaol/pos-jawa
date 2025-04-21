@@ -8,119 +8,109 @@
 <DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="600.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.AddProductDialogController">
     <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="194.0" prefWidth="600.0">
-            <VBox prefHeight="316.0" prefWidth="600.0">
-                <VBox>
-                    <Label text="Type" textFill="WHITE">
+            <VBox prefHeight="558.0" prefWidth="600.0" spacing="16.0">
+                <VBox spacing="4.0">
+                    <Label text="%type_label" textFill="WHITE">
                   <VBox.margin>
-                     <Insets left="20.0" top="20.0" />
+                     <Insets />
                   </VBox.margin></Label>
-                    <ComboBox fx:id="typeComboBox" prefHeight="32.0" prefWidth="180.0"
-                              style="-fx-background-color: #e8b323; -fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: white;">
+                    <ComboBox fx:id="typeComboBox" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #e8b323; -fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: white;">
                   <VBox.margin>
-                     <Insets left="20.0" right="20.0" top="10.0" />
+                     <Insets />
                   </VBox.margin></ComboBox>
                 </VBox>
-                <VBox>
-                    <Label text="Sku" textFill="WHITE">
+                <VBox spacing="4.0">
+                    <Label text="%sku_label" textFill="WHITE">
                   <VBox.margin>
-                     <Insets left="20.0" top="20.0" />
+                     <Insets />
                   </VBox.margin>
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="skuTextField" promptText="Sku">
+                    <TextField fx:id="skuTextField" promptText="%sku_label">
                   <VBox.margin>
-                     <Insets left="20.0" right="20.0" top="10.0" />
+                     <Insets />
                   </VBox.margin></TextField>
                 </VBox>
-                <VBox>
-                    <Label text="Name" textFill="#fff8f8">
+                <VBox spacing="4.0">
+                    <Label text="%name_label" textFill="#fff8f8">
                   <VBox.margin>
-                     <Insets left="20.0" top="20.0" />
+                     <Insets />
                   </VBox.margin>
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="nameTextField" promptText="Name">
+                    <TextField fx:id="nameTextField" promptText="%name_label">
                   <VBox.margin>
-                     <Insets left="20.0" right="20.0" top="10.0" />
+                     <Insets />
                   </VBox.margin></TextField>
                 </VBox>
-                <VBox>
-                    <Label text="Price" textFill="WHITE">
+                <VBox spacing="4.0">
+                    <Label text="%price_label" textFill="WHITE">
                   <VBox.margin>
-                     <Insets left="20.0" top="20.0" />
+                     <Insets />
                   </VBox.margin>
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="priceTextField" promptText="Price">
+                    <TextField fx:id="priceTextField" promptText="%price_label">
                   <VBox.margin>
-                     <Insets left="20.0" right="20.0" top="10.0" />
+                     <Insets />
                   </VBox.margin></TextField>
                 </VBox>
-                <VBox fx:id="expiryDateGroup">
-                    <Label text="Expiry Date" textFill="#fffdfd">
+                <VBox fx:id="expiryDateGroup" spacing="4.0">
+                    <Label text="%expiry_date_label" textFill="#fffdfd">
                   <VBox.margin>
-                     <Insets left="20.0" top="20.0" />
+                     <Insets />
                   </VBox.margin>
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <DatePicker fx:id="expiryDatePicker" prefHeight="26.0" prefWidth="212.0" promptText="dd/mm/yy">
+                    <DatePicker fx:id="expiryDatePicker" prefHeight="26.0" prefWidth="212.0" promptText="%expiry_date_label">
                   <VBox.margin>
-                     <Insets left="20.0" top="10.0" />
+                     <Insets />
                   </VBox.margin></DatePicker>
                 </VBox>
-                <VBox fx:id="urlGroup">
-                    <Label text="URL" textFill="WHITE">
+                <VBox fx:id="urlGroup" spacing="4.0">
+                    <Label text="%url_label" textFill="WHITE">
                   <VBox.margin>
-                     <Insets left="20.0" top="20.0" />
+                     <Insets />
                   </VBox.margin>
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="urlTextField" promptText="URL">
+                    <TextField fx:id="urlTextField" promptText="%url_label">
                   <VBox.margin>
-                     <Insets left="20.0" right="20.0" top="10.0" />
+                     <Insets />
                   </VBox.margin></TextField>
                 </VBox>
-                <VBox fx:id="vendorGroup" prefHeight="139.0" prefWidth="600.0">
-                    <Label text="Vendor Name" textFill="WHITE">
+                <VBox fx:id="vendorGroup" spacing="4.0">
+                    <Label text="%vendor_name_label" textFill="WHITE">
                   <VBox.margin>
-                     <Insets left="20.0" top="20.0" />
+                     <Insets />
                   </VBox.margin>
                   <font>
                      <Font size="13.0" />
                   </font></Label>
-                    <TextField fx:id="vendorTextField" promptText="Vendor Name">
+                    <TextField fx:id="vendorTextField" promptText="%vendor_name_label">
                   <VBox.margin>
-                     <Insets left="20.0" right="20.0" top="10.0" />
+                     <Insets />
                   </VBox.margin></TextField>
                 </VBox>
-                <VBox fx:id="bundleGroup" managed="false" visible="false">
-                    <Label text="Bundle Items" textFill="WHITE">
-                        <VBox.margin>
-                            <Insets left="20.0" top="20.0" />
-                        </VBox.margin>
+                <VBox fx:id="bundleGroup" spacing="4.0">
+                    <Label text="%bundle_items_label" textFill="WHITE">
                         <font>
-                            <Font size="13.0" />
+                            <Font size="13.0"/>
                         </font>
                     </Label>
-                    <HBox fx:id="selectedItemsContainer" alignment="CENTER_LEFT" spacing="10.0">
-                        <VBox.margin>
-                            <Insets left="20.0" top="10.0" />
-                        </VBox.margin>
-                    </HBox>
-                    <Button onAction="#onAddBundleItemClicked" style="-fx-background-color: #e8b323;" text="+ Add Item">
-                        <VBox.margin>
-                            <Insets left="20.0" top="10.0" />
-                        </VBox.margin>
-                    </Button>
+                    <HBox fx:id="selectedItemsContainer" alignment="CENTER_LEFT" spacing="10.0"/>
                 </VBox>
+            <padding>
+               <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+            </padding>
             </VBox>
         </AnchorPane>
     </content>
-    <ButtonType buttonData="OK_DONE" text="Save" />
-    <ButtonType buttonData="CANCEL_CLOSE" text="Cancel" />
+    <ButtonType buttonData="OK_DONE" text="%save_label" />
+    <ButtonType buttonData="CANCEL_CLOSE" text="%cancel_label" />
 </DialogPane>

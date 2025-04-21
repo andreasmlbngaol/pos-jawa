@@ -6,13 +6,14 @@ import com.jawa.utsposclient.dto.Product;
 import com.jawa.utsposclient.entities.*;
 import com.jawa.utsposclient.enums.ProductType;
 import com.jawa.utsposclient.repo.ProductRepository;
-import com.jawa.utsposclient.utils.DateUtils;
-import com.jawa.utsposclient.utils.StringUtils;
+import com.jawa.utsposclient.utils.*;
 import com.jawa.utsposclient.views.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,8 +35,6 @@ public class AddProductDialogController extends Controller {
 
     private final List<BundleItem> bundleItems = new ArrayList<>();
 
-
-
     @FXML private void initialize() {
         List<ProductType> types = List.of(ProductType.values());
         typeComboBox.getItems().addAll(types);
@@ -55,9 +54,26 @@ public class AddProductDialogController extends Controller {
             }
         });
 
+        var addItemButton = JawaButton.createExtendedFab(
+            MaterialDesign.MDI_PLUS,
+            StringRes.get("add_item_label"),
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+        );
+        addItemButton.setOnAction(e -> onAddBundleItemClicked());
+
+        bundleGroup.getChildren().add(addItemButton);
+
         typeComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             var itemCount = ProductsDao.getProductCountByType(newValue) + 1;
-            skuTextField.setText(String.format("%s-%s", newValue.getSkuCode(), StringUtils.formatWithPrefix(itemCount)));
+            skuTextField.setText(
+                StringRes.getFormatted(
+                    "sku_name_format",
+                    newValue.getSkuCode(),
+                    StringUtils.formatWithPrefix(itemCount)
+                )
+            );
 
             switch(newValue) {
                 case NonPerishable -> {
@@ -118,6 +134,8 @@ public class AddProductDialogController extends Controller {
         String url = urlTextField.getText();
         String vendor = vendorTextField.getText();
 
+        if(name.trim().isEmpty() || price <= 0) throw new IllegalArgumentException("Invalid input!");
+
         switch(type) {
             case NonPerishable -> {
                 NonPerishableProducts product = new NonPerishableProducts();
@@ -129,6 +147,7 @@ public class AddProductDialogController extends Controller {
                 return ProductRepository.addProductAndGetId(product);
             }
             case Perishable -> {
+                if(expiryDate == null) throw new IllegalArgumentException("Invalid input!");
                 PerishableProducts product = new PerishableProducts();
                 product.setName(name);
                 product.setSku(sku);
@@ -139,6 +158,7 @@ public class AddProductDialogController extends Controller {
                 return ProductRepository.addProductAndGetId(product);
             }
             case Digital -> {
+                if(url.trim().isEmpty() || vendor.trim().isEmpty()) throw new IllegalArgumentException("Invalid input!");
                 DigitalProducts product = new DigitalProducts();
                 product.setName(name);
                 product.setSku(sku);
@@ -169,7 +189,6 @@ public class AddProductDialogController extends Controller {
 
                         ProductRepository.addBundleItem(bundleItemEntity);
                     } else {
-                        // Optional: kasih log kalau SKU tidak ditemukan
                         System.err.println("Product not found for SKU: " + item.getProduct().getSku());
                     }
                 }
@@ -184,35 +203,18 @@ public class AddProductDialogController extends Controller {
             .filter(p -> p.getType() != ProductType.Bundle)
             .toList();
 
-        ChoiceDialog<Product> dialog = new ChoiceDialog<>(all.isEmpty() ? null : all.get(0), all);
-        dialog.setTitle("Select Product");
-        dialog.setHeaderText("Choose a product to add to the bundle");
+        FramelessStyledAlert.showProductChoiceWithQuantity(all).ifPresent(item -> {
+            var existing = bundleItems.stream()
+                .filter(b -> b.getProduct().equals(item.getProduct()))
+                .findFirst();
 
-        dialog.showAndWait().ifPresent(selectedProduct -> {
-            TextInputDialog qtyDialog = new TextInputDialog("1");
-            qtyDialog.setTitle("Quantity");
-            qtyDialog.setHeaderText("Enter quantity for " + selectedProduct.getName());
-            qtyDialog.showAndWait().ifPresent(qtyStr -> {
-                try {
-                    int qty = Integer.parseInt(qtyStr);
-                    if (qty <= 0) throw new NumberFormatException();
+            if (existing.isPresent()) {
+                existing.get().setQuantity(existing.get().getQuantity() + item.getQuantity());
+            } else {
+                bundleItems.add(item);
+            }
 
-                    // Cek kalau produk udah ada
-                    var existing = bundleItems.stream()
-                        .filter(b -> b.getProduct().equals(selectedProduct))
-                        .findFirst();
-
-                    if (existing.isPresent()) {
-                        existing.get().setQuantity(existing.get().getQuantity() + qty);
-                    } else {
-                        bundleItems.add(new BundleItem(selectedProduct, qty));
-                    }
-
-                    updateSelectedItemsUI();
-                } catch (NumberFormatException e) {
-                    // handle invalid quantity input (optionally show alert)
-                }
-            });
+            updateSelectedItemsUI();
         });
     }
 

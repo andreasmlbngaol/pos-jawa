@@ -4,39 +4,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.RefundTransactionController">
    <VBox prefHeight="620.0" prefWidth="1100.0" spacing="16.0">
-      <HBox>
+      <StackPane>
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <children>
+         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
+            <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="%refund_title" />
+         </HBox>
+         <HBox alignment="CENTER_LEFT">
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
-               <effect>
-                  <DropShadow height="36.21" radius="16.7275" width="32.7">
-                     <color>
-                        <Color red="1.0" green="0.7647058963775635" />
-                     </color>
-                  </DropShadow>
-               </effect>
             </Button>
-         </children>
-      </HBox>
+         </HBox>
+      </StackPane>
       <VBox spacing="8.0">
-         <Label text="Transaction ID" textFill="WHITE">
-            <font>
-               <Font size="14.0" />
-            </font>
-            <VBox.margin>
-               <Insets />
-            </VBox.margin></Label>
-         <TextField fx:id="transactionIdTextField" maxWidth="-Infinity" prefHeight="28.0" prefWidth="500.0" promptText="Transaction ID">
+         <TextField fx:id="transactionIdTextField" maxWidth="-Infinity" prefHeight="28.0" prefWidth="500.0" promptText="%refund_search_prompt">
             <VBox.margin>
                <Insets />
             </VBox.margin>
@@ -58,8 +46,8 @@
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <VBox spacing="8.0">
-            <Label text="Cashier" textFill="WHITE">
+         <VBox spacing="4.0">
+            <Label text="%cashier_name_label" textFill="WHITE">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -67,7 +55,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cashierNameTextField" editable="false" maxWidth="-Infinity" prefHeight="28.0" prefWidth="500.0" promptText="Cashier">
+            <TextField fx:id="cashierNameTextField" disable="true" editable="false" maxWidth="-Infinity" prefHeight="28.0" prefWidth="500.0" promptText="%cashier_name_label">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -86,8 +74,8 @@
                <Insets />
             </HBox.margin>
          </VBox>
-         <VBox spacing="8.0">
-            <Label text="Created At" textFill="WHITE">
+         <VBox spacing="4.0">
+            <Label text="%created_at_label" textFill="WHITE">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -95,7 +83,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="createdAtTextField" editable="false" maxWidth="-Infinity" prefHeight="28.0" prefWidth="500.0" promptText="Created At">
+            <TextField fx:id="createdAtTextField" disable="true" editable="false" maxWidth="-Infinity" prefHeight="28.0" prefWidth="500.0" promptText="%created_at_label">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -113,7 +101,7 @@
          </VBox>
       </HBox>
       <HBox prefHeight="300.0" prefWidth="1100.0" spacing="32.0">
-         <VBox spacing="8.0">
+         <VBox spacing="4.0">
             <Label text="Original" textFill="WHITE">
                <VBox.margin>
                   <Insets />
@@ -123,30 +111,30 @@
                </font></Label>
             <TableView fx:id="originalTable" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #7E7997;">
                <columns>
-                  <TableColumn fx:id="skuOriginalColumn" prefWidth="79.00001525878906" style="-fx-alignment: CENTER;" text="sku" />
-                  <TableColumn fx:id="originalNameColumn" prefWidth="143.4000015258789" style="-fx-alignment: CENTER_LEFT;" text="name" />
-                  <TableColumn fx:id="originalPriceColumn" prefWidth="85.4000244140625" style="-fx-alignment: CENTER_RIGHT;" text="price per item" />
-                  <TableColumn fx:id="originalQuantityColumn" prefWidth="32.600006103515625" style="-fx-alignment: CENTER;" text="Qty" />
-                  <TableColumn fx:id="originalTotalColumn" prefWidth="102.5999755859375" style="-fx-alignment: CENTER_RIGHT;" text="total" />
-                  <TableColumn fx:id="originalActionColumn" prefWidth="52.999969482421875" style="-fx-alignment: CENTER;" text="action" />
+                  <TableColumn fx:id="skuOriginalColumn" prefWidth="79.00001525878906" style="-fx-alignment: CENTER;" text="%sku_label" />
+                  <TableColumn fx:id="originalNameColumn" prefWidth="132.5999984741211" style="-fx-alignment: CENTER_LEFT;" text="%name_label" />
+                  <TableColumn fx:id="originalPriceColumn" prefWidth="93.39999389648438" style="-fx-alignment: CENTER_RIGHT;" text="%price_per_item_label" />
+                  <TableColumn fx:id="originalQuantityColumn" prefWidth="33.4000244140625" style="-fx-alignment: CENTER;" text="%short_quantity_label" />
+                  <TableColumn fx:id="originalTotalColumn" prefWidth="105.0" style="-fx-alignment: CENTER_RIGHT;" text="%total_label" />
+                  <TableColumn fx:id="originalActionColumn" prefWidth="52.399993896484375" style="-fx-alignment: CENTER;" text="%action_label" />
                </columns>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </TableView>
          </VBox>
-         <VBox spacing="8.0">
+         <VBox spacing="4.0">
             <Label text="Refund" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font></Label>
             <TableView fx:id="refundTable" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #7E7997;">
                <columns>
-                  <TableColumn fx:id="refundSkuColumn" prefWidth="91.79998934268951" style="-fx-alignment: CENTER;" text="sku" />
-                  <TableColumn fx:id="refundNameColumn" prefWidth="150.40003204345703" style="-fx-alignment: CENTER_LEFT;" text="name" />
-                  <TableColumn fx:id="refundPriceColumn" prefWidth="97.60003662109375" style="-fx-alignment: CENTER_RIGHT;" text="price per item" />
-                  <TableColumn fx:id="refundQuantityColumn" prefWidth="42.4000244140625" style="-fx-alignment: CENTER;" text="Qty" />
-                  <TableColumn fx:id="refundTotalColumn" prefWidth="113.0" style="-fx-alignment: CENTER;" text="total" />
+                  <TableColumn fx:id="refundSkuColumn" prefWidth="91.79998934268951" style="-fx-alignment: CENTER;" text="%sku_label" />
+                  <TableColumn fx:id="refundNameColumn" prefWidth="150.40003204345703" style="-fx-alignment: CENTER_LEFT;" text="%name_label" />
+                  <TableColumn fx:id="refundPriceColumn" prefWidth="97.60003662109375" style="-fx-alignment: CENTER_RIGHT;" text="%price_per_item_label" />
+                  <TableColumn fx:id="refundQuantityColumn" prefWidth="42.4000244140625" style="-fx-alignment: CENTER;" text="%short_quantity_label" />
+                  <TableColumn fx:id="refundTotalColumn" prefWidth="113.0" style="-fx-alignment: CENTER;" text="%total_label" />
                </columns>
                <VBox.margin>
                   <Insets />
@@ -158,23 +146,14 @@
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <children>
-            <Button fx:id="executeButton" mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <effect>
-                  <DropShadow height="39.72" radius="17.605" width="32.7">
-                     <color>
-                        <Color red="1.0" green="0.7647058963775635" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
-         </children>
+         <Button fx:id="executeButton" mnemonicParsing="false" onAction="#onExecuteRefund" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+            <HBox.margin>
+               <Insets top="16.0" />
+            </HBox.margin>
+         </Button>
       </HBox>
       <padding>
          <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />

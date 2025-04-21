@@ -4,47 +4,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.PurchaseTransactionController">
-   <VBox prefHeight="620.0" prefWidth="1101.0">
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.cashier.PurchaseTransactionController">
+   <VBox prefHeight="620.0" prefWidth="1100.0" spacing="16.0">
       <padding>
-         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
       </padding>
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="36.0" prefWidth="65.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="Back" textFill="WHITE">
+      <StackPane>
          <VBox.margin>
-            <Insets bottom="20.0" top="10.0" />
+            <Insets />
          </VBox.margin>
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <effect>
-            <DropShadow height="32.7" radius="16.435000000000002" width="35.04">
-               <color>
-                  <Color red="1.0" green="0.7647058963775635" />
-               </color>
-            </DropShadow>
-         </effect></Button>
-      <Label prefHeight="27.0" prefWidth="136.0" text="Checkout Page" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin>
-      </Label>
-      <VBox prefHeight="10.0" prefWidth="683.0">
-         <Label text="SKU" textFill="WHITE">
+         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
+            <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="%purchase_title" />
+         </HBox>
+         <HBox alignment="CENTER_LEFT">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </HBox>
+      </StackPane>
+      <VBox prefHeight="10.0" prefWidth="683.0" spacing="4.0">
+         <TextField fx:id="skuTextField" maxWidth="-Infinity" prefHeight="28.0" prefWidth="500.0" promptText="%purchase_search_prompt">
             <VBox.margin>
-               <Insets bottom="10.0" />
-            </VBox.margin>
-            <font>
-               <Font size="14.0" />
-            </font></Label>
-         <TextField fx:id="skuTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="526.0" promptText="SKU Number">
-            <VBox.margin>
-               <Insets bottom="20.0" />
+               <Insets />
             </VBox.margin>
             <effect>
                <Lighting diffuseConstant="1.18">
@@ -56,92 +42,99 @@
                   </light>
                </Lighting>
             </effect></TextField>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </VBox>
-      <HBox prefHeight="51.0" prefWidth="1102.0">
-         <VBox prefWidth="550.0">
-            <Label text="Name" textFill="WHITE">
+      <HBox prefHeight="51.0" prefWidth="1102.0" spacing="32.0">
+         <VBox prefWidth="550.0" spacing="4.0">
+            <Label text="%name_label" textFill="WHITE">
                <VBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets />
                </VBox.margin>
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextField fx:id="nameTextField" disable="true" editable="false" promptText="Product Name">
+            <TextField fx:id="nameTextField" disable="true" editable="false" maxWidth="-Infinity" prefHeight="28.0" prefWidth="500.0" promptText="%name_label">
                <VBox.margin>
-                  <Insets bottom="20.0" right="10.0" />
+                  <Insets />
                </VBox.margin></TextField>
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
          </VBox>
-         <VBox prefWidth="550.0">
-            <Label text="Harga" textFill="WHITE">
+         <VBox prefWidth="550.0" spacing="4.0">
+            <Label text="%price_label" textFill="WHITE">
                <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" />
+                  <Insets />
                </VBox.margin>
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextField fx:id="priceTextField" disable="true" editable="false" promptText="Price">
+            <TextField fx:id="priceTextField" disable="true" editable="false" maxWidth="-Infinity" prefHeight="28.0" prefWidth="500.0" promptText="%price_label">
                <VBox.margin>
-                  <Insets left="10.0" />
+                  <Insets />
                </VBox.margin></TextField>
          </VBox>
       </HBox>
       <TableView fx:id="productTable" prefHeight="198.0" prefWidth="1042.0" style="-fx-background-color: #7E7997;">
          <columns>
-            <TableColumn fx:id="skuColumn" prefWidth="188.3999900817871" style="-fx-alignment: CENTER;" text="sku" />
-            <TableColumn fx:id="nameColumn" prefWidth="639.1999969482422" style="-fx-alignment: CENTER_LEFT;" text="name" />
-            <TableColumn fx:id="quantityColumn" minWidth="0.0" prefWidth="83.2000732421875" style="-fx-alignment: CENTER;" text="quantity" />
-            <TableColumn fx:id="totalItemPriceColumn" prefWidth="152.59991455078125" style="-fx-alignment: CENTER_RIGHT;" text="total" />
+            <TableColumn fx:id="skuColumn" prefWidth="188.3999900817871" style="-fx-alignment: CENTER;" text="%sku_label" />
+            <TableColumn fx:id="nameColumn" prefWidth="583.1999969482422" style="-fx-alignment: CENTER_LEFT;" text="%name_label" />
+            <TableColumn fx:id="quantityColumn" minWidth="0.0" prefWidth="109.0" style="-fx-alignment: CENTER;" text="%quantity_label" />
+            <TableColumn fx:id="totalItemPriceColumn" prefWidth="138.99993896484375" style="-fx-alignment: CENTER_RIGHT;" text="%total_label" />
          </columns>
       </TableView>
-      <HBox alignment="CENTER_RIGHT">
-         <Label text="Total" textFill="WHITE">
+      <HBox alignment="CENTER_RIGHT" spacing="16.0">
+         <Label text="%total_label" textFill="WHITE">
             <HBox.margin>
-               <Insets right="10.0" top="20.0" />
+               <Insets />
             </HBox.margin>
             <font>
                <Font size="14.0" />
             </font></Label>
-         <TextField fx:id="totalPriceTextField" prefHeight="26.0" prefWidth="219.0" style="-fx-alignment: CENTER_RIGHT;">
+         <TextField fx:id="totalPriceTextField" disable="true" editable="false" prefHeight="28.0" prefWidth="200.0" style="-fx-alignment: CENTER_RIGHT;">
             <HBox.margin>
-               <Insets top="20.0" />
+               <Insets />
             </HBox.margin>
             <effect>
                <InnerShadow height="26.88" radius="12.64" width="25.68" />
             </effect></TextField>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="26.0" layoutY="320.0">
-         <Label text="Yang dibayar" textFill="WHITE">
+      <HBox alignment="CENTER_RIGHT" layoutX="26.0" layoutY="320.0" spacing="16.0">
+         <Label text="%paid_label" textFill="WHITE">
             <HBox.margin>
-               <Insets right="10.0" top="20.0" />
+               <Insets />
             </HBox.margin>
             <font>
                <Font size="14.0" />
             </font></Label>
-         <TextField fx:id="paidTextField" prefHeight="26.0" prefWidth="219.0" style="-fx-alignment: CENTER_RIGHT;">
+         <TextField fx:id="paidTextField" prefHeight="28.0" prefWidth="200.0" style="-fx-alignment: CENTER_RIGHT;">
             <HBox.margin>
-               <Insets top="20.0" />
+               <Insets />
             </HBox.margin>
             <effect>
                <InnerShadow />
             </effect></TextField>
+         <VBox.margin>
+            <Insets bottom="32.0" />
+         </VBox.margin>
       </HBox>
-      <HBox prefHeight="43.0" prefWidth="1070.0">
-         <children>
-            <Button fx:id="chargeButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onExecuteTransaction" prefHeight="31.0" prefWidth="113.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="Charge" textAlignment="CENTER" textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="950.0" top="20.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <effect>
-                  <DropShadow height="37.37" radius="15.8475" width="28.02">
-                     <color>
-                        <Color red="1.0" green="0.7647058963775635" />
-                     </color>
-                  </DropShadow>
-               </effect></Button>
-         </children>
+      <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="1070.0">
+         <Button fx:id="chargeButton" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onExecuteTransaction" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </HBox>
    </VBox>
 </AnchorPane>

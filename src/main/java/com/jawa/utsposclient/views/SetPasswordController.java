@@ -5,6 +5,7 @@ import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
 import com.jawa.utsposclient.utils.JawaButton;
+import com.jawa.utsposclient.utils.StringRes;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -23,7 +24,7 @@ public class SetPasswordController extends Controller {
     private void initialize() {
         saveButton.setGraphic(JawaButton.createExtendedFab(
             MaterialDesign.MDI_CONTENT_SAVE,
-            "Save",
+            StringRes.get("save_label"),
             Color.web("#e8b323"),
             Color.WHITE,
             Color.WHITE

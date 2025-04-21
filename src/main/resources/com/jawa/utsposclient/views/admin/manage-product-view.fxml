@@ -7,47 +7,57 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
-    <VBox layoutY="4.0" prefHeight="620.0" prefWidth="1100.0">
-        <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
+    <VBox layoutY="4.0" prefHeight="620.0" prefWidth="1100.0" spacing="16.0">
+        <StackPane>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
+                <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="%manage_product_title" />
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+            </HBox>
+        </StackPane>
+      <TextField fx:id="searchField" maxWidth="-Infinity" prefHeight="28.0" prefWidth="450.0" promptText="%manage_product_search_prompt">
          <VBox.margin>
-            <Insets left="25.0" top="20.0" />
-         </VBox.margin>
-      </Button>
-      <TextField fx:id="searchField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="247.0" promptText="Search by Name or SKU">
-         <VBox.margin>
-            <Insets bottom="20.0" left="30.0" top="20.0" />
+            <Insets />
          </VBox.margin>
          <effect>
             <InnerShadow height="44.39" radius="12.3375" width="6.96" />
          </effect></TextField>
-        <TableView fx:id="productTable" prefHeight="418.0" prefWidth="1014.0" style="-fx-background-color: #353147;">
+        <TableView fx:id="productTable" style="-fx-background-color: #353147;">
             <columns>
-                <TableColumn fx:id="productIdColumn" prefWidth="75.0" style="-fx-alignment: CENTER;" text="id" />
-                <TableColumn fx:id="skuColumn" prefWidth="151.1999969482422" style="-fx-alignment: CENTER;" text="sku" />
-                <TableColumn fx:id="nameColumn" prefWidth="282.3999786376953" style="-fx-alignment: CENTER_LEFT;" text="name" />
-                <TableColumn fx:id="priceColumn" prefWidth="143.5999755859375" style="-fx-alignment: CENTER_RIGHT;" text="price" />
-                <TableColumn fx:id="typeColumn" prefWidth="180.0" style="-fx-alignment: CENTER;" text="type" />
-                <TableColumn fx:id="actionColumn" prefWidth="202.800048828125" style="-fx-alignment: CENTER;" text="action" />
+                <TableColumn fx:id="productIdColumn" prefWidth="75.0" style="-fx-alignment: CENTER;" text="%id_label" />
+                <TableColumn fx:id="skuColumn" prefWidth="151.1999969482422" style="-fx-alignment: CENTER;" text="%sku_label" />
+                <TableColumn fx:id="nameColumn" prefWidth="282.3999786376953" style="-fx-alignment: CENTER_LEFT;" text="%name_label" />
+                <TableColumn fx:id="priceColumn" prefWidth="157.0" style="-fx-alignment: CENTER_RIGHT;" text="%price_label" />
+                <TableColumn fx:id="typeColumn" prefWidth="167.0" style="-fx-alignment: CENTER;" text="%type_label" />
+                <TableColumn fx:id="actionColumn" prefWidth="186.199951171875" style="-fx-alignment: CENTER;" text="%action_label" />
             </columns>
          <VBox.margin>
-            <Insets left="30.0" right="30.0" />
+            <Insets />
          </VBox.margin>
         </TableView>
         <HBox alignment="CENTER_RIGHT">
             <VBox.margin>
-                <Insets left="30.0" top="30.0" />
+                <Insets />
             </VBox.margin>
             <Button fx:id="addProductButton" mnemonicParsing="false" onAction="#onShowAddProductDialog" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="12.0" />
                 </font>
                 <HBox.margin>
-                    <Insets bottom="20.0" right="30.0" />
+                    <Insets />
                 </HBox.margin>
           </Button>
         </HBox>
+      <padding>
+         <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+      </padding>
     </VBox>
 </AnchorPane>

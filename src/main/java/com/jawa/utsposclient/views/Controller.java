@@ -10,10 +10,9 @@ import com.jawa.utsposclient.utils.StringRes;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -25,55 +24,27 @@ public class Controller {
 
     private Stage stage;
 
-    protected void  addHoverEffect(Button button) {
+    protected void  addHoverEffect(Node node) {
         DropShadow shadow = new DropShadow();
         shadow.setRadius(20);
         shadow.setColor(Color.web("#ffffff", 0.4));
 
-        button.setOnMouseEntered(e -> {
-            button.setEffect(shadow);
+        node.setOnMouseEntered(e -> {
+            node.setEffect(shadow);
 
             ScaleTransition st = new ScaleTransition(
-                    Duration.millis(200), button
+                    Duration.millis(200), node
             );
             st.setToX(1.10);
             st.setToY(1.10);
             st.play();
         });
 
-        button.setOnMouseExited(e -> {
-            button.setEffect(null);
+        node.setOnMouseExited(e -> {
+            node.setEffect(null);
 
             ScaleTransition st = new ScaleTransition(
-                    Duration.millis(200), button
-            );
-            st.setToX(1.0);
-            st.setToY(1.0);
-            st.play();
-        });
-    }
-
-    protected void  addHoverEffect(VBox vBox) {
-        DropShadow shadow = new DropShadow();
-        shadow.setRadius(20);
-        shadow.setColor(Color.web("#ffffff", 0.4));
-
-        vBox.setOnMouseEntered(e -> {
-            vBox.setEffect(shadow);
-
-            ScaleTransition st = new ScaleTransition(
-                    Duration.millis(200), vBox
-            );
-            st.setToX(1.10);
-            st.setToY(1.10);
-            st.play();
-        });
-
-        vBox.setOnMouseExited(e -> {
-            vBox.setEffect(null);
-
-            ScaleTransition st = new ScaleTransition(
-                    Duration.millis(200), vBox
+                    Duration.millis(200), node
             );
             st.setToX(1.0);
             st.setToY(1.0);
@@ -106,8 +77,8 @@ public class Controller {
     @FXML
     protected void onLogout() {
         boolean confirmed = FramelessStyledAlert.showConfirmation(
-            StringRes.get("signout_alert_title"),
-            "Yakin ingin sign out?\nAksi ini akan mengeluarkan kamu dari sesi saat ini."
+            StringRes.get("logout_alert_title"),
+            StringRes.get("logout_alert_content")
         );
 
         if (confirmed) {
@@ -119,6 +90,18 @@ public class Controller {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    @FXML
+    protected void onExitApplication() {
+        boolean confirmed = FramelessStyledAlert.showConfirmation(
+            StringRes.get("exit_app_alert_title"),
+            StringRes.get("exit_app_alert_content")
+        );
+
+        if (confirmed) {
+            System.exit(0);
         }
     }
 }

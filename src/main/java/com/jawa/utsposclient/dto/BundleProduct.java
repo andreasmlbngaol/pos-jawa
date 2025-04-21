@@ -4,14 +4,9 @@ import com.jawa.utsposclient.enums.ProductType;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class BundleProduct extends Product {
     private List<BundleItem> items;
-
-    public static class BundleItem {
-        private Long productId;
-        private String name;
-        private int quantity;
-    }
 
     public BundleProduct(
         Long id,

@@ -10,66 +10,66 @@
         <AnchorPane>
             <VBox prefHeight="400.0" prefWidth="607.0">
                 <VBox>
-                    <Label text="SKU" textFill="WHITE">
+                    <Label text="%sku_label" textFill="WHITE">
                   <VBox.margin>
                      <Insets bottom="10.0" left="20.0" top="20.0" />
                   </VBox.margin>
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-                    <TextField fx:id="skuTextField" disable="true" editable="false" promptText="SKU Number">
+                    <TextField fx:id="skuTextField" disable="true" editable="false" promptText="%sku_label">
                   <VBox.margin>
                      <Insets bottom="20.0" left="20.0" />
                   </VBox.margin></TextField>
                 </VBox>
                 <VBox layoutX="10.0" layoutY="10.0">
-                    <Label text="Name" textFill="WHITE">
+                    <Label text="%name_label" textFill="WHITE">
                   <VBox.margin>
                      <Insets bottom="10.0" left="20.0" />
                   </VBox.margin>
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-                    <TextField fx:id="nameTextField" promptText="Product Name">
+                    <TextField fx:id="nameTextField" promptText="%name_label">
                   <VBox.margin>
                      <Insets bottom="20.0" left="20.0" />
                   </VBox.margin></TextField>
                 </VBox>
                 <VBox layoutX="10.0" layoutY="53.0">
-                    <Label text="Price" textFill="WHITE">
+                    <Label text="%price_label" textFill="WHITE">
                   <VBox.margin>
                      <Insets left="20.0" />
                   </VBox.margin>
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-                    <TextField fx:id="priceTextField" promptText="Price">
+                    <TextField fx:id="priceTextField" promptText="%price_label">
                   <VBox.margin>
                      <Insets bottom="20.0" left="20.0" top="10.0" />
                   </VBox.margin></TextField>
                 </VBox>
                 <VBox layoutX="10.0" layoutY="96.0">
-                    <Label text="URL" textFill="WHITE">
+                    <Label text="%url_label" textFill="WHITE">
                   <VBox.margin>
                      <Insets bottom="10.0" left="20.0" />
                   </VBox.margin>
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-                    <TextField fx:id="urlTextField" promptText="URL">
+                    <TextField fx:id="urlTextField" promptText="%url_label">
                   <VBox.margin>
                      <Insets bottom="20.0" left="20.0" />
                   </VBox.margin></TextField>
                 </VBox>
                 <VBox layoutX="10.0" layoutY="140.0">
-                    <Label text="Vendor Name" textFill="WHITE">
+                    <Label text="%vendor_name_label" textFill="WHITE">
                   <VBox.margin>
                      <Insets bottom="10.0" left="20.0" />
                   </VBox.margin>
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-                    <TextField fx:id="vendorTextField" promptText="Vendor Name">
+                    <TextField fx:id="vendorTextField" promptText="%vendor_name_label">
                   <VBox.margin>
                      <Insets left="20.0" />
                   </VBox.margin></TextField>
@@ -77,6 +77,6 @@
             </VBox>
         </AnchorPane>
     </content>
-    <ButtonType buttonData="OK_DONE" text="%save_button" />
-    <ButtonType buttonData="CANCEL_CLOSE" text="%cancel_button" />
+    <ButtonType buttonData="OK_DONE" text="%save_label" />
+    <ButtonType buttonData="CANCEL_CLOSE" text="%cancel_label" />
 </DialogPane>

@@ -24,17 +24,12 @@ public class AdminHomeController extends AdminController {
     @FXML
     private void initialize() throws IOException {
         Admin admin = (Admin) JawaAuth.getInstance().getCurrent();
+        if(admin == null) switchScene(AppScene.LOGIN);
 
-        if(admin == null) {
-            System.err.println("You are not logged in. Redirect to login page.");
-            switchScene(AppScene.LOGIN);
-
-
-        }
 
         logoutButton.setGraphic(JawaButton.createExtendedFab(
             MaterialDesign.MDI_LOGOUT,
-            StringRes.get("logout_button"),
+            StringRes.get("logout_label"),
             Color.web("#e8b323"),
             Color.WHITE,
             Color.WHITE

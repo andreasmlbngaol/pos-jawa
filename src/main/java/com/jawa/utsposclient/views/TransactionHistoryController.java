@@ -7,6 +7,7 @@ import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.repo.TransactionRepository;
 import com.jawa.utsposclient.utils.DateUtils;
 import com.jawa.utsposclient.utils.JawaButton;
+import com.jawa.utsposclient.utils.StringRes;
 import com.jawa.utsposclient.utils.StringUtils;
 import com.jawa.utsposclient.views.fragment.BillController;
 import javafx.beans.property.SimpleObjectProperty;
@@ -94,7 +95,7 @@ public class TransactionHistoryController extends Controller {
 
 
             {
-                showReceiptButton.setTooltip(new Tooltip("Show Receipt"));
+                showReceiptButton.setTooltip(new Tooltip(StringRes.get("show_receipt_tooltip")));
                 showReceiptButton.setOnAction(event -> {
                     var bill = AppScene.PURCHASE_BILL;
                     FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(bill.getFxml()));
@@ -130,15 +131,13 @@ public class TransactionHistoryController extends Controller {
         loadTransactions();
         FilteredList<PurchaseTransaction> filteredList = new FilteredList<>(masterTransactions, p -> true);
 
-        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredList.setPredicate(transaction -> {
-                if (newValue == null || newValue.isEmpty()) return true;
+        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> filteredList.setPredicate(transaction -> {
+            if (newValue == null || newValue.isEmpty()) return true;
 
-                String lowerCaseFilter = newValue.toLowerCase();
+            String lowerCaseFilter = newValue.toLowerCase();
 
-                return String.valueOf(transaction.getId()).toLowerCase().contains(lowerCaseFilter);
-            });
-        });
+            return String.valueOf(transaction.getId()).toLowerCase().contains(lowerCaseFilter);
+        }));
 
         transactionTable.setItems(filteredList);
 

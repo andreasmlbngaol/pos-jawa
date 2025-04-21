@@ -10,7 +10,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.Login);
-            log.setDescription(String.format("User dengan id %d login", userId));
+            log.setDescription(String.format("User %d login", userId));
             session.persist(log);
         });
     }
@@ -20,7 +20,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.Logout);
-            log.setDescription(String.format("User dengan id %d logout", userId));
+            log.setDescription(String.format("User %d logout", userId));
             session.persist(log);
         });
     }
@@ -30,7 +30,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.AddCashier);
-            log.setDescription(String.format("User dengan id %d menambahkan kasir", userId));
+            log.setDescription(String.format("User %d menambahkan kasir baru", userId));
             session.persist(log);
         });
     }
@@ -40,7 +40,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.ResetPassword);
-            log.setDescription(String.format("User dengan id %d mengatur ulang kata sandi kasir dengan id %d", userId, cashierId));
+            log.setDescription(String.format("User %d mengatur ulang kata sandi kasir %d", userId, cashierId));
             session.persist(log);
         });
     }
@@ -50,7 +50,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.DeleteCashier);
-            log.setDescription(String.format("User dengan id %d menghapus kasir dengan id %d", userId, cashierId));
+            log.setDescription(String.format("User %d menghapus kasir %d", userId, cashierId));
             session.persist(log);
         });
     }
@@ -60,7 +60,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.EditCashier);
-            log.setDescription(String.format("User dengan id %d mengubah nama kasir dengan id %d menjadi %s", userId, cashierId, cashierName));
+            log.setDescription(String.format("User %d mengubah nama kasir %d menjadi %s", userId, cashierId, cashierName));
             session.persist(log);
         });
     }
@@ -70,7 +70,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.SetPassword);
-            log.setDescription(String.format("User dengan id %d mengatur kata sandi", userId));
+            log.setDescription(String.format("User %d mengatur kata sandi", userId));
             session.persist(log);
         });
     }
@@ -80,7 +80,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.AddProduct);
-            log.setDescription(String.format("User dengan id %d menambahkan produk dengan id %d", userId, productId));
+            log.setDescription(String.format("User %d menambahkan produk %d", userId, productId));
             session.persist(log);
         });
     }
@@ -90,7 +90,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.EditProduct);
-            log.setDescription(String.format("User dengan id %d mengubah produk dengan id %d", userId, productId));
+            log.setDescription(String.format("User %d mengubah produk %d", userId, productId));
             session.persist(log);
         });
     }
@@ -100,7 +100,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.DeleteProduct);
-            log.setDescription(String.format("User dengan id %d menghapus produk dengan id %d", userId, productId));
+            log.setDescription(String.format("User %d menghapus produk %d", userId, productId));
             session.persist(log);
         });
     }
@@ -110,7 +110,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.CreatePurchaseTransaction);
-            log.setDescription(String.format("User dengan id %d membuat transaksi pembelian dengan id %d", userId, purchaseTransactionId));
+            log.setDescription(String.format("User %d melakukan transaksi pembelian %d", userId, purchaseTransactionId));
             session.persist(log);
         });
     }
@@ -120,7 +120,7 @@ public class LogsDao {
             var log = new Logs();
             log.setUserId(userId);
             log.setActivity(Activity.CreateRefundTransaction);
-            log.setDescription(String.format("User dengan id %d membuat transaksi pengembalian dengan id %d", userId, refundTransactionId));
+            log.setDescription(String.format("User %d melakukan transaksi pengembalian %d", userId, refundTransactionId));
             session.persist(log);
         });
     }

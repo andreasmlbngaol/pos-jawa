@@ -25,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
+@SuppressWarnings("unused")
 public class ManageProductController extends AdminController {
     @FXML private TableView<Product> productTable;
     @FXML private TableColumn<Product, Long> productIdColumn;
@@ -65,11 +66,14 @@ public class ManageProductController extends AdminController {
 
         addProductButton.setGraphic(JawaButton.createExtendedFab(
             MaterialDesign.MDI_DATABASE_PLUS,
-            StringRes.get("show_add_product_dialog_button"),
+            StringRes.get("add_product_label"),
             Color.web("#e8b323"),
             Color.WHITE,
             Color.WHITE
         ));
+
+        addHoverEffect(backButton);
+        addHoverEffect(addProductButton);
 
         productTable.setEditable(false);
 
@@ -102,8 +106,8 @@ public class ManageProductController extends AdminController {
             private final HBox container = new HBox(10, editButton, deleteButton);
 
             {
-                editButton.setTooltip(new Tooltip("Edit Product"));
-                deleteButton.setTooltip(new Tooltip("Delete Product"));
+                editButton.setTooltip(new Tooltip(StringRes.get("edit_product_tooltip")));
+                deleteButton.setTooltip(new Tooltip(StringRes.get("delete_product_tooltip")));
 
                 editButton.setOnAction(event -> {
                     Product product = getTableView().getItems().get(getIndex());
@@ -134,12 +138,17 @@ public class ManageProductController extends AdminController {
 
                 deleteButton.setOnAction(event -> {
                     Product product = getTableView().getItems().get(getIndex());
-                    boolean confirmed = FramelessStyledAlert.showConfirmation("Delete?", "Are you sure you want to delete this product?");
+                    boolean confirmed = FramelessStyledAlert.showConfirmation(
+                        StringRes.get("delete_product_alert_title"),
+                        StringRes.getFormatted("delete_product_alert_content", product.getName())
+                    );
 
                     if (confirmed) {
                         ProductRepository.softDelete(product.getId());
                         LogsDao.deleteProduct(user.getId(), product.getId());
-                        FramelessStyledAlert.show("Delete success!", String.format("%s - %s deleted!", product.getSku(), product.getName()));
+                        FramelessStyledAlert.show(
+                            StringRes.get("delete_success_alert_title"),
+                            StringRes.getFormatted("delete_product_success_alert_content", product.getSku(), product.getName()));
                         loadProducts();
                     }
                 });
@@ -159,18 +168,16 @@ public class ManageProductController extends AdminController {
         });
 
         loadProducts();
-        searchField.textProperty().addListener((obs, oldValue, newValue) -> {
-            filteredProductList.setPredicate(product -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
+        searchField.textProperty().addListener((obs, oldValue, newValue) -> filteredProductList.setPredicate(product -> {
+            if (newValue == null || newValue.isEmpty()) {
+                return true;
+            }
 
-                String lowerCaseFilter = newValue.toLowerCase();
+            String lowerCaseFilter = newValue.toLowerCase();
 
-                return product.getName().toLowerCase().contains(lowerCaseFilter) ||
-                        product.getSku().toLowerCase().contains(lowerCaseFilter);
-            });
-        });
+            return product.getName().toLowerCase().contains(lowerCaseFilter) ||
+                    product.getSku().toLowerCase().contains(lowerCaseFilter);
+        }));
 
 
     }
@@ -192,14 +199,19 @@ public class ManageProductController extends AdminController {
                     var id = ((AddProductDialogController) loader.getController()).onAddProductAndGetId();
                     LogsDao.addProduct(user.getId(), id);
 
-                    FramelessStyledAlert.show("Add success!", String.format("Product ID: %s", id));
-
-                    System.out.println("Product added!");
+                    FramelessStyledAlert.show(
+                        StringRes.get("add_product_success_alert_title"),
+                        StringRes.getFormatted("add_product_success_alert_content", id)
+                    );
                 }
             });
 
             loadProducts();
         } catch (Exception e) {
+            FramelessStyledAlert.show(
+                StringRes.get("bad_request_alert_title"),
+                StringRes.get("add_product_failed_alert_content")
+            );
             System.err.println(e.getMessage());
         }
     }
@@ -233,7 +245,10 @@ public class ManageProductController extends AdminController {
                     }
                     LogsDao.updateProduct(user.getId(), product.getId());
 
-                    FramelessStyledAlert.show("Update success!", String.format("%s - %s updated!", product.getSku(), product.getName()));
+                    FramelessStyledAlert.show(
+                        StringRes.get("update_product_success_alert_title"),
+                        StringRes.getFormatted("sku_name_format", product.getSku(), product.getName())
+                    );
                     loadProducts();
                 }
             });

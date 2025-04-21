@@ -5,13 +5,10 @@ import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
 import com.jawa.utsposclient.utils.JawaButton;
 import com.jawa.utsposclient.utils.StringRes;
-import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
@@ -28,13 +25,12 @@ public class CashierHomeController extends CashierController {
         Cashier user = (Cashier) JawaAuth.getInstance().getCurrent();
 
         if (user == null) {
-            System.err.println("You are not logged in. Redirect to login page.");
             switchScene(AppScene.LOGIN);
         }
 
         logoutButton.setGraphic(JawaButton.createExtendedFab(
             MaterialDesign.MDI_LOGOUT,
-            StringRes.get("logout_button"),
+            StringRes.get("logout_label"),
             Color.web("#e8b323"),
             Color.WHITE,
             Color.WHITE

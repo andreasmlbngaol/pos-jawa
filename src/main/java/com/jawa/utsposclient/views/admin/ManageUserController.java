@@ -22,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.util.converter.DefaultStringConverter;
 import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
@@ -70,10 +71,6 @@ public class ManageUserController extends AdminController {
 
     @FXML
     private void initialize() {
-
-        addHoverEffect(backButton);
-        addHoverEffect(addCashierButton);
-
         backButton.setGraphic(JawaButton.createExtendedFab(
             MaterialDesign.MDI_ARROW_LEFT,
             "",
@@ -84,36 +81,47 @@ public class ManageUserController extends AdminController {
 
         addCashierButton.setGraphic(JawaButton.createExtendedFab(
             MaterialDesign.MDI_ACCOUNT_PLUS,
-            StringRes.get("show_add_cashier_dialog_button"),
+            StringRes.get("add_cashier_label"),
             Color.web("#e8b323"),
             Color.WHITE,
             Color.WHITE
         ));
+
+        addHoverEffect(backButton);
+        addHoverEffect(addCashierButton);
 
         userTable.setEditable(true);
 
         userIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        nameColumn.setCellFactory(column -> {
+            TextFieldTableCell<User, String> cell = new TextFieldTableCell<>(new DefaultStringConverter());
+            Tooltip tooltip = new Tooltip("Double click to edit");
+            cell.setTooltip(tooltip);
+            return cell;
+        });
         nameColumn.setEditable(true);
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
 
         actionColumn.setCellFactory(col -> new TableCell<>() {
             private final Button resetPasswordButton = JawaButton.createIconButton(MaterialDesign.MDI_RELOAD, Color.GOLD, Color.BLACK);
-            private final Button deleteButton = JawaButton.createIconButton(MaterialDesign.MDI_DELETE, Color.RED, Color.WHITE);;
+            private final Button deleteButton = JawaButton.createIconButton(MaterialDesign.MDI_DELETE, Color.RED, Color.WHITE);
             private final HBox container = new HBox(10, resetPasswordButton, deleteButton);
 
             {
-                resetPasswordButton.setTooltip(new Tooltip("Reset Password"));
-                deleteButton.setTooltip(new Tooltip("Delete User"));
+                resetPasswordButton.setTooltip(new Tooltip(StringRes.get("reset_password_tooltip")));
+                deleteButton.setTooltip(new Tooltip(StringRes.get("delete_user_tooltip")));
 
                 resetPasswordButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());
                     if(user.getRole() == Role.Cashier) {
                         LogsDao.resetPassword(admin.getId(), user.getId());
                         String otp = admin.resetPasswordAndGetOtp(user.getId());
-                        FramelessStyledAlert.showCopyable("OTP", String.format("OTP: %s", otp));
+                        FramelessStyledAlert.showCopyable(
+                            StringRes.get("otp_alert_title"),
+                            StringRes.getFormatted("otp_alert_content", otp)
+                        );
                     }
                 });
 
@@ -123,12 +131,16 @@ public class ManageUserController extends AdminController {
                     if(user.getRole() == Role.Cashier) {
                         LogsDao.deleteCashier(admin.getId(), user.getId());
                         boolean confirmed = FramelessStyledAlert.showConfirmation(
-                            "Delete?",
-                            "Are you sure you want to delete this user?"
+                            StringRes.get("delete_user_alert_title"),
+                            StringRes.getFormatted("delete_user_alert_content", user.getName())
                         );
 
                         if (confirmed) {
                             admin.softDelete(user.getId());
+                            FramelessStyledAlert.show(
+                                StringRes.get("delete_success_alert_title"),
+                                StringRes.getFormatted("delete_user_success_alert_content", user.getName())
+                            );
                             loadUsers();
                         }
                     }
@@ -163,9 +175,7 @@ public class ManageUserController extends AdminController {
         });
 
         loadUsers();
-        searchUserField.textProperty().addListener((obs, oldVal, newVal) -> {
-            filterUsers(newVal);
-        });
+        searchUserField.textProperty().addListener((obs, oldVal, newVal) -> filterUsers(newVal));
     }
 
     @FXML
@@ -187,7 +197,10 @@ public class ManageUserController extends AdminController {
                     var otp = ((AddCashierDialogController) loader.getController()).onAddCashierAndGetOtp();
                     LogsDao.addCashier(admin.getId());
 
-                    FramelessStyledAlert.showCopyable("OTP", String.format("OTP: %s", otp));
+                    FramelessStyledAlert.showCopyable(
+                        StringRes.get("otp_alert_title"),
+                        StringRes.getFormatted("otp_alert_content", otp)
+                    );
                 }
             });
 

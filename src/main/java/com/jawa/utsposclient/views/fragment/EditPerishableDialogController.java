@@ -36,7 +36,7 @@ public class EditPerishableDialogController extends Controller implements Produc
 
         product.setName(nameTextField.getText());
         product.setPrice(Double.parseDouble(priceTextField.getText()));
-        product.setExpiryDate(product.getExpiryDate());
+        product.setExpiryDate(expiryDate);
 
         ProductRepository.editPerishableProduct(product);
     }

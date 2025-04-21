@@ -7,40 +7,40 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.TransactionHistoryController">
-   <children>
-      <VBox prefHeight="620.0" prefWidth="1100.0" spacing="32.0">
-         <children>
-            <HBox>
-               <children>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-radius: 10; -fx-background-color: #e8b323;" />
-               </children>
-            </HBox>
-            <VBox>
-               <children>
-                  <Label text="Transaction Id" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
-                  <TextField fx:id="searchTextField" maxWidth="-Infinity" prefHeight="26.0" prefWidth="194.0" promptText="Transaction ID">
-                     <effect>
-                        <InnerShadow height="35.04" radius="21.112499999999997" width="51.41" />
-                     </effect></TextField>
-               </children>
-            </VBox>
-            <TableView fx:id="transactionTable" style="-fx-background-color: #7E7997;">
-              <columns>
-                <TableColumn fx:id="transactionIdColumn" prefWidth="84.99999237060547" style="-fx-alignment: CENTER;" text="transaction id" />
-                <TableColumn fx:id="createdAtColumn" prefWidth="246.19998168945312" text="created at" />
-                  <TableColumn fx:id="cashierIdColumn" prefWidth="60.199951171875" style="-fx-alignment: CENTER;" text="cashier id" />
-                  <TableColumn fx:id="cashierUsernameColumn" prefWidth="213.20004272460938" style="-fx-alignment: CENTER_LEFT;" text="cashier username" />
-                  <TableColumn fx:id="cashierNameColumn" prefWidth="206.79998779296875" style="-fx-alignment: CENTER_LEFT;" text="cashier name" />
-                  <TableColumn fx:id="totalColumn" minWidth="0.0" prefWidth="127.4000244140625" style="-fx-alignment: CENTER_RIGHT;" text="total" />
-                  <TableColumn fx:id="actionColumn" minWidth="0.0" prefWidth="77.0" style="-fx-alignment: CENTER;" text="action" />
-              </columns>
-            </TableView>
-         </children>
-         <padding>
+    <VBox prefHeight="620.0" prefWidth="1100.0" spacing="32.0">
+        <padding>
             <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
-         </padding></VBox>
-   </children>
+        </padding>
+        <StackPane>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
+                <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="%history_menu_title" />
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+            </HBox>
+        </StackPane>
+         <TextField fx:id="searchTextField" maxWidth="-Infinity" prefHeight="28.0" prefWidth="450.0" promptText="%history_search_prompt">
+             <effect>
+                 <InnerShadow height="35.04" radius="21.112499999999997" width="51.41" />
+             </effect>
+         </TextField>
+        <TableView fx:id="transactionTable" style="-fx-background-color: #7E7997;">
+            <columns>
+                <TableColumn fx:id="transactionIdColumn" prefWidth="108.20000457763672" style="-fx-alignment: CENTER;" text="%transaction_id_label" />
+                <TableColumn fx:id="createdAtColumn" prefWidth="224.60000610351562" style="-fx-alignment: CENTER;" text="%created_at_label" />
+                <TableColumn fx:id="cashierIdColumn" prefWidth="69.79998779296875" style="-fx-alignment: CENTER;" text="%cashier_id_label" />
+                <TableColumn fx:id="cashierUsernameColumn" prefWidth="217.80001831054688" style="-fx-alignment: CENTER_LEFT;" text="%cashier_username_label" />
+                <TableColumn fx:id="cashierNameColumn" prefWidth="194.20001220703125" style="-fx-alignment: CENTER_LEFT;" text="%cashier_name_label" />
+                <TableColumn fx:id="totalColumn" minWidth="0.0" prefWidth="127.4000244140625" style="-fx-alignment: CENTER_RIGHT;" text="%total_label" />
+                <TableColumn fx:id="actionColumn" minWidth="0.0" prefWidth="77.0" style="-fx-alignment: CENTER;" text="%action_label" />
+            </columns>
+        </TableView>
+    </VBox>
 </AnchorPane>
