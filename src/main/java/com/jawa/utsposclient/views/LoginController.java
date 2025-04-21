@@ -6,15 +6,20 @@ import com.jawa.utsposclient.repo.AuthRepository;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.FramelessStyledAlert;
 import com.jawa.utsposclient.utils.JawaAuth;
+import com.jawa.utsposclient.utils.JawaButton;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
+import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
 
 public class LoginController extends Controller {
     @FXML private TextField usernameTextField;
     @FXML private TextField passwordField;
+    @FXML private Button loginButton;
 
     @FXML private void initialize() {
         usernameTextField.setOnKeyPressed(event -> {
@@ -27,6 +32,17 @@ public class LoginController extends Controller {
                 onLogin();
             }
         });
+
+
+        loginButton.setGraphic(JawaButton.createExtendedFab(
+            MaterialDesign.MDI_LOGIN,
+            "Login",
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+        ));
+
+        addHoverEffect(loginButton);
     }
 
     @FXML
