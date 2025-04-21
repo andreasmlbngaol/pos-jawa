@@ -1,0 +1,11 @@
+TODO:
+- Manage user text field, Title, subtitle, shadow back & add cashier
+- Dialog add cashier text field, save button, cancel button
+- Manage Product Layout Padding, texfield, title
+- Dialog add Product text field, save button, cancel button, add product add bundle alert
+- History Layout Padding, Title
+
+- Login Title, Sub title
+
+- Refund Transaction Title
+- Purchase Transaction Title, Back button, Checkout Button, TextField

@@ -60,6 +60,14 @@ public class RefundTransactionController extends CashierController {
                 Color.WHITE
         ));
 
+        executeButton.setGraphic(JawaButton.createExtendedFab(
+            MaterialDesign.MDI_REFRESH,
+            "Refund",
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+        ));
+
         addHoverEffect(backButton);
         addHoverEffect(executeButton);
         transactionIdTextField.setOnKeyPressed(event -> {
@@ -84,11 +92,9 @@ public class RefundTransactionController extends CashierController {
             new SimpleDoubleProperty(cellData.getValue().getTotalPrice()));
 
         originalActionColumn.setCellFactory(param -> new TableCell<>() {
-            private final Button refundButton = new Button("Refund");
+            private final Button refundButton = JawaButton.createIconButton(MaterialDesign.MDI_RELOAD, Color.RED, Color.WHITE);
 
             {
-                refundButton.setStyle("-fx-background-color: #af140b; -fx-text-fill: white;");
-
                 refundButton.setOnAction(event -> {
                     TransactionItem item = getTableView().getItems().get(getIndex());
                     addItemToRefund(item);
@@ -104,10 +110,10 @@ public class RefundTransactionController extends CashierController {
                 } else {
                     TransactionItem currentItem = getTableView().getItems().get(getIndex());
                     if (refundItems.contains(currentItem)) {
-                        refundButton.setText("✓ Refunded");
+                        refundButton.setGraphic(JawaButton.createIconButton(MaterialDesign.MDI_CHECK, Color.RED, Color.WHITE));
                         refundButton.setDisable(true);
                     } else {
-                        refundButton.setText("Refund");
+                        refundButton.setGraphic(JawaButton.createIconButton(MaterialDesign.MDI_RELOAD, Color.RED, Color.WHITE));
                         refundButton.setDisable(false);
                     }
                     setGraphic(refundButton);

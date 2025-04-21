@@ -4,8 +4,12 @@ import com.jawa.utsposclient.dao.LogsDao;
 import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
+import com.jawa.utsposclient.utils.JawaButton;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.paint.Color;
+import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
 
@@ -13,9 +17,19 @@ public class SetPasswordController extends Controller {
 
     @FXML private PasswordField password;
     @FXML private PasswordField confirmPassword;
+    @FXML private Button saveButton;
 
     @FXML
     private void initialize() {
+        saveButton.setGraphic(JawaButton.createExtendedFab(
+            MaterialDesign.MDI_CONTENT_SAVE,
+            "Save",
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+        ));
+
+        addHoverEffect(saveButton);
         password.setOnKeyPressed(event -> {
             if (event.getCode() == javafx.scene.input.KeyCode.ENTER) {
                 try {
