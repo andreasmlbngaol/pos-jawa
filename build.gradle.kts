@@ -45,6 +45,8 @@ dependencies {
   implementation(libs.postgresql)
   implementation(libs.jbcrypt)
   implementation(libs.hibernate.core)
+  implementation(libs.ikonli)
+  implementation(libs.material.icon)
 
   testImplementation(libs.junit.jupiter.api)
   testRuntimeOnly(libs.junit.jupiter.engine)

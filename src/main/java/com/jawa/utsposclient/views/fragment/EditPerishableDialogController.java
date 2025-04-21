@@ -24,6 +24,8 @@ public class EditPerishableDialogController extends Controller implements Produc
         expiryDatePicker.setValue(product.getExpiryDate());
     }
 
+    @FXML
+
     @Override
     public void onUpdateProduct() {
         var name = nameTextField.getText().trim();

@@ -10,6 +10,8 @@ gson = "2.12.1"
 postgresql = "42.7.5"
 jbcrypt = "0.4"
 hibernate-core = "6.6.13.Final"
+ikonli = "12.4.0"
+material-icon = "12.4.0"
 
 [libraries]
 bootstrapfx-core = { module = "org.kordamp.bootstrapfx:bootstrapfx-core", version.ref = "bootstrapfx"}
@@ -21,6 +23,8 @@ gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 jbcrypt = { module = "org.mindrot:jbcrypt", version.ref = "jbcrypt" }
 hibernate-core = { module = "org.hibernate.orm:hibernate-core", version.ref = "hibernate-core" }
+ikonli = { module = "org.kordamp.ikonli:ikonli-javafx", version.ref = "ikonli" }
+material-icon = { module = "org.kordamp.ikonli:ikonli-materialdesign-pack", version.ref = "material-icon" }
 
 # Test
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit"}

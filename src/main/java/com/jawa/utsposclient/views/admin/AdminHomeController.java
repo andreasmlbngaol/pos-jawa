@@ -3,11 +3,18 @@ package com.jawa.utsposclient.views.admin;
 import com.jawa.utsposclient.dto.Admin;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.JawaAuth;
+import com.jawa.utsposclient.utils.JawaButton;
+import com.jawa.utsposclient.utils.StringRes;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
 
 public class AdminHomeController extends AdminController {
+
+    @FXML private Button logoutButton;
 
     @FXML
     private void initialize() throws IOException {
@@ -19,6 +26,14 @@ public class AdminHomeController extends AdminController {
 
 
         }
+
+        logoutButton.setGraphic(JawaButton.createExtendedFab(
+            MaterialDesign.MDI_LOGOUT,
+            StringRes.get("logout_button"),
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+        ));
     }
 
     @FXML

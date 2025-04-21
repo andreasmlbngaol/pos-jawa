@@ -8,6 +8,7 @@ import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.enums.ProductType;
 import com.jawa.utsposclient.repo.ProductRepository;
 import com.jawa.utsposclient.utils.FramelessStyledAlert;
+import com.jawa.utsposclient.utils.JawaButton;
 import com.jawa.utsposclient.utils.StringRes;
 import com.jawa.utsposclient.utils.StringUtils;
 import com.jawa.utsposclient.views.fragment.*;
@@ -20,6 +21,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 public class ManageProductController extends AdminController {
     @FXML private TableView<Product> productTable;
@@ -30,6 +33,9 @@ public class ManageProductController extends AdminController {
     @FXML private TableColumn<Product, String> typeColumn;
     @FXML private TableColumn<Product, Void> actionColumn;
 
+    @FXML private Button backButton;
+    @FXML private Button addProductButton;
+
     private void loadProducts() {
         ObservableList<Product> products = FXCollections.observableArrayList(ProductRepository.getAllProducts());
         productTable.setItems(products);
@@ -37,6 +43,22 @@ public class ManageProductController extends AdminController {
 
     @FXML
     private void initialize() {
+        backButton.setGraphic(JawaButton.createExtendedFab(
+            MaterialDesign.MDI_ARROW_LEFT,
+            "",
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+        ));
+
+        addProductButton.setGraphic(JawaButton.createExtendedFab(
+            MaterialDesign.MDI_DATABASE_PLUS,
+            StringRes.get("show_add_product_dialog_button"),
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+        ));
+
         productTable.setEditable(false);
 
         productIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -60,13 +82,13 @@ public class ManageProductController extends AdminController {
         );
 
         actionColumn.setCellFactory(col -> new TableCell<>() {
-            private final Button editButton = new Button("Edit");
-            private final Button deleteButton = new Button("Delete");
+            private final Button editButton = JawaButton.createIconButton(MaterialDesign.MDI_PENCIL, Color.LIMEGREEN, Color.BLACK);
+            private final Button deleteButton = JawaButton.createIconButton(MaterialDesign.MDI_DELETE, Color.RED, Color.WHITE);
             private final HBox container = new HBox(10, editButton, deleteButton);
 
             {
-                editButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
-                deleteButton.setStyle("-fx-background-color: #af140b; -fx-text-fill: white;");
+                editButton.setTooltip(new Tooltip("Edit Product"));
+                deleteButton.setTooltip(new Tooltip("Delete Product"));
 
                 editButton.setOnAction(event -> {
                     Product product = getTableView().getItems().get(getIndex());

@@ -8,6 +8,7 @@ import com.jawa.utsposclient.dto.User;
 import com.jawa.utsposclient.enums.Role;
 import com.jawa.utsposclient.enums.AppScene;
 import com.jawa.utsposclient.utils.FramelessStyledAlert;
+import com.jawa.utsposclient.utils.JawaButton;
 import com.jawa.utsposclient.utils.JawaAuth;
 import com.jawa.utsposclient.utils.StringRes;
 import com.jawa.utsposclient.views.fragment.AddCashierDialogController;
@@ -20,6 +21,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
 
@@ -32,6 +35,9 @@ public class ManageUserController extends AdminController {
     @FXML private TableColumn<User, String> roleColumn;
     @FXML private TableColumn<User, Void> actionColumn;
 
+    @FXML private Button backButton;
+    @FXML private Button addCashierButton;
+
     private final Admin admin = (Admin) JawaAuth.getInstance().getCurrent();
 
     private void loadUsers() {
@@ -41,6 +47,22 @@ public class ManageUserController extends AdminController {
 
     @FXML
     private void initialize() {
+        backButton.setGraphic(JawaButton.createExtendedFab(
+            MaterialDesign.MDI_ARROW_LEFT,
+            "",
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+        ));
+
+        addCashierButton.setGraphic(JawaButton.createExtendedFab(
+            MaterialDesign.MDI_ACCOUNT_PLUS,
+            StringRes.get("show_add_cashier_dialog_button"),
+            Color.web("#e8b323"),
+            Color.WHITE,
+            Color.WHITE
+        ));
+
         userTable.setEditable(true);
 
         userIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -51,13 +73,13 @@ public class ManageUserController extends AdminController {
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
 
         actionColumn.setCellFactory(col -> new TableCell<>() {
-            private final Button resetPasswordButton = new Button("Reset Password");
-            private final Button deleteButton = new Button("Delete");
+            private final Button resetPasswordButton = JawaButton.createIconButton(MaterialDesign.MDI_RELOAD, Color.GOLD, Color.BLACK);
+            private final Button deleteButton = JawaButton.createIconButton(MaterialDesign.MDI_DELETE, Color.RED, Color.WHITE);;
             private final HBox container = new HBox(10, resetPasswordButton, deleteButton);
 
             {
-                resetPasswordButton.setStyle("-fx-background-color: #e8c123; -fx-text-fill: black;");
-                deleteButton.setStyle("-fx-background-color: #af140b; -fx-text-fill: white;");
+                resetPasswordButton.setTooltip(new Tooltip("Reset Password"));
+                deleteButton.setTooltip(new Tooltip("Delete User"));
 
                 resetPasswordButton.setOnAction(event -> {
                     User user = getTableView().getItems().get(getIndex());

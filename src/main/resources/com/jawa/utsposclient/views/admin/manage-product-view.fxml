@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.admin.ManageProductController">
     <VBox layoutY="4.0" prefHeight="620.0" prefWidth="1100.0">
-        <Button mnemonicParsing="false" onAction="#onBackToHome" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="%back_button" textFill="WHITE">
+        <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackToHome" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
          <VBox.margin>
             <Insets bottom="30.0" left="30.0" top="30.0" />
          </VBox.margin>
@@ -40,7 +40,7 @@
             <VBox.margin>
                 <Insets left="30.0" top="30.0" />
             </VBox.margin>
-            <Button mnemonicParsing="false" onAction="#onShowAddProductDialog" prefHeight="42.0" prefWidth="108.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" text="Add Product" textFill="WHITE">
+            <Button fx:id="addProductButton" mnemonicParsing="false" onAction="#onShowAddProductDialog" prefHeight="40.0" style="-fx-background-color: #e8b323; -fx-background-radius: 10;" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="12.0" />
                 </font>

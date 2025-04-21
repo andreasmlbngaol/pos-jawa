@@ -5,7 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<DialogPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A061E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jawa.utsposclient.views.fragment.EditPerishableDialogController">
+<DialogPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A061E;"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jawa.utsposclient.views.fragment.EditPerishableDialogController">
     <content>
         <AnchorPane>
             <VBox prefHeight="400.0" prefWidth="607.0">
@@ -64,6 +66,6 @@
             </VBox>
         </AnchorPane>
     </content>
-    <ButtonType buttonData="OK_DONE" text="%save_button" />
-    <ButtonType buttonData="CANCEL_CLOSE" text="%cancel_button" />
+    <ButtonType fx:id="saveButton" buttonData="OK_DONE" text="%save_button" />
+    <ButtonType fx:id="cancelButton" buttonData="CANCEL_CLOSE" text="%cancel_button" />
 </DialogPane>
