@@ -5,4 +5,7 @@ import javafx.fxml.FXML;
 public interface UserController {
     @FXML
     void onBackToHome() throws Exception;
+
+    @FXML
+    void onSwitchToHistory() throws Exception;
 }

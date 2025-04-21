@@ -12,4 +12,9 @@ public class CashierController extends Controller implements UserController {
     public void onBackToHome() throws IOException {
         switchScene(AppScene.CASHIER_HOME);
     }
+
+    @Override
+    public void onSwitchToHistory() throws Exception {
+        switchScene(AppScene.TRANSACTION_HISTORY);
+    }
 }

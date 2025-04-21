@@ -1,7 +1,10 @@
 package com.jawa.utsposclient.repo;
 
 import com.jawa.utsposclient.dao.TransactionsDao;
+import com.jawa.utsposclient.db.Database;
 import com.jawa.utsposclient.dto.*;
+
+import java.util.List;
 
 public class TransactionRepository {
     public static Long executePurchaseTransaction(PurchaseTransaction transaction) {
@@ -39,5 +42,33 @@ public class TransactionRepository {
         transaction.setItems(item);
 
         return transaction;
+    }
+
+    public static List<PurchaseTransaction> getAllPurchaseTransactions() {
+        return TransactionsDao.getAllPurchaseTransactions().stream()
+            .map(entity -> {
+                PurchaseTransaction transaction = new PurchaseTransaction();
+                transaction.setId(entity.getId());
+                transaction.setUser(new User(entity.getUser()));
+                transaction.setTotalAmount(entity.getTotalAmount());
+                transaction.setCreatedAt(entity.getCreatedAt());
+                transaction.setPaidAmount(entity.getPaidAmount());
+                transaction.setChangeAmount(entity.getChangeAmount());
+
+                var items = entity.getItems().stream()
+                    .map(itemEntity -> {
+                        TransactionItem item = new TransactionItem();
+                        item.setId(itemEntity.getId());
+                        item.setProduct(new Product(itemEntity.getProduct()));
+                        item.setQuantity(itemEntity.getQuantity());
+                        return item;
+                    })
+                    .toList();
+
+                transaction.setItems(items);
+
+                return transaction;
+            })
+            .toList();
     }
 }

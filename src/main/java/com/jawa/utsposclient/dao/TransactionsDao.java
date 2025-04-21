@@ -7,6 +7,8 @@ import com.jawa.utsposclient.entities.PurchaseTransactions;
 import com.jawa.utsposclient.entities.RefundTransactions;
 import com.jawa.utsposclient.entities.TransactionItems;
 
+import java.util.List;
+
 public class TransactionsDao {
     public static Long insertPurchaseTransaction(PurchaseTransaction transaction) {
         return Database.executeTransaction(session -> {
@@ -87,4 +89,9 @@ public class TransactionsDao {
         return Database.executeTransaction(session -> session.get(PurchaseTransactions.class, id));
     }
 
+    public static List<PurchaseTransactions> getAllPurchaseTransactions() {
+        return Database.executeTransaction(session ->
+            session.createQuery("FROM PurchaseTransactions p ORDER BY p.id", PurchaseTransactions.class).getResultList()
+        );
+    }
 }

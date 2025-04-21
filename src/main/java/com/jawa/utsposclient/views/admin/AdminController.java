@@ -12,4 +12,9 @@ public class AdminController extends Controller implements UserController {
     public void onBackToHome() throws IOException {
         switchScene(AppScene.ADMIN_HOME);
     }
+
+    @Override
+    public void onSwitchToHistory() throws Exception {
+        switchScene(AppScene.TRANSACTION_HISTORY);
+    }
 }

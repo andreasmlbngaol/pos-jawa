@@ -7,6 +7,7 @@ package com.jawa.utsposclient.enums;
 public enum AppScene {
     LOGIN("login-view", "Login Scene"),
     SET_PASSWORD("set-password-view", "Set Password"),
+    TRANSACTION_HISTORY("transaction-history-view", "Transaction History"),
 
     ADMIN_HOME("admin/admin-home-view", "Admin Home"),
     MANAGE_PRODUCT("admin/manage-product-view", "Manage Product"),
