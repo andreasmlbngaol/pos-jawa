@@ -1,14 +1,11 @@
 # Jawa Market POS Application
 
-___
-
 ## Table of Content
 
 - [Requirements](#requirements)
 - [How to use](#how-to-use)
 - [Libraries Used](#libraries-and-technologies-used)
 
-___
 
 ## Requirements
 
@@ -24,7 +21,6 @@ ___
 
   [Download here](https://gradle.org/releases/) or IntelliJ will download it automatically
 
-___
 
 ## How To Use
 
@@ -63,7 +59,6 @@ ___
     - Rename the file name `config.example.properties` to `config.properties`
 4. **Run application**
 
-___
 
 ## Libraries and Technologies Used
 
