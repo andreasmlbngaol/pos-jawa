@@ -1,15 +1,18 @@
-# Client POS Jawa
+# Jawa Market POS Application
 
-[//]: # ([CATATAN APLIKASI UNTUK PENGEMBANG]&#40;docs/NOTES.md&#41;)
+___
 
 ## Table of Content
 
 - [Requirements](#requirements)
 - [How to use](#how-to-use)
+- [Libraries Used](#libraries-and-technologies-used)
+
+___
 
 ## Requirements
 
-- **Java Development Kit (JDK) 20 atau or later**
+- **Java Development Kit (JDK) 20 or later**
   
   [Download here](https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html) or IntelliJ will download it automatically
 
@@ -19,17 +22,19 @@
 
 - **Gradle 8.8 or later**
 
-  [Downlaod here](https://gradle.org/releases/) or IntelliJ will download it automatically
+  [Download here](https://gradle.org/releases/) or IntelliJ will download it automatically
+
+___
 
 ## How To Use
 
 ### 1. IntelliJ IDEA
 
 1. **Modify JavaFX Runtime Configuration:**
-   - Right click on `MainApp.java`
+   - Right-click on `MainApp.java`
    - Choose **`More Run/Debug` > `Modify Run Configuration`**
     ![Modify Run Configuration](docs/modify_conf_1.png)
-   - Choose **Add VM options** in **Modify options** menu
+   - Choose **Add VM options** in the **Modify options** menu
     ![Add VM options](docs/modify_conf_2.png)
    - In the `VM options` field add:
       ```
@@ -56,4 +61,39 @@
     - Change `SECRET_KEY` as you want
         ![Modify Secret Key](docs/modify_secret_key.png)
     - Rename the file name `config.example.properties` to `config.properties`
-4. **Run application** //
+4. **Run application**
+
+___
+
+## Libraries and Technologies Used
+
+The following libraries are used in this project:
+
+- **JavaFX Controls**  
+  Provides a set of UI controls (like buttons, labels, text fields, etc.) to build the graphical user interface (GUI) of the application.
+
+
+- **JavaFX FXML**  
+  Used for defining the user interface in an XML-based format (FXML), allowing for a clean separation between the UI design and application logic.
+
+
+- **PostgreSQL JDBC Driver**  
+  A JDBC driver for connecting the Java application to PostgreSQL databases, enabling data retrieval, insertion, and management.
+
+
+- **Hibernate Core**  
+  An Object-Relational Mapping (ORM) framework that maps Java objects to relational database tables, simplifying database interactions and reducing boilerplate code.
+
+
+- **JBCrypt**  
+  A library for securely hashing passwords using the bcrypt algorithm. It provides a strong encryption mechanism for user authentication.
+
+
+- **Ikonli**  
+  A library for incorporating scalable vector icons into JavaFX applications, providing access to a wide range of popular icon sets.
+
+
+- **Material Icons**  
+  A library for integrating Google's Material Design icons into JavaFX applications, giving a modern, consistent look across platforms.
+
+These libraries are essential to the functionality and user interface of the application. For more details on how to configure and use them, refer to the [`build.gradle.kts`](build.gradle.kts) file in the project.
