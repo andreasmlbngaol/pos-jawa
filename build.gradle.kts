@@ -33,16 +33,14 @@ javafx {
 }
 
 dependencies {
-  implementation(libs.bootstrapfx.core)
   implementation(libs.javafx.controls)
   implementation(libs.javafx.fxml)
-  implementation(libs.okhttp)
-  implementation(libs.okhttp.urlconnection)
-  implementation(libs.gson)
 
   implementation(libs.postgresql)
-  implementation(libs.jbcrypt)
   implementation(libs.hibernate.core)
+
+  implementation(libs.jbcrypt)
+
   implementation(libs.ikonli)
   implementation(libs.material.icon)
 }
