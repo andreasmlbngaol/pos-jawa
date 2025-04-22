@@ -56,4 +56,4 @@
     - Change `SECRET_KEY` as you want
         ![Modify Secret Key](docs/modify_secret_key.png)
     - Rename the file name `config.example.properties` to `config.properties`
-4. **Run application** /
+4. **Run application** //
