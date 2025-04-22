@@ -26,8 +26,4 @@ public class AuthRepository {
         }
         return null;
     }
-
-//    public static ApiResponse<Void> logout() throws IOException {
-//        return apiClient.postParsed("/logout");
-//    }
 }

@@ -16,4 +16,12 @@ public class BundleProduct extends Product {
     ) {
         super(id, name, sku, price, ProductType.Bundle);
     }
+
+    public double getDiscountedPrice() {
+        double total = 0;
+        for(var item: items) {
+            total += item.getProduct().getPrice() * item.getQuantity();
+        }
+        return total;
+    }
 }

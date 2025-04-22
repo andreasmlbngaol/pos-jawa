@@ -203,6 +203,7 @@ public class PurchaseTransactionController extends CashierController {
 
                 var bill = AppScene.PURCHASE_BILL;
                 FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(bill.getFxml()));
+                loader.setResources(StringRes.getBundle());
                 try {
                     Parent root = loader.load();
                     BillController billController = loader.getController();

@@ -61,31 +61,7 @@ public class ProductRepository {
     }
 
     public static Long addProductAndGetId(Products product) {
-        return Database.executeTransaction(session -> {
-            switch (product.getType()) {
-                case NonPerishable -> {
-                    var nonPerishable = (NonPerishableProducts) product;
-                    session.persist(nonPerishable);
-                    return nonPerishable.getId();
-                }
-                case Perishable -> {
-                    var perishable = (PerishableProducts) product;
-                    session.persist(perishable);
-                    return perishable.getId();
-                }
-
-                case Digital -> {
-                    var digital = (DigitalProducts) product;
-                    session.persist(digital);
-                    return digital.getId();
-                }
-                default -> {
-                    var bundle = (BundleProducts) product;
-                    session.persist(bundle);
-                    return bundle.getId();
-                }
-            }
-        });
+        return ProductsDao.addProductAndGetId(product);
     }
 
     public static Product getProductBySku(String sku) {
@@ -121,44 +97,26 @@ public class ProductRepository {
     }
 
     public static Products getProductEntityById(Long id) {
-        return Database.executeTransaction(session -> session.get(Products.class, id));
+        return ProductsDao.getProductEntityById(id);
     }
 
     public static void softDelete(Long id) {
         ProductsDao.setProductUnavailable(id);
     }
 
-    public static void editPerishableProduct(PerishableProduct product) {
-        Database.executeVoidTransaction(session -> {
-            var perishable = session.get(PerishableProducts.class, product.getId());
-            if(perishable == null) throw new IllegalArgumentException("Product not found");
-            perishable.setName(product.getName());
-            perishable.setPrice(product.getPrice());
-            perishable.setExpiryDate(DateUtils.localDateToDate(product.getExpiryDate()));
-        });
+    public static void editPerishableProduct(PerishableProduct perishable) {
+        ProductsDao.editPerishableProduct(perishable);
     }
 
-    public static void editNonPerishableProduct(NonPerishableProduct product) {
-        Database.executeVoidTransaction(session -> {
-            var nonPerishable = session.get(NonPerishableProducts.class, product.getId());
-            if(nonPerishable == null) throw new IllegalArgumentException("Product not found");
-            nonPerishable.setName(product.getName());
-            nonPerishable.setPrice(product.getPrice());
-        });
+    public static void editNonPerishableProduct(NonPerishableProduct nonPerishable) {
+        ProductsDao.editNonPerishableProduct(nonPerishable);
     }
 
-    public static void editDigitalProduct(DigitalProduct product) {
-        Database.executeVoidTransaction(session -> {
-            var digital = session.get(DigitalProducts.class, product.getId());
-            if(digital == null) throw new IllegalArgumentException("Product not found");
-            digital.setName(product.getName());
-            digital.setPrice(product.getPrice());
-            digital.setUrl(product.getUrl());
-            digital.setVendorName(product.getVendorName());
-        });
+    public static void editDigitalProduct(DigitalProduct digital) {
+        ProductsDao.editDigitalProduct(digital);
     }
 
     public static void addBundleItem(BundleItems item) {
-        Database.executeVoidTransaction(session -> session.persist(item));
+        ProductsDao.addBundleItem(item);
     }
 }
