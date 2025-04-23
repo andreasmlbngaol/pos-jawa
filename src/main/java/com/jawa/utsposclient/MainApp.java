@@ -29,7 +29,6 @@ public class MainApp extends Application {
                 else if(user.getRole() == Role.Admin) firstScene = AppScene.ADMIN_HOME;
                 else firstScene = AppScene.CASHIER_HOME;
             } else firstScene = AppScene.LOGIN;
-            // Nanti ini check udah login atau belum. Kalau udah gak perlu ke login lagi. Tapi belakangan
 
             var controller = new Controller();
 
